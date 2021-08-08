@@ -1,4 +1,4 @@
-const { lightBlue, blueGray } = require('tailwindcss/colors');
+const { teal, trueGray, orange } = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
@@ -7,9 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        base: blueGray,
-        primary: lightBlue,
+        base: trueGray,
+        primary: teal,
+        orange: orange,
       },
     },
   },
+  plugins: [require('@tailwindcss/forms')],
 };
