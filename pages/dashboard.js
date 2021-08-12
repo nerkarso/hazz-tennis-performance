@@ -1,3 +1,4 @@
+import BookingsModal from "@/components/BookingsModal";
 import {
   AnnotationIcon,
   ChatAlt2Icon,
@@ -7,7 +8,10 @@ import {
   UserGroupIcon,
   UsersIcon
 } from "@heroicons/react/outline";
+
 function Dashboard() {
+
+  function handleClick(){return <BookingsModal/>}
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <aside className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-base-800 md:block flex-shrink-0 border-r">
