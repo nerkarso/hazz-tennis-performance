@@ -15,22 +15,21 @@ function coaches() {
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
             <thead>
-              <tr className="text-xs text-center font-semibold tracking-wide  text-base-500 uppercase border-b dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
+              <tr className="text-xs font-semibold tracking-wide text-left  text-base-500 uppercase border-b dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
                 <th className="px-4 py-3">Coach</th>
                 <th className="px-4 py-3">Email</th>
-                <th className="px-4 py-3">Edit</th>
-                <th className="px-4 py-3">View Total Hrs</th>
-                <th className="px-4 py-3">Delete</th>
+                <th className="px-4 py-3"></th>
+ 
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-base-700 dark:bg-base-800">
               {Array.from(Array(3)).map((item, i) => (
                 <tr
                   key={i}
-                  className="text-base-700 text-center dark:text-base-400"
+                  className="text-base-700  dark:text-base-400"
                 >
                   <td className="px-4 py-3">
-                    <div className="flex justify-center items-center text-sm">
+                    <div className="flex items-center text-sm">
                       {/* Avatar with inset shadow */}
                       <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                         <img
@@ -47,18 +46,16 @@ function coaches() {
                     </div>
                   </td>
                   <td className="px-4 py-3 text-sm">coach123@email.com</td>
-                  <td className="px-4 py-3 text-sm">
-                    <button className="bg-primary-400 py-2 px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
+                  <td className="px-4 py-3 text-right text-sm">
+                    <button className="bg-primary-400 py-2 mr-2 px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
                       <PencilAltIcon className="w-4 h-4" />
                     </button>
-                  </td>
-                  <td className="px-4 py-3 text-xs">
-                    <button className="bg-primary-400 py-2 px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
+                  
+                    <button className="bg-primary-400 py-2 mr-2 px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
                       <DocumentReportIcon className="w-4 h-4" />
                     </button>
-                  </td>
-                  <td className="px-4 py-3 text-sm">
-                    <button className="bg-primary-400 py-2 px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
+              
+                    <button className="bg-primary-400 py-2  px-4 rounded-md text-white focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
                       <XIcon className="w-4 h-4" />
                     </button>
                   </td>

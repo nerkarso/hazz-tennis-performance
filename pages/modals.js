@@ -1,10 +1,10 @@
-import NewCoachModal from '@/components/NewCoachModal'
+import EditUserModal from '@/components/EditUserModal'
 import React from 'react'
 
 function modals() {
   return (
     <div>
-      <NewCoachModal/>
+      <EditUserModal/>
     </div>
   )
 }
