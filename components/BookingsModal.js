@@ -1,7 +1,5 @@
-import { useState } from "react";
 
 function BookingsModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="fixed inset-0 z-30 bg-black/50 grid place-items-center">
       <div
