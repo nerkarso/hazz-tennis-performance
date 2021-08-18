@@ -1,13 +1,5 @@
 import BookingsModal from "@/components/BookingsModal";
-import {
-  AnnotationIcon,
-  ChatAlt2Icon,
-  ClipboardListIcon,
-  CreditCardIcon,
-  HomeIcon,
-  UserGroupIcon,
-  UsersIcon
-} from "@heroicons/react/outline";
+import SideBar from "@/components/SideBar";
 
 function Dashboard() {
   function handleClick() {
@@ -15,87 +7,7 @@ function Dashboard() {
   }
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
-      <aside className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-base-800 md:block flex-shrink-0 border-r">
-        <div className="py-4 text-base-500 dark:text-base-400">
-          <a
-            className="ml-5 text-lg font-bold text-base-800 dark:text-base-200"
-            href="/dashboard"
-          >
-            Hazz Tennis
-          </a>
-          {/* <div className="px-5 my-4">
-            <button className="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:shadow-outline-primary shadow">
-              Book appointment
-            </button>
-          </div> */}
-          <ul className="my-4">
-            <li className="relative px-5 py-3">
-              <span className="absolute inset-y-0 left-0 w-1 bg-primary-600 rounded-tr-lg rounded-br-lg" />
-              <a
-                className="flex items-center w-full text-sm font-semibold text-base-800 transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200 dark:text-base-100"
-                href="/"
-              >
-                <HomeIcon className="w-5 h-5" />
-                <span className="ml-4">Dashboard</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="/bookings"
-              >
-                <ClipboardListIcon className="w-5 h-5" />
-                <span className="ml-4">Bookings</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="/coaches"
-              >
-                <UsersIcon className="w-5 h-5" />
-                <span className="ml-4">Coaches</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="clients"
-              >
-                <UserGroupIcon className="w-5 h-5" />
-                <span className="ml-4">Clients</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="/feedback"
-              >
-                <AnnotationIcon className="w-5 h-5" />
-                <span className="ml-4">Feedback</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="/payments"
-              >
-                <CreditCardIcon className="w-5 h-5" />
-                <span className="ml-4">Payments</span>
-              </a>
-            </li>
-            <li className="relative px-5 py-3">
-              <a
-                className="flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-base-800 dark:hover:text-base-200"
-                href="/messaging"
-              >
-                <ChatAlt2Icon className="w-5 h-5" />
-                <span className="ml-4">Messaging</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </aside>
+      <SideBar />
       <div className="flex flex-col flex-1 w-full">
         <header className="z-10 py-4 bg-white border-b dark:bg-base-800">
           <div className="container flex items-center justify-between h-full px-6 mx-auto text-primary-600 dark:text-primary-300">
@@ -116,7 +28,7 @@ function Dashboard() {
                   </svg>
                 </div>
                 <input
-                  className="w-full pl-8 pr-2 text-sm text-base-700 placeholder-base-600 bg-base-100 border-0 rounded-md dark:placeholder-base-500 dark:focus:shadow-outline-base dark:focus:placeholder-base-600 dark:bg-base-700 dark:text-base-200 focus:placeholder-base-500 focus:bg-white focus:border-primary-300 focus:outline-none focus:shadow-outline-primary form-input"
+                  className="w-full pl-8 pr-2 text-sm border-0 rounded-md text-base-700 placeholder-base-600 bg-base-100 dark:placeholder-base-500 dark:focus:shadow-outline-base dark:focus:placeholder-base-600 dark:bg-base-700 dark:text-base-200 focus:placeholder-base-500 focus:bg-white focus:border-primary-300 focus:outline-none focus:shadow-outline-primary form-input"
                   type="text"
                   placeholder="Search for bookings"
                 />
@@ -149,16 +61,16 @@ function Dashboard() {
           </div>
         </header>
         <main className="h-full overflow-y-auto">
-          <div className="container px-6 mx-auto grid">
+          <div className="container grid px-6 mx-auto">
             <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">
               Recent bookings
             </h2>
             {/* New Table */}
-            <div className="w-full overflow-hidden rounded-lg mb-8 border shadow-sm">
+            <div className="w-full mb-8 overflow-hidden border rounded-lg shadow-sm">
               <div className="w-full overflow-x-auto">
                 <table className="w-full whitespace-no-wrap">
                   <thead>
-                    <tr className="text-xs font-semibold tracking-wide text-left text-base-500 uppercase border-b dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
+                    <tr className="text-xs font-semibold tracking-wide text-left uppercase border-b text-base-500 dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
                       <th className="px-4 py-3">Client</th>
                       <th className="px-4 py-3">Amount</th>
                       <th className="px-4 py-3">Status</th>

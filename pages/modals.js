@@ -1,12 +1,12 @@
-import EditUserModal from '@/components/EditUserModal'
-import React from 'react'
+import BookingsModal from "@/components/BookingsModal";
+import React from "react";
 
 function modals() {
   return (
     <div>
-      <EditUserModal/>
+      <BookingsModal />
     </div>
-  )
+  );
 }
 
-export default modals
+export default modals;
