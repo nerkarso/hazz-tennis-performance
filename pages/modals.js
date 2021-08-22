@@ -1,10 +1,10 @@
-import BookingsModal from "@/components/BookingsModal";
+import NewCoachModal from "@/components/NewCoachModal";
 import React from "react";
 
 function modals() {
   return (
     <div>
-      <BookingsModal />
+     <NewCoachModal/>
     </div>
   );
 }

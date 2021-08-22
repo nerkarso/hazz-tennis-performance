@@ -1,7 +1,9 @@
+import BookingsModal from "@/components/BookingsModal";
 import SideBar from "@/components/SideBar";
-import React from "react";
+import React, { useState } from "react";
 
 function payments() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <SideBar />
@@ -22,9 +24,14 @@ function payments() {
                     <th className="px-4 py-3">Date</th>
                   </tr>
                 </thead>
+                <BookingsModal title="Confirm Payment" payment={true} isOpen={isOpen} onClose={() => setIsOpen(false)}/>
                 <tbody className="bg-white divide-y dark:divide-base-700 dark:bg-base-800">
                   {Array.from(Array(3)).map((item, i) => (
-                    <tr key={i} className="text-base-700 dark:text-base-400">
+                    <tr
+                      key={i}
+                      onClick={()=>setIsOpen(true)}
+                      className="hover:bg-primary-200 text-base-700 dark:text-base-400"
+                    >
                       <td className="px-4 py-3">
                         <div className="flex items-center text-sm">
                           {/* Avatar with inset shadow */}

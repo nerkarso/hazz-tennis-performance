@@ -1,10 +1,10 @@
 import BookingsModal from "@/components/BookingsModal";
 import SideBar from "@/components/SideBar";
+import { useState } from "react";
 
 function Dashboard() {
-  function handleClick() {
-    return <BookingsModal />;
-  }
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <SideBar />
@@ -77,12 +77,13 @@ function Dashboard() {
                       <th className="px-4 py-3">Date</th>
                     </tr>
                   </thead>
+                    <BookingsModal title="Confirm Booking" isOpen={isOpen} onClose={() => setIsOpen(false)}/>
                   <tbody className="bg-white divide-y dark:divide-base-700 dark:bg-base-800">
                     {Array.from(Array(3)).map((item, i) => (
                       <tr
                         key={i}
-                        onClick={handleClick}
-                        className="text-base-700 dark:text-base-400"
+                        onClick={()=>setIsOpen(true)}
+                        className="hover:bg-primary-200 text-base-700 dark:text-base-400"
                       >
                         <td className="px-4 py-3">
                           <div className="flex items-center text-sm">

@@ -10,7 +10,7 @@ import React from 'react';
 
 function SideBar() {
   return (
-    <aside className="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-white border-r dark:bg-base-800 md:block">
+    <aside className="z-0 flex-shrink-0 hidden w-64 overflow-y-auto bg-white border-r dark:bg-base-800 md:block">
     <div className="py-4 text-base-500 dark:text-base-400">
       <a
         className="ml-5 text-lg font-bold text-base-800 dark:text-base-200"

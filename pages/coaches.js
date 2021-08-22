@@ -1,11 +1,17 @@
+import EditCoachModal from "@/components/EditCoachModal";
+import NewCoachModal from "@/components/NewCoachModal";
 import SideBar from "@/components/SideBar";
 import {
   DocumentReportIcon,
   PencilAltIcon,
   XIcon
 } from "@heroicons/react/outline";
+import { useState } from "react";
 
 function coaches() {
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <SideBar />
@@ -47,7 +53,10 @@ function coaches() {
                       </td>
                       <td className="px-4 py-3 text-sm">coach123@email.com</td>
                       <td className="px-4 py-3 text-sm text-right">
-                        <button className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
+                        <button
+                          onClick={() => setIsEditOpen(true)}
+                          className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                        >
                           <PencilAltIcon className="w-4 h-4" />
                         </button>
                         <button className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
@@ -64,12 +73,22 @@ function coaches() {
             </div>
           </div>
           <div className="">
-            <a href="/modals">
-              <button className="px-4 py-2 text-left text-white rounded-md bg-primary-600">
-                Create New Coach User
-              </button>
-            </a>
+            <button
+              onClick={() => setIsCreateOpen(true)}
+              className="px-4 py-2 text-left text-white rounded-md bg-primary-600"
+            >
+              Create New Coach User
+            </button>
           </div>
+          <EditCoachModal
+            isOpen={isEditOpen}
+            onClose={() => setIsEditOpen(false)}
+          />
+          <NewCoachModal
+            title="Create New Coach"
+            isOpen={isCreateOpen}
+            onClose={() => setIsCreateOpen(false)}
+          />
         </main>
       </div>
     </div>

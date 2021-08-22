@@ -2,16 +2,16 @@ import React from "react";
 
 function ViewTotalHours() {
   return (
-    <div className="container px-6 mx-auto grid">
+    <div className="container grid px-6 mx-auto">
       <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">
         Total Coaching Hours
       </h2>
       {/* New Table */}
-      <div className="w-full overflow-hidden rounded-lg mb-8 border shadow-sm">
+      <div className="w-full mb-8 overflow-hidden border rounded-lg shadow-sm">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-left   text-base-500 uppercase border-b dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
+              <tr className="text-xs font-semibold tracking-wide text-left uppercase border-b text-base-500 dark:border-base-700 bg-base-50 dark:text-base-400 dark:bg-base-800">
                 <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3">Coach</th>
                 <th className="px-4 py-3">Total Hrs</th>
@@ -21,7 +21,7 @@ function ViewTotalHours() {
               {Array.from(Array(3)).map((item, i) => (
                 <tr
                   key={i}
-                  className="text-base-700   dark:text-base-400"
+                  className="text-base-700 dark:text-base-400"
                 >
                   <td className="px-4 py-3 text-sm">12/08/2021</td>
                   <td className="px-4 py-3">

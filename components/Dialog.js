@@ -1,7 +1,6 @@
 import { Dialog } from "@headlessui/react";
 
-
-function NewCoachModal({title,isOpen, onClose,btnText}) {
+export default function MyDialog({ isOpen, onClose }) {
   return (
     <Dialog
       open={isOpen}
@@ -68,12 +67,10 @@ function NewCoachModal({title,isOpen, onClose,btnText}) {
         </div>
         <footer className="flex flex-col items-center justify-end p-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
           <button className="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 border border-transparent rounded-lg bg-primary-600 sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-            {btnText ?? "Create"}
+            Create
           </button>
         </footer>
       </div>
     </Dialog>
   );
 }
-
-export default NewCoachModal;
