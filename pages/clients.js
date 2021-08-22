@@ -1,8 +1,10 @@
+import EditUserModal from "@/components/EditUserModal";
 import SideBar from "@/components/SideBar";
 import { PencilAltIcon, XIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
 
 function clients() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <SideBar />
@@ -24,7 +26,11 @@ function clients() {
                 </thead>
                 <tbody className="bg-white divide-y dark:divide-base-700 dark:bg-base-800">
                   {Array.from(Array(3)).map((item, i) => (
-                    <tr key={i} className="text-base-700 dark:text-base-400">
+                    <tr
+                      onClick={() => setIsOpen(true)}
+                      key={i}
+                      className="text-base-700 dark:text-base-400"
+                    >
                       <td className="px-4 py-3">
                         <div className="flex items-center text-sm">
                           {/* Avatar with inset shadow */}
@@ -58,6 +64,7 @@ function clients() {
             </div>
           </div>
         </main>
+        <EditUserModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       </div>
     </div>
   );

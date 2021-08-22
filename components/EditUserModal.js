@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 
-function NewCoachModal({ title, isOpen, onClose, btnText }) {
+function EditUserModal({ isOpen, onClose }) {
   return (
     <Dialog
       open={isOpen}
@@ -16,7 +16,7 @@ function NewCoachModal({ title, isOpen, onClose, btnText }) {
       >
         <Dialog.Title>
           <header className="flex justify-between p-4">
-            <h1 className="ml-4 text-2xl font-medium">{title}</h1>
+            <h1 className="ml-4 text-2xl font-medium">Edit Client Details</h1>
             <button
               onClick={onClose}
               className="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
@@ -42,7 +42,7 @@ function NewCoachModal({ title, isOpen, onClose, btnText }) {
           <div className="w-full mt-4 mb-6">
             <label className="flex items-center mb-4">
               <p className="mr-5 text-lg text-gray-700 w-28 dark:text-gray-400 ">
-                Coach Name
+                Client Name
               </p>
               <input type="text" className="flex-1 rounded-md " />
             </label>
@@ -52,18 +52,6 @@ function NewCoachModal({ title, isOpen, onClose, btnText }) {
               </span>
               <input type="email" className="flex-1 rounded-md " />
             </label>
-            <label className="flex items-center mb-4">
-              <p className="mr-5 text-lg text-gray-700 w-28 dark:text-gray-400 ">
-                Password
-              </p>
-              <input type="password" className="flex-1 rounded-md " />
-            </label>
-            <label className="flex items-center mb-4">
-              <p className="mr-5 text-lg text-gray-700 w-28 dark:text-gray-400 ">
-                Image Url
-              </p>
-              <input type="text" className="flex-1 rounded-md " />
-            </label>
           </div>
         </div>
         <footer className="flex flex-col items-center justify-end p-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
@@ -71,7 +59,7 @@ function NewCoachModal({ title, isOpen, onClose, btnText }) {
             onClick={onClose}
             className="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 border border-transparent rounded-lg bg-primary-600 sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
           >
-            {btnText ?? "Create"}
+            Update
           </button>
         </footer>
       </div>
@@ -79,4 +67,4 @@ function NewCoachModal({ title, isOpen, onClose, btnText }) {
   );
 }
 
-export default NewCoachModal;
+export default EditUserModal;
