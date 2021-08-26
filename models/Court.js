@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+const schema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    created_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  address: {
-    type: String,
-    required: true,
+  {
+    versionKey: false,
   },
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-});
+);
 
 module.exports = mongoose.models.Court || mongoose.model('Court', schema);
