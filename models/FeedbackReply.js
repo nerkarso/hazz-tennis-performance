@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: true,
+const schema = new mongoose.Schema(
+  {
+    text: {
+      type: String,
+      required: true,
+    },
+    send_at: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  send_at: {
-    type: Date,
-    default: Date.now,
+  {
+    versionKey: false,
   },
-});
+);
 
-module.exports = mongoose.models.FeedbackReply || mongoose.model('FeedbackReply', schema);
+module.exports = { feedbackReplySchema: schema };
