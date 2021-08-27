@@ -1,20 +1,16 @@
-import { StarIcon } from "@heroicons/react/solid";
-import React from "react";
+import { StarIcon } from '@heroicons/react/solid';
 
-function MasterListItem({ key, index, feedback }) {
+export default function MasterListItem({ index, feedback }) {
   return (
     <button
-      key={key}
       className={`w-full flex text-left items-center border-t border-b border-transparent px-4 py-2 text-sm focus:outline-none focus: focus:bg-primary-200 hover:border-primary-200 hover:bg-primary-100 ${
-        index === 0 && "bg-white border-base-200"
-      }`}
-    >
+        index === 0 && 'bg-white border-base-200'
+      }`}>
       <div className="relative hidden w-8 h-8 my-2 mr-3 rounded-full md:block">
         <img
           className="object-cover w-full h-full rounded-full"
           src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
           alt=""
-          loading="lazy"
         />
         <div className="absolute inset-0 rounded-full shadow-inner" />
       </div>
@@ -31,5 +27,3 @@ function MasterListItem({ key, index, feedback }) {
     </button>
   );
 }
-
-export default MasterListItem;

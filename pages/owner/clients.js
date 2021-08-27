@@ -1,18 +1,17 @@
-import EditUserModal from "@/components/EditUserModal";
-import SideBar from "@/components/SideBar";
-import { PencilAltIcon, XIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
+import EditUserModal from '@/components/EditUserModal';
+import SideBar from '@/components/SideBar';
+import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
+import { useState } from 'react';
 
-function clients() {
+export default function Clients() {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="flex h-screen bg-base-50 dark:bg-base-900">
       <SideBar />
       <div className="container grid px-6 mx-auto">
         <main>
-          <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">
-            Clients
-          </h2>
+          <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">Clients</h2>
           {/* New Table */}
           <div className="w-full mb-8 overflow-hidden border rounded-lg shadow-sm">
             <div className="w-full overflow-x-auto">
@@ -26,11 +25,7 @@ function clients() {
                 </thead>
                 <tbody className="bg-white divide-y dark:divide-base-700 dark:bg-base-800">
                   {Array.from(Array(3)).map((item, i) => (
-                    <tr
-                      onClick={() => setIsOpen(true)}
-                      key={i}
-                      className="text-base-700 dark:text-base-400"
-                    >
+                    <tr onClick={() => setIsOpen(true)} key={i} className="text-base-700 dark:text-base-400">
                       <td className="px-4 py-3">
                         <div className="flex items-center text-sm">
                           {/* Avatar with inset shadow */}
@@ -39,7 +34,6 @@ function clients() {
                               className="object-cover w-full h-full rounded-full"
                               src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
                               alt=""
-                              loading="lazy"
                             />
                             <div className="absolute inset-0 rounded-full shadow-inner" />
                           </div>
@@ -69,5 +63,3 @@ function clients() {
     </div>
   );
 }
-
-export default clients;

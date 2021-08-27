@@ -1,8 +1,7 @@
-import { TrashIcon } from "@heroicons/react/outline";
-import { StarIcon } from "@heroicons/react/solid";
-import React from "react";
+import { TrashIcon } from '@heroicons/react/outline';
+import { StarIcon } from '@heroicons/react/solid';
 
-function MessageHeader({ feedback }) {
+export default function MessageHeader({ feedback }) {
   return (
     <header className="flex items-center justify-between h-16 px-4">
       <div className="flex items-center text-sm">
@@ -20,5 +19,3 @@ function MessageHeader({ feedback }) {
     </header>
   );
 }
-
-export default MessageHeader;

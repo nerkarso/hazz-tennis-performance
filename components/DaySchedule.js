@@ -1,7 +1,6 @@
-import React from "react";
-import DayScheduleCard from "./DayScheduleCard";
+import DayScheduleCard from '@/components/DayScheduleCard';
 
-function DaySchedule() {
+export default function DaySchedule() {
   return (
     <div className="flex-1 px-5 pl-10 overflow-y-auto max-h-[426px]">
       {Array.from(Array(20)).map((item, i) => (
@@ -10,5 +9,3 @@ function DaySchedule() {
     </div>
   );
 }
-
-export default DaySchedule;

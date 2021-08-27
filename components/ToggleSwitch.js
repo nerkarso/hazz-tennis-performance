@@ -1,8 +1,8 @@
-import { Switch } from '@headlessui/react'
-import { useState } from 'react'
+import { Switch } from '@headlessui/react';
+import { useState } from 'react';
 
 export default function ToggleSwitch() {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false);
 
   return (
     <Switch.Group>
@@ -13,15 +13,10 @@ export default function ToggleSwitch() {
           onChange={setEnabled}
           className={`${
             enabled ? 'bg-green-500' : 'bg-red-500'
-          } relative inline-flex items-center h-4 rounded-full w-8 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-base-300`}
-        >
-          <span
-            className={`${
-              enabled ? 'translate-x-5' : 'translate-x-1'
-            } inline-block w-2 h-2 transform bg-white rounded-full transition-transform`}
-          />
+          } relative inline-flex items-center h-4 rounded-full w-8 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-base-300`}>
+          <span className={`${enabled ? 'translate-x-5' : 'translate-x-1'} inline-block w-2 h-2 transform bg-white rounded-full transition-transform`} />
         </Switch>
       </div>
     </Switch.Group>
-  )
+  );
 }

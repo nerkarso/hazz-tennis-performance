@@ -1,15 +1,11 @@
-import EditCoachModal from "@/components/EditCoachModal";
-import NewCoachModal from "@/components/NewCoachModal";
-import SideBar from "@/components/SideBar";
-import ViewTotalHoursModal from "@/components/ViewTotalHoursModal";
-import {
-  DocumentReportIcon,
-  PencilAltIcon,
-  XIcon
-} from "@heroicons/react/outline";
-import { useState } from "react";
+import EditCoachModal from '@/components/EditCoachModal';
+import NewCoachModal from '@/components/NewCoachModal';
+import SideBar from '@/components/SideBar';
+import ViewTotalHoursModal from '@/components/ViewTotalHoursModal';
+import { DocumentReportIcon, PencilAltIcon, XIcon } from '@heroicons/react/outline';
+import { useState } from 'react';
 
-function coaches() {
+export default function Coaches() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isTHrsOpen, setIsTHrsOpen] = useState(false);
@@ -19,9 +15,7 @@ function coaches() {
       <SideBar />
       <div className="container grid px-6 mx-auto">
         <main>
-          <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">
-            Coaches
-          </h2>
+          <h2 className="my-6 text-2xl font-semibold text-base-700 dark:text-base-200">Coaches</h2>
           {/* New Table */}
           <div className="w-full mb-8 overflow-hidden border rounded-lg shadow-sm">
             <div className="w-full overflow-x-auto">
@@ -44,7 +38,6 @@ function coaches() {
                               className="object-cover w-full h-full rounded-full"
                               src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
                               alt=""
-                              loading="lazy"
                             />
                             <div className="absolute inset-0 rounded-full shadow-inner" />
                           </div>
@@ -57,14 +50,12 @@ function coaches() {
                       <td className="px-4 py-3 text-sm text-right">
                         <button
                           onClick={() => setIsEditOpen(true)}
-                          className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                        >
+                          className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
                           <PencilAltIcon className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => setIsTHrsOpen(true)}
-                          className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                        >
+                          className="px-4 py-2 mr-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
                           <DocumentReportIcon className="w-4 h-4" />
                         </button>
                         <button className="px-4 py-2 text-white rounded-md bg-primary-400 focus:ring-primary-200 focus:ring-2 focus:ring-offset-2 focus:outline-none">
@@ -78,30 +69,15 @@ function coaches() {
             </div>
           </div>
           <div className="">
-            <button
-              onClick={() => setIsCreateOpen(true)}
-              className="px-4 py-2 text-left text-white rounded-md bg-primary-600"
-            >
+            <button onClick={() => setIsCreateOpen(true)} className="px-4 py-2 text-left text-white rounded-md bg-primary-600">
               Create New Coach User
             </button>
           </div>
-          <EditCoachModal
-            isOpen={isEditOpen}
-            onClose={() => setIsEditOpen(false)}
-          />
-          <NewCoachModal
-            title="Create New Coach"
-            isOpen={isCreateOpen}
-            onClose={() => setIsCreateOpen(false)}
-          />
-          <ViewTotalHoursModal
-            isOpen={isTHrsOpen}
-            onClose={() => setIsTHrsOpen(false)}
-          />
+          <EditCoachModal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} />
+          <NewCoachModal title="Create New Coach" isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
+          <ViewTotalHoursModal isOpen={isTHrsOpen} onClose={() => setIsTHrsOpen(false)} />
         </main>
       </div>
     </div>
   );
 }
-
-export default coaches;

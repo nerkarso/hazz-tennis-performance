@@ -1,11 +1,6 @@
-import React from "react";
-
-function DayScheduleCard({i}) {
+export default function DayScheduleCard({ i }) {
   return (
-    <div
-      key={i}
-      className="h-32 px-4 py-2 mb-3 mr-3 text-lg text-gray-700 rounded-md shadow-md dark:text-gray-400 bg-primary-200 text-neutral-300"
-    >
+    <div key={i} className="h-32 px-4 py-2 mb-3 mr-3 text-lg text-gray-700 rounded-md shadow-md dark:text-gray-400 bg-primary-200 text-neutral-300">
       <div className="flex">
         <span className="mr-3">Date:</span>
         <span>07/08/2021</span>
@@ -25,5 +20,3 @@ function DayScheduleCard({i}) {
     </div>
   );
 }
-
-export default DayScheduleCard;

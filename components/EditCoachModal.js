@@ -1,15 +1,5 @@
-import React from "react";
-import NewCoachModal from "./NewCoachModal";
+import NewCoachModal from '@/components/NewCoachModal';
 
-function EditCoachModal({ isOpen, onClose }) {
-  return (
-    <NewCoachModal
-      title="Edit Coach Details"
-      isOpen={isOpen}
-      onClose={onClose}
-      btnText="Update"
-    />
-  );
+export default function EditCoachModal({ isOpen, onClose }) {
+  return <NewCoachModal title="Edit Coach Details" isOpen={isOpen} onClose={onClose} btnText="Update" />;
 }
-
-export default EditCoachModal;
