@@ -5,7 +5,7 @@ export default function Landing() {
         <div className="mx-auto max-w-7xl">
           <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <div className="px-4 pt-10 mx-auto max-w-7xl sm:pt-12 sm:px-6 md:pt-16 lg:pt-20 lg:px-8 xl:pt-28">
-              <div className="sm:text-cente pr lg:text-left">
+              <div className="text-center lg:text-left">
                 <h1 className="mb-4 text-2xl font-bold text-primary-500">Hazz Tennis Peformance</h1>
                 <h2 className="mb-6 text-4xl font-extrabold leading-tight tracking-wide text-base-900 sm:text-5xl md:text-6xl">Raise your tennis skills and win the game</h2>
                 <p className="text-base text-base-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Book and schedule a lesson with a professional tennis coach.</p>

@@ -5,8 +5,23 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>{Component.title && `${Component.title} - `}Hazz Tennis Performance</title>
-        <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎾</text></svg>" />
+        <title>
+          {Component.title && `${Component.title} - `}
+          {process.env.NEXT_PUBLIC_SITE_TITLE}
+        </title>
+        <meta name="title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+        <meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_SITE_URL} />
+        <meta property="og:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+        <meta property="og:description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/img/og-image.jpg`} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={process.env.NEXT_PUBLIC_SITE_URL} />
+        <meta property="twitter:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+        <meta property="twitter:description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+        <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/img/og-image.jpg`} />
+        <link rel="shortcut icon" href="/img/icon.png" type="image/png" />
       </Head>
       <Component {...pageProps} />
     </>
