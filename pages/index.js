@@ -13,12 +13,12 @@ export default function Landing() {
                 <h2 className="mb-6 text-4xl font-extrabold leading-tight tracking-wide sm:text-5xl md:text-6xl">Raise your tennis skills and win the game</h2>
                 <p className="text-neutral-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Book and schedule a lesson with a professional tennis coach.</p>
                 <div className="flex flex-col gap-2 mt-5 lg:flex-row sm:mt-8">
-                  <Link href="/login" passHref>
+                  <Link href="/account/signin" passHref>
                     <a className="flex items-center justify-center px-8 py-3 text-lg font-medium text-white transition duration-150 rounded-lg bg-primary-600 hover:bg-primary-500 focus:outline-none focus:bg-primary-700">
                       Sign in
                     </a>
                   </Link>
-                  <Link href="/signup" passHref>
+                  <Link href="/account/signup" passHref>
                     <a className="flex items-center justify-center px-8 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:bg-primary-300">
                       Create account
                     </a>
@@ -145,12 +145,12 @@ export default function Landing() {
           <p className="text-primary-600">Sign in or create an account.</p>
         </h2>
         <div className="flex gap-2 mt-8">
-          <Link href="/login" passHref>
+          <Link href="/account/signin" passHref>
             <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium text-white transition duration-150 rounded-lg bg-primary-600 hover:bg-primary-500 focus:outline-none focus:bg-primary-700">
               Sign in
             </a>
           </Link>
-          <Link href="/signup" passHref>
+          <Link href="/account/signup" passHref>
             <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:bg-primary-300">
               Create account
             </a>
