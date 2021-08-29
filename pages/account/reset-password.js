@@ -1,32 +1,32 @@
 import AccountLayout from '@/components/AccountLayout';
+import { Button, FormGroup, Input } from '@/elements';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
 ResetPassword.title = 'Reset password';
 
 export default function ResetPassword() {
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
+
+  const onSubmit = (data) => {};
+
   return (
     <AccountLayout title="Reset password">
-      <label className="block text-sm">
-        <span className="text-base-700 dark:text-base-400">New password</span>
-        <input
-          type="password"
-          className="block w-full mt-1 text-sm rounded-md dark:border-base-600 dark:bg-base-700 focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:text-base-300 dark:focus:shadow-outline-base form-input"
-          placeholder="**********"
-        />
-      </label>
-      <label className="block mt-4 text-sm">
-        <span className="text-base-700 dark:text-base-400">Confirm password</span>
-        <input
-          type="password"
-          className="block w-full mt-1 text-sm rounded-md dark:border-base-600 dark:bg-base-700 focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:text-base-300 dark:focus:shadow-outline-base form-input"
-          placeholder="**********"
-        />
-      </label>
-      <a
-        className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg bg-primary-600 active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:shadow-outline-primary"
-        href="/account/signin">
-        Update password
-      </a>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <FormGroup htmlFor="password" label="New password" errors={errors.password}>
+          <Input
+            type="password"
+            id="password"
+            {...register('password', {
+              required: 'Required',
+            })}
+          />
+        </FormGroup>
+        <Button type="submit" variant="primary">
+          Update
+        </Button>
+      </form>
       <hr className="my-6 dark:border-neutral-600" />
       <p>
         <Link href="/account/signin">

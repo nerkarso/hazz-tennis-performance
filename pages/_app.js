@@ -11,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
         </title>
         <meta name="title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
         <meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+        <meta name="color-scheme" content="light dark" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_SITE_URL} />
         <meta property="og:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />

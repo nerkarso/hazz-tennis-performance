@@ -1,43 +1,52 @@
 import AccountLayout from '@/components/AccountLayout';
+import { Button, FormGroup, Input } from '@/elements';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
 SignIn.title = 'Sign in';
 
 export default function SignIn() {
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
+
+  const onSubmit = (data) => {};
+
   return (
     <AccountLayout title="Welcome back">
-      <form>
-        <label className="block text-sm">
-          <span className="text-base-700 dark:text-base-400">Email</span>
-          <input
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <FormGroup htmlFor="email" label="Email" errors={errors.email}>
+          <Input
             type="email"
-            className="block w-full mt-1 text-sm rounded-md dark:border-base-600 dark:bg-base-700 focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:text-base-300 dark:focus:shadow-outline-base form-input"
-            placeholder="maria@example.com"
+            id="email"
+            {...register('email', {
+              required: 'Required',
+            })}
           />
-        </label>
-        <label className="block mt-4 text-sm">
-          <span className="text-base-700 dark:text-base-400">Password</span>
-          <input
+        </FormGroup>
+        <FormGroup htmlFor="password" label="Password" errors={errors.password}>
+          <Input
             type="password"
-            className="block w-full mt-1 text-sm rounded-md dark:border-base-600 dark:bg-base-700 focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:text-base-300 dark:focus:shadow-outline-base form-input"
-            placeholder="**************"
+            id="password"
+            {...register('password', {
+              required: 'Required',
+            })}
           />
-        </label>
-        <a className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg bg-primary-600 active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:shadow-outline-primary">
+        </FormGroup>
+        <Button type="submit" variant="primary">
           Sign in
-        </a>
-        <hr className="my-6 dark:border-neutral-600" />
-        <p className="mb-1">
-          <Link href="/account/forgot-password" passHref>
-            <a className="text-sm link">Forgot your password?</a>
-          </Link>
-        </p>
-        <p>
-          <Link href="/account/signup" passHref>
-            <a className="text-sm link">Create account</a>
-          </Link>
-        </p>
+        </Button>
       </form>
+      <hr className="my-6 dark:border-neutral-600" />
+      <p className="mb-1">
+        <Link href="/account/forgot-password" passHref>
+          <a className="text-sm link">Forgot your password?</a>
+        </Link>
+      </p>
+      <p>
+        <Link href="/account/signup" passHref>
+          <a className="text-sm link">Create account</a>
+        </Link>
+      </p>
     </AccountLayout>
   );
 }

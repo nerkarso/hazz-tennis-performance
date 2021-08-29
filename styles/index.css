@@ -4,6 +4,6 @@
 
 @layer components {
   .link {
-    @apply font-medium text-primary-600 dark:text-primary-400 hover:underline;
+    @apply font-medium text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus:underline;
   }
 }
