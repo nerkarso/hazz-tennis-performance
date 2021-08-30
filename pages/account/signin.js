@@ -38,12 +38,12 @@ export default function SignIn() {
       </form>
       <hr className="my-6 dark:border-neutral-600" />
       <p className="mb-1">
-        <Link href="/account/forgot-password" passHref>
+        <Link href="/account/forgot-password">
           <a className="text-sm link">Forgot your password?</a>
         </Link>
       </p>
       <p>
-        <Link href="/account/signup" passHref>
+        <Link href="/account/signup">
           <a className="text-sm link">Create account</a>
         </Link>
       </p>
