@@ -4,7 +4,6 @@ import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CreditCardIcon, HomeIcon, L
 export default function OwnerSidebar() {
   return (
     <DashboardSidebar
-      basePath="/owner"
       links={[
         {
           href: '/owner/dashboard',

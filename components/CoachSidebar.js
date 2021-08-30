@@ -4,7 +4,6 @@ import { CalendarIcon, ChatAlt2Icon, HomeIcon, LogoutIcon } from '@heroicons/rea
 export default function CoachSidebar() {
   return (
     <DashboardSidebar
-      basePath="/coach"
       links={[
         {
           href: '/coach/dashboard',

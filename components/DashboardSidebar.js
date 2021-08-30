@@ -1,8 +1,12 @@
 import { Avatar, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function DashboardSidebar({ links, basePath }) {
+export default function DashboardSidebar({ links }) {
+  const { asPath } = useRouter();
+  const basePath = asPath.split('/')[1];
+
   return (
     <aside className="flex-shrink-0 overflow-y-auto border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
       <header className="flex items-center justify-between h-20 px-6">
@@ -17,7 +21,7 @@ export default function DashboardSidebar({ links, basePath }) {
             <BellIcon className="w-6 h-6" />
             <span className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-neutral-900" />
           </button>
-          <Link href={`${basePath}/account`}>
+          <Link href={`/${basePath}/account`}>
             <a className="overflow-hidden transition duration-150 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900">
               <Avatar src="https://avatars.dicebear.com/api/initials/nk.svg" size="md" />
             </a>

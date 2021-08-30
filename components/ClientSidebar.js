@@ -4,7 +4,6 @@ import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon, LogoutIcon } from
 export default function ClientSidebar() {
   return (
     <DashboardSidebar
-      basePath="/client"
       links={[
         {
           href: '/client/dashboard',

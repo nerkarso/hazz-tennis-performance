@@ -1,5 +1,6 @@
 import '@/styles/index.css';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -25,6 +26,13 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/img/icon.png" type="image/png" />
       </Head>
       <Component {...pageProps} />
+      <Toaster
+        containerStyle={{ top: 30, right: 30 }}
+        position="top-right"
+        toastOptions={{
+          className: 'border !py-3 !px-4 !shadow-md dark:!text-white dark:!bg-neutral-800 dark:!border-neutral-700',
+        }}
+      />
     </>
   );
 }
