@@ -1,9 +1,9 @@
-import BaseSidebar from '@/components/BaseSidebar';
+import DashboardSidebar from '@/components/DashboardSidebar';
 import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CreditCardIcon, HomeIcon, LogoutIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
 
 export default function OwnerSidebar() {
   return (
-    <BaseSidebar
+    <DashboardSidebar
       basePath="/owner"
       links={[
         {

@@ -1,9 +1,9 @@
-import BaseSidebar from '@/components/BaseSidebar';
+import DashboardSidebar from '@/components/DashboardSidebar';
 import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon, LogoutIcon } from '@heroicons/react/outline';
 
 export default function ClientSidebar() {
   return (
-    <BaseSidebar
+    <DashboardSidebar
       basePath="/client"
       links={[
         {

@@ -2,7 +2,7 @@ import { Avatar, List, ListItem, ListItemContent, ListItemStart, NavLink } from 
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 
-export default function BaseSidebar({ links, basePath }) {
+export default function DashboardSidebar({ links, basePath }) {
   return (
     <aside className="flex-shrink-0 overflow-y-auto border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
       <header className="flex items-center justify-between h-20 px-6">
