@@ -1,4 +1,5 @@
 export { default as Avatar } from './Avatar';
+export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export { default as ChatBubble } from './ChatBubble';
 export { default as DetailsView } from './DetailsView';
@@ -15,3 +16,7 @@ export { default as MasterDetailsView } from './MasterDetailsView';
 export { default as MasterView } from './MasterView';
 export { default as NavLink } from './NavLink';
 export { default as NextLink } from './NextLink';
+export { default as Table } from './Table';
+export { default as TableCell } from './TableCell';
+export { default as TableHead } from './TableHead';
+export { default as TableRow } from './TableRow';

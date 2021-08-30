@@ -4,7 +4,7 @@ export default function Avatar({ className, size, src }) {
   return (
     <div
       className={cx(
-        'rounded-full overflow-hidden',
+        'flex-shrink-0 rounded-full overflow-hidden',
         {
           'w-4 h-4': size === 'xs',
           'w-6 h-6': size === 'sm',
@@ -13,6 +13,7 @@ export default function Avatar({ className, size, src }) {
           'w-12 h-12': size === 'xl',
           'w-14 h-14': size === '2xl',
           'w-16 h-16': size === '3xl',
+          'w-20 h-20': size === '4xl',
         },
         className,
       )}>

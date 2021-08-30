@@ -31,7 +31,7 @@ export default function DashboardSidebar({ links, basePath }) {
               <Icon className="w-6 h-6 opacity-60" />
             </ListItemStart>
             <ListItemContent>
-              <span className="text-sm font-semibold">{text}</span>
+              <span className="text-sm font-semibold opacity-75">{text}</span>
             </ListItemContent>
           </ListItem>
         ))}

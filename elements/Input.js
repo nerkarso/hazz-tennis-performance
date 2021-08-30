@@ -5,7 +5,10 @@ function Input({ className, ...props }, ref) {
   return (
     <input
       ref={ref}
-      className={cx('h-10 bg-transparent border-neutral-400 rounded-md transition duration-150 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 dark:border-neutral-600', className)}
+      className={cx(
+        'h-10 bg-transparent border-neutral-400 rounded-md transition duration-150 placeholder-neutral-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 dark:border-neutral-600 dark:placeholder-neutral-700',
+        className,
+      )}
       {...props}
     />
   );

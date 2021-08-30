@@ -15,7 +15,7 @@ export default function Chats() {
 
 function ChatsEmptyView() {
   return (
-    <section className="flex-1 dark:bg-black dark:text-white">
+    <section className="flex-1 dark:bg-neutral-900 dark:text-white">
       <EmptyView text="Select a chat" />
     </section>
   );
