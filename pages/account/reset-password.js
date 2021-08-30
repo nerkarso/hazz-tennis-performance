@@ -23,7 +23,7 @@ export default function ResetPassword() {
             })}
           />
         </FormGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" color="primary" variant="solid">
           Update
         </Button>
       </form>

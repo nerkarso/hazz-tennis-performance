@@ -23,7 +23,7 @@ export default function ForgotPassword() {
             })}
           />
         </FormGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" color="primary" variant="solid">
           Next
         </Button>
       </form>

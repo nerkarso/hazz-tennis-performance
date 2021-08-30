@@ -32,7 +32,7 @@ export default function SignIn() {
             })}
           />
         </FormGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" color="primary" variant="solid">
           Sign in
         </Button>
       </form>

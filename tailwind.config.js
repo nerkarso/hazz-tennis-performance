@@ -1,4 +1,4 @@
-const { teal, gray, orange } = require('tailwindcss/colors');
+const { gray, orange, teal } = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',

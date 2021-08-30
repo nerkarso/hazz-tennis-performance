@@ -50,7 +50,7 @@ export default function SignUp() {
             })}
           />
         </FormGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" color="primary" variant="solid">
           Sign up
         </Button>
       </form>

@@ -1,7 +1,7 @@
-export default function DashboardLayout({ sidebar: Sidebar, children }) {
+export default function DashboardLayout({ sidebar, children }) {
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      {sidebar && sidebar}
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>
   );
