@@ -12,7 +12,7 @@ export default function AccountLayout({ children, title }) {
           </div>
           <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
-              <h4 className="mb-2 font-bold text-primary-600 dark:text-primary-400">{process.env.NEXT_PUBLIC_SITE_TITLE}</h4>
+              <h4 className="mb-2 font-bold text-primary-600 dark:text-primary-500">{process.env.NEXT_PUBLIC_SITE_TITLE}</h4>
               <h1 className="mb-6 text-3xl font-bold">{title}</h1>
               {children}
             </div>

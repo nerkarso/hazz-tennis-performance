@@ -4,14 +4,16 @@ import Link from 'next/link';
 export default function Landing() {
   return (
     <>
-      <header className="relative overflow-hidden">
+      <header className="relative overflow-hidden dark:bg-neutral-900 dark:text-white">
         <div className="mx-auto max-w-7xl">
-          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 bg-white dark:bg-neutral-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <div className="px-4 pt-10 mx-auto max-w-7xl sm:pt-12 sm:px-6 md:pt-16 lg:pt-20 lg:px-8 xl:pt-28">
               <div className="text-center lg:text-left">
-                <h1 className="mb-4 text-2xl font-bold text-primary-500">{process.env.NEXT_PUBLIC_SITE_TITLE}</h1>
+                <h1 className="mb-4 text-2xl font-bold text-primary-600 dark:text-primary-500">{process.env.NEXT_PUBLIC_SITE_TITLE}</h1>
                 <h2 className="mb-6 text-4xl font-extrabold leading-tight tracking-wide sm:text-5xl md:text-6xl">Raise your tennis skills and win the game</h2>
-                <p className="text-neutral-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Book and schedule a lesson with a professional tennis coach.</p>
+                <p className="text-neutral-600 dark:text-neutral-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  Book and schedule a lesson with a professional tennis coach.
+                </p>
                 <div className="flex flex-col gap-2 mt-5 lg:flex-row sm:mt-8">
                   <Link href="/account/signin">
                     <a className="flex items-center justify-center px-8 py-3 text-lg font-medium text-white transition duration-150 rounded-lg bg-primary-600 hover:bg-primary-500 focus:outline-none focus:bg-primary-700">
@@ -19,19 +21,23 @@ export default function Landing() {
                     </a>
                   </Link>
                   <Link href="/account/signup">
-                    <a className="flex items-center justify-center px-8 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:bg-primary-300">
+                    <a className="flex items-center justify-center px-8 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 dark:text-primary-500 bg-primary-500 bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus:bg-opacity-40">
                       Create account
                     </a>
                   </Link>
                 </div>
               </div>
             </div>
-            <svg className="absolute inset-y-0 right-0 hidden w-48 h-full text-white transform translate-x-1/2 lg:block" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg
+              className="absolute inset-y-0 right-0 hidden w-48 h-full text-white transform translate-x-1/2 dark:text-neutral-900 lg:block"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none">
               <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
           </div>
         </div>
-        <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 dark:bg-black">
           <img
             className="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
             src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=960&q=90"
@@ -39,19 +45,19 @@ export default function Landing() {
           />
         </div>
       </header>
-      <section className="py-16 overflow-hidden bg-neutral-50 md:py-20 lg:py-24">
+      <section className="py-16 overflow-hidden bg-neutral-50 dark:bg-neutral-800 dark:text-white md:py-20 lg:py-24">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4" width={404} height={784} fill="none" viewBox="0 0 404 784">
             <defs>
               <pattern id="svg-pattern-squares-1" x={0} y={0} width={20} height={20} patternUnits="userSpaceOnUse">
-                <rect x={0} y={0} width={4} height={4} className="text-neutral-200" fill="currentColor" />
+                <rect x={0} y={0} width={4} height={4} className="text-neutral-200 dark:text-neutral-700" fill="currentColor" />
               </pattern>
             </defs>
             <rect width={404} height={784} fill="url(#svg-pattern-squares-1)" />
           </svg>
           <div className="relative">
             <h3 className="text-3xl font-extrabold leading-8 tracking-tight text-center sm:text-4xl">A better way to learn tennis</h3>
-            <p className="max-w-3xl mx-auto mt-4 text-xl text-center text-neutral-500">Some people teach tennis, but we define it, refine, and then shine it!</p>
+            <p className="max-w-3xl mx-auto mt-4 text-xl text-center text-neutral-600 dark:text-neutral-400">Some people teach tennis, but we define it, refine, and then shine it!</p>
           </div>
           <div className="relative mt-12 lg:mt-20 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="relative">
@@ -60,39 +66,39 @@ export default function Landing() {
                 <li>
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-500">
+                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-600 dark:bg-primary-500">
                         <UserAddIcon className="w-6 h-6" />
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6">Create an account</h5>
-                      <p className="mt-2 text-neutral-500">Enter your personal details and sign up.</p>
+                      <p className="mt-2 text-neutral-600 dark:text-neutral-400">Enter your personal details and sign up.</p>
                     </div>
                   </div>
                 </li>
                 <li className="mt-10">
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-500">
+                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-600 dark:bg-primary-500">
                         <CalendarIcon className="w-6 h-6" />
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6">Book online</h5>
-                      <p className="mt-2 text-neutral-500">Book with a coach at a court and time that fits your schedule.</p>
+                      <p className="mt-2 text-neutral-600 dark:text-neutral-400">Book with a coach at a court and time that fits your schedule.</p>
                     </div>
                   </div>
                 </li>
                 <li className="mt-10">
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-500">
+                      <div className="flex items-center justify-center w-12 h-12 text-white rounded-lg bg-primary-600 dark:bg-primary-500">
                         <LightningBoltIcon className="w-6 h-6" />
                       </div>
                     </div>
                     <div className="ml-4">
                       <h5 className="text-lg font-medium leading-6">Take lessons</h5>
-                      <p className="mt-2 text-neutral-500">Start your tennis lessons and improve your game.</p>
+                      <p className="mt-2 text-neutral-600 dark:text-neutral-400">Start your tennis lessons and improve your game.</p>
                     </div>
                   </div>
                 </li>
@@ -111,7 +117,7 @@ export default function Landing() {
           <svg className="absolute hidden transform translate-x-1/2 lg:block right-full" width={404} height={784} fill="none" viewBox="0 0 404 784">
             <defs>
               <pattern id="svg-pattern-squares-3" x={0} y={0} width={20} height={20} patternUnits="userSpaceOnUse">
-                <rect x={0} y={0} width={4} height={4} className="text-neutral-200" fill="currentColor" />
+                <rect x={0} y={0} width={4} height={4} className="text-neutral-200 dark:text-neutral-700" fill="currentColor" />
               </pattern>
             </defs>
             <rect width={404} height={784} fill="url(#svg-pattern-squares-3)" />
@@ -139,27 +145,31 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <section className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:py-16 lg:px-8 lg:py-20">
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-          <p className="mb-2">Ready to learn?</p>
-          <p className="text-primary-600">Sign in or create an account.</p>
-        </h2>
-        <div className="flex gap-2 mt-8">
-          <Link href="/account/signin">
-            <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium text-white transition duration-150 rounded-lg bg-primary-600 hover:bg-primary-500 focus:outline-none focus:bg-primary-700">
-              Sign in
-            </a>
-          </Link>
-          <Link href="/account/signup">
-            <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:bg-primary-300">
-              Create account
-            </a>
-          </Link>
+      <section className="dark:text-white dark:bg-neutral-900">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:py-16 lg:px-8 lg:py-20">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <p className="mb-2">Ready to learn?</p>
+            <p className="text-primary-600 dark:text-primary-500">Sign in or create an account.</p>
+          </h2>
+          <div className="flex gap-2 mt-8">
+            <Link href="/account/signin">
+              <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium text-white transition duration-150 rounded-lg bg-primary-600 hover:bg-primary-500 focus:outline-none focus:bg-primary-700">
+                Sign in
+              </a>
+            </Link>
+            <Link href="/account/signup">
+              <a className="inline-flex items-center justify-center px-5 py-3 text-lg font-medium transition duration-150 rounded-lg text-primary-700 dark:text-primary-500 bg-primary-500 bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus:bg-opacity-40">
+                Create account
+              </a>
+            </Link>
+          </div>
         </div>
       </section>
-      <footer className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
-        <div className="pt-8 border-t border-neutral-200">
-          <p className="text-neutral-400 xl:text-center">&copy; 2021 {process.env.NEXT_PUBLIC_SITE_TITLE}. All rights reserved.</p>
+      <footer className="dark:bg-neutral-900">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
+          <div className="pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <p className="text-neutral-400 dark:text-neutral-500 xl:text-center">&copy; 2021 {process.env.NEXT_PUBLIC_SITE_TITLE}. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </>
