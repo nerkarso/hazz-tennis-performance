@@ -12,6 +12,8 @@ import BookingForm, {
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
 import OwnerSidebar from '@/components/OwnerSidebar';
+import SideSectionHeading from '@/components/SideSectionHeading';
+import UserDetailsCard from '@/components/UserDetailsCard';
 import { Button } from '@/elements';
 
 BookingEdit.title = 'Edit booking';
@@ -20,7 +22,29 @@ export default function BookingEdit() {
   return (
     <DashboardLayout sidebar={<OwnerSidebar />}>
       <DashboardContent header="Edit booking">
-        <BookingEditForm />
+        <div className="flex gap-8">
+          <BookingEditForm />
+          <aside className="w-1/3">
+            <SideSectionHeading>Client</SideSectionHeading>
+            <UserDetailsCard
+              avatar="https://avatars.dicebear.com/api/initials/nd.svg"
+              firstName="Novak"
+              lastName="Djokovic"
+              email="novak.djokovic@gmail.com"
+              moreDetailsUrl="/owner/clients/1"
+              className="w-full mb-6"
+            />
+            <SideSectionHeading>Coach</SideSectionHeading>
+            <UserDetailsCard
+              avatar="https://avatars.dicebear.com/api/initials/ms.svg"
+              firstName="Maria"
+              lastName="Sharapova"
+              email="maria.sharapova@gmail.com"
+              moreDetailsUrl="/owner/coaches/1"
+              className="w-full mb-6"
+            />
+          </aside>
+        </div>
       </DashboardContent>
     </DashboardLayout>
   );

@@ -25,7 +25,7 @@ export default function BookingForm({ children, onSubmit }) {
         register,
         errors,
       }}>
-      <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col flex-1 gap-4">
         {children}
       </form>
     </BookingFormContext.Provider>
