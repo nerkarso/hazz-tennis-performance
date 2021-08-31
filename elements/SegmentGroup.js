@@ -18,7 +18,7 @@ export default function SegmentGroup({ className, onChange, value, items }) {
           key={i}>
           {({ checked }) => (
             <>
-              {checked && <CheckCircleIcon className="absolute w-5 h-5 -translate-y-1/2 text-primary-500 left-2 top-1/2" />}
+              {checked && <CheckCircleIcon className="absolute w-5 h-5 -translate-y-1/2 text-primary-600 left-2 top-1/2 dark:text-primary-400" />}
               {text}
             </>
           )}
