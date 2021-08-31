@@ -1,10 +1,11 @@
 import { FormGroup, Input, SegmentGroup, Select } from '@/elements';
+import cx from 'classnames';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const BookingFormContext = createContext();
 
-export default function BookingForm({ children, onSubmit }) {
+export default function BookingForm({ children, className, onSubmit }) {
   const [bookingStatus, setBookingStatus] = useState();
   const [paymentType, setPaymentType] = useState();
   const [paymentStatus, setPaymentStatus] = useState();
@@ -25,7 +26,7 @@ export default function BookingForm({ children, onSubmit }) {
         register,
         errors,
       }}>
-      <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col flex-1 gap-4">
+      <form onSubmit={handleSubmit(onSubmitHandler)} className={cx('flex flex-col flex-1 gap-4', className)}>
         {children}
       </form>
     </BookingFormContext.Provider>
