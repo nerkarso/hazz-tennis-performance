@@ -14,21 +14,23 @@ export default function SignIn() {
   return (
     <AccountLayout title="Welcome back">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <FormGroup htmlFor="email" label="Email" errors={errors.email}>
+        <FormGroup htmlFor="email" label="Email" error={errors.email}>
           <Input
             type="email"
             id="email"
+            error={errors.email}
             {...register('email', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>
-        <FormGroup htmlFor="password" label="Password" errors={errors.password}>
+        <FormGroup htmlFor="password" label="Password" error={errors.password}>
           <Input
             type="password"
             id="password"
+            error={errors.password}
             {...register('password', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>

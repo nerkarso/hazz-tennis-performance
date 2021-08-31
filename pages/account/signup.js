@@ -14,39 +14,43 @@ export default function SignUp() {
   return (
     <AccountLayout title="Create account">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <FormGroup htmlFor="firstName" label="First name" errors={errors.firstName}>
+        <FormGroup htmlFor="firstName" label="First name" error={errors.firstName}>
           <Input
             type="text"
             id="firstName"
+            error={errors.firstName}
             {...register('firstName', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>
-        <FormGroup htmlFor="lastName" label="Last name" errors={errors.lastName}>
+        <FormGroup htmlFor="lastName" label="Last name" error={errors.lastName}>
           <Input
             type="text"
             id="lastName"
+            error={errors.lastName}
             {...register('lastName', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>
-        <FormGroup htmlFor="email" label="Email" errors={errors.email}>
+        <FormGroup htmlFor="email" label="Email" error={errors.email}>
           <Input
             type="email"
             id="email"
+            error={errors.email}
             {...register('email', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>
-        <FormGroup htmlFor="password" label="Password" errors={errors.password}>
+        <FormGroup htmlFor="password" label="Password" error={errors.password}>
           <Input
             type="password"
             id="password"
+            error={errors.password}
             {...register('password', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>

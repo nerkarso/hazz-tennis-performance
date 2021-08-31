@@ -14,12 +14,13 @@ export default function ForgotPassword() {
   return (
     <AccountLayout title="Forgot password">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <FormGroup htmlFor="email" label="Email" errors={errors.email}>
+        <FormGroup htmlFor="email" label="Email" error={errors.email}>
           <Input
             type="email"
             id="email"
+            error={errors.email}
             {...register('email', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>

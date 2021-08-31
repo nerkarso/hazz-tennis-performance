@@ -14,12 +14,13 @@ export default function ResetPassword() {
   return (
     <AccountLayout title="Reset password">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <FormGroup htmlFor="password" label="New password" errors={errors.password}>
+        <FormGroup htmlFor="password" label="New password" error={errors.password}>
           <Input
             type="password"
             id="password"
+            error={errors.password}
             {...register('password', {
-              required: 'Required',
+              required: true,
             })}
           />
         </FormGroup>
