@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply dark:bg-neutral-900 dark:text-white;
+  }
+}
+
 @layer components {
   .link {
     @apply font-medium text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus:underline;
   }
-}
-
-body {
-  @apply dark:bg-neutral-900;
 }

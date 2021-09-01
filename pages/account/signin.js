@@ -1,15 +1,36 @@
 import AccountLayout from '@/components/AccountLayout';
-import { Button, FormGroup, Input } from '@/elements';
+import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
+import { useUserAuth } from '@/hooks';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 SignIn.title = 'Sign in';
 
 export default function SignIn() {
+  const router = useRouter();
+  const { isLoading, mutate } = useUserAuth();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  const onSubmit = (data) => {};
+  const onSubmit = ({ email, password }) => {
+    mutate(
+      {
+        email: email,
+        password: password,
+      },
+      {
+        onSuccess: (data) => {
+          if (data?.error) {
+            toast.error(data.error);
+          } else {
+            router.replace(`/${data?.role}/dashboard`);
+          }
+        },
+      },
+    );
+  };
 
   return (
     <AccountLayout title="Welcome back">
@@ -34,9 +55,13 @@ export default function SignIn() {
             })}
           />
         </FormGroup>
-        <Button type="submit" color="primary" variant="solid">
-          Sign in
-        </Button>
+        {isLoading ? (
+          <SkeletonButton animate>Authenticating...</SkeletonButton>
+        ) : (
+          <Button type="submit" color="primary" variant="solid">
+            Sign in
+          </Button>
+        )}
       </form>
       <hr className="my-6 dark:border-neutral-600" />
       <p className="mb-1">

@@ -26,7 +26,7 @@ async function getAll(req, res) {
 }
 
 /**
- * Create a new user
+ * Create user
  */
 async function create(req, res) {
   try {
