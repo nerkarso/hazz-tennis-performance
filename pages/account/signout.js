@@ -1,4 +1,3 @@
-import { EmptyStateTitle, EmptyStateView } from '@/elements';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -10,12 +9,8 @@ export default function SignOut() {
   useEffect(() => {
     setTimeout(() => {
       router.replace('/account/signin');
-    }, 2000);
-  }, []);
+    });
+  }, [router]);
 
-  return (
-    <EmptyStateView fullScreen>
-      <EmptyStateTitle className="animate-pulse">Signing out...</EmptyStateTitle>
-    </EmptyStateView>
-  );
+  return null;
 }

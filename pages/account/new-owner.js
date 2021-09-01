@@ -6,9 +6,9 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-SignUp.title = 'Sign up';
+CreateOwnerAccount.title = 'Create owner account';
 
-export default function SignUp() {
+export default function CreateOwnerAccount() {
   const router = useRouter();
   const { isLoading, mutate } = useUserCreate();
   const { register, handleSubmit, formState } = useForm();
@@ -21,13 +21,14 @@ export default function SignUp() {
         last_name: lastName,
         email: email,
         password: password,
+        role: 'owner',
       },
       {
         onSuccess: (data) => {
           if (data?.error) {
             toast.error(data.error);
           } else {
-            router.replace('/client/dashboard');
+            router.replace('/owner/dashboard');
           }
         },
       },
@@ -35,7 +36,7 @@ export default function SignUp() {
   };
 
   return (
-    <AccountLayout title="Create account">
+    <AccountLayout title="Create owner account">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <FormGroup htmlFor="firstName" label="First name" error={errors.firstName}>
           <Input
@@ -81,7 +82,7 @@ export default function SignUp() {
           <SkeletonButton animate>Creating account...</SkeletonButton>
         ) : (
           <Button type="submit" color="primary" variant="solid">
-            Sign up
+            Create
           </Button>
         )}
       </form>

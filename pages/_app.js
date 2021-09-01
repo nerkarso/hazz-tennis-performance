@@ -1,10 +1,13 @@
 import '@/styles/index.css';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function MyApp({ Component, pageProps }) {
+  const queryClient = new QueryClient();
+
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <title>
           {Component.title && `${Component.title} - `}
@@ -33,6 +36,6 @@ export default function MyApp({ Component, pageProps }) {
           className: 'border !py-3 !px-4 !shadow-md dark:!text-white dark:!bg-neutral-800 dark:!border-neutral-700',
         }}
       />
-    </>
+    </QueryClientProvider>
   );
 }
