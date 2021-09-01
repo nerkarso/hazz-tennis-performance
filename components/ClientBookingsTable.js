@@ -19,7 +19,7 @@ export default function ClientBookingsTable({ rows }) {
           <TableCell className="col-span-2">Monday Aug 1{i}, 2021 12:00 AM</TableCell>
           <TableCell className="col-span-2">
             <Link href={`/client/coaches/1`}>
-              <a className="link">Maria Sharapova</a>
+              <a className="link">Roger Federer</a>
             </Link>
           </TableCell>
           <TableCell>{i % 2 === 0 ? <Badge color="green">Approved</Badge> : i % 3 === 0 ? <Badge color="yellow">Pending</Badge> : <Badge color="red">Declined</Badge>}</TableCell>

@@ -9,7 +9,7 @@ Dashboard.title = 'Dashboard';
 export default function Dashboard() {
   return (
     <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header={<DashboardGreeting firstName="Novak" lastName="Djokovic" role="Client" />}>
+      <DashboardContent header={<DashboardGreeting firstName="Maria" lastName="Sharapova" role="Client" />}>
         <RecentBookingsSection />
       </DashboardContent>
     </DashboardLayout>

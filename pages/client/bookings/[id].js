@@ -20,7 +20,7 @@ export default function BookingEdit() {
               <SideSectionHeading>Total fees</SideSectionHeading>
               <TotalFeesCard amount="100.00" className="w-full mb-6" />
               <SideSectionHeading>Coach</SideSectionHeading>
-              <UserDetailsCard firstName="Maria" lastName="Sharapova" email="maria.sharapova@gmail.com" moreDetailsUrl="/client/coaches/1" className="w-full mb-6" />
+              <UserDetailsCard firstName="Roger" lastName="Federer" email="roger.federer@gmail.com" moreDetailsUrl="/client/coaches/1" className="w-full mb-6" />
             </>
           }
         />
