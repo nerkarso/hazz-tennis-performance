@@ -18,10 +18,12 @@ export default function DashboardSidebar({ links }) {
           </a>
         </Link>
         <div className="flex items-center gap-4">
-          <button className="relative align-middle transition duration-150 text-primary-600 focus:outline-none hover:text-primary-500 focus:text-primary-700">
-            <BellIcon className="w-6 h-6" />
-            <span className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-neutral-900" />
-          </button>
+          <Link href={`/${basePath}/notifications`}>
+            <a className="relative align-middle transition duration-150 text-primary-600 focus:outline-none hover:text-primary-500 focus:text-primary-700">
+              <BellIcon className="w-6 h-6" />
+              <span className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-neutral-900" />
+            </a>
+          </Link>
           <Link href={`/${basePath}/account`}>
             <a className="overflow-hidden transition duration-150 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900">
               <Avatar initials={basePath[0]} size="md" />
