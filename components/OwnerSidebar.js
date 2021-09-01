@@ -1,5 +1,5 @@
 import DashboardSidebar from '@/components/DashboardSidebar';
-import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CreditCardIcon, HomeIcon, LogoutIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
+import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CreditCardIcon, HomeIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
 
 export default function OwnerSidebar() {
   return (
@@ -39,11 +39,6 @@ export default function OwnerSidebar() {
           href: '/owner/clients',
           text: 'Clients',
           icon: UserGroupIcon,
-        },
-        {
-          href: '/account/signout',
-          text: 'Sign out',
-          icon: LogoutIcon,
         },
       ]}
     />

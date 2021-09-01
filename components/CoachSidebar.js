@@ -1,5 +1,5 @@
 import DashboardSidebar from '@/components/DashboardSidebar';
-import { CalendarIcon, ChatAlt2Icon, HomeIcon, LogoutIcon } from '@heroicons/react/outline';
+import { CalendarIcon, ChatAlt2Icon, HomeIcon } from '@heroicons/react/outline';
 
 export default function CoachSidebar() {
   return (
@@ -19,11 +19,6 @@ export default function CoachSidebar() {
           href: '/coach/chats',
           text: 'Chats',
           icon: ChatAlt2Icon,
-        },
-        {
-          href: '/account/signout',
-          text: 'Sign out',
-          icon: LogoutIcon,
         },
       ]}
     />

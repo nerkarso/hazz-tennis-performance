@@ -1,5 +1,5 @@
 import DashboardSidebar from '@/components/DashboardSidebar';
-import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon, LogoutIcon } from '@heroicons/react/outline';
+import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon } from '@heroicons/react/outline';
 
 export default function ClientSidebar() {
   return (
@@ -24,11 +24,6 @@ export default function ClientSidebar() {
           href: '/client/feedbacks',
           text: 'Feedbacks',
           icon: AnnotationIcon,
-        },
-        {
-          href: '/account/signout',
-          text: 'Sign out',
-          icon: LogoutIcon,
         },
       ]}
     />

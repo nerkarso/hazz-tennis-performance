@@ -1,4 +1,5 @@
 import { Avatar, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
+import { LogoutIcon } from '@heroicons/react/outline';
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,7 +9,7 @@ export default function DashboardSidebar({ links }) {
   const basePath = asPath.split('/')[1];
 
   return (
-    <aside className="flex-shrink-0 overflow-y-auto border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
+    <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
       <header className="flex items-center justify-between h-20 px-6">
         <Link href="/">
           <a className="flex items-center gap-3 transition duration-150 focus:outline-none focus:opacity-60">
@@ -28,7 +29,7 @@ export default function DashboardSidebar({ links }) {
           </Link>
         </div>
       </header>
-      <List className="pb-4 mx-3">
+      <List className="flex-1 px-3 overflow-y-auto">
         {links.map(({ href, text, icon: Icon }, i) => (
           <ListItem className="px-3 py-2 rounded-md" component={NavLink} href={href} key={i}>
             <ListItemStart>
@@ -39,6 +40,16 @@ export default function DashboardSidebar({ links }) {
             </ListItemContent>
           </ListItem>
         ))}
+      </List>
+      <List className="pt-1 pb-4 mx-3">
+        <ListItem className="px-3 py-2 rounded-md" component={NavLink} href="/account/signout">
+          <ListItemStart>
+            <LogoutIcon className="w-6 h-6 opacity-60" />
+          </ListItemStart>
+          <ListItemContent>
+            <span className="text-sm font-semibold opacity-75">Sign out</span>
+          </ListItemContent>
+        </ListItem>
       </List>
     </aside>
   );
