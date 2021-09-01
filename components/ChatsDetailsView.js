@@ -1,17 +1,25 @@
 import { Avatar, Button, ChatBubble, DetailsView, Input } from '@/elements';
 import { TrashIcon } from '@heroicons/react/outline';
+import { useRouter } from 'next/router';
 
 export default function ChatsDetailsView() {
+  const router = useRouter();
+
+  const handleDelete = () => {
+    const basePath = router.asPath.split('/')[1];
+    router.replace(`/${basePath}/chats`);
+  };
+
   return (
     <DetailsView className="flex flex-col">
       <header className="flex items-center flex-shrink-0 h-20 px-6">
-        <Avatar src="https://avatars.dicebear.com/api/initials/nk.svg" size="lg" />
+        <Avatar initials="R" size="lg" />
         <div className="ml-4">
-          <h1 className="text-lg font-bold">Lorem ipsum</h1>
+          <h1 className="text-lg font-bold">Roger Federer</h1>
           <span className="block text-sm opacity-60">Online</span>
         </div>
         <div className="ml-auto">
-          <Button type="button" color="red" variant="ghost">
+          <Button type="button" onClick={handleDelete} color="red" variant="ghost">
             <TrashIcon className="w-6 h-6" />
           </Button>
         </div>

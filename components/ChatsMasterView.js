@@ -22,7 +22,7 @@ export default function ChatsMasterView() {
     <MasterView title="Chats">
       <List className="pb-4 mx-4">
         {chats.map(({ id, primaryText, secondaryText }, i) => (
-          <ListItem className="px-4 py-3 rounded-lg" component={NavLink} href={`/${basePath}/chats/${id}`} exact key={i}>
+          <ListItem className="px-4 py-3 rounded-xl" component={NavLink} href={`/${basePath}/chats/${id}`} exact key={i}>
             <ListItemStart>
               <Avatar initials={primaryText[0]} size="2xl" />
             </ListItemStart>
