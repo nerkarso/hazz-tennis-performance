@@ -1,28 +1,30 @@
 import { Avatar, List, ListItem, ListItemContent, ListItemStart, MasterView, NavLink } from '@/elements';
+import { useRouter } from 'next/router';
 
 export default function ChatsMasterView() {
+  const { asPath } = useRouter();
+  const basePath = asPath.split('/')[1];
+
   const chats = [
     {
       id: 1,
-      avatar: 'https://avatars.dicebear.com/api/initials/nk.svg',
-      primaryText: 'Lorem ipsum',
-      secondaryText: 'Aug 12, 2021 12:00',
+      primaryText: 'Roger Federer',
+      secondaryText: 'Monday Aug 12, 2021 12:00 AM',
     },
     {
       id: 2,
-      avatar: 'https://avatars.dicebear.com/api/initials/az.svg',
-      primaryText: 'Lorem ipsum',
-      secondaryText: 'Aug 12, 2021 12:00',
+      primaryText: 'Novak Djokovic',
+      secondaryText: 'Monday Aug 12, 2021 12:00 AM',
     },
   ];
 
   return (
     <MasterView title="Chats">
-      <List className="pb-4 mx-3">
-        {chats.map(({ id, avatar, primaryText, secondaryText }, i) => (
-          <ListItem className="p-3 rounded-lg" component={NavLink} href={`/owner/chats/${id}`} exact key={i}>
+      <List className="pb-4 mx-4">
+        {chats.map(({ id, primaryText, secondaryText }, i) => (
+          <ListItem className="px-4 py-3 rounded-lg" component={NavLink} href={`/${basePath}/chats/${id}`} exact key={i}>
             <ListItemStart>
-              <Avatar src={avatar} size="2xl" />
+              <Avatar initials={primaryText[0]} size="2xl" />
             </ListItemStart>
             <ListItemContent>
               <h4 className="text-lg font-medium">{primaryText}</h4>
