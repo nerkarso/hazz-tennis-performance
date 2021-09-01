@@ -30,23 +30,9 @@ export default function BookingEdit() {
               <SideSectionHeading>Total fees</SideSectionHeading>
               <TotalFeesCard amount="100.00" className="w-full mb-6" />
               <SideSectionHeading>Client</SideSectionHeading>
-              <UserDetailsCard
-                avatar="https://avatars.dicebear.com/api/initials/nd.svg"
-                firstName="Novak"
-                lastName="Djokovic"
-                email="novak.djokovic@gmail.com"
-                moreDetailsUrl="/owner/clients/1"
-                className="w-full mb-6"
-              />
+              <UserDetailsCard firstName="Maria" lastName="Sharapova" email="maria.sharapova@gmail.com" moreDetailsUrl="/owner/clients/1" className="w-full mb-6" />
               <SideSectionHeading>Coach</SideSectionHeading>
-              <UserDetailsCard
-                avatar="https://avatars.dicebear.com/api/initials/ms.svg"
-                firstName="Maria"
-                lastName="Sharapova"
-                email="maria.sharapova@gmail.com"
-                moreDetailsUrl="/owner/coaches/1"
-                className="w-full mb-6"
-              />
+              <UserDetailsCard firstName="Roger" lastName="Federer" email="roger.federer@gmail.com" moreDetailsUrl="/owner/coaches/1" className="w-full mb-6" />
             </>
           }
         />
