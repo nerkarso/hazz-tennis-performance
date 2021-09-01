@@ -65,7 +65,7 @@ export default function SignIn() {
       </form>
       <hr className="my-6 dark:border-neutral-600" />
       <p className="mb-1">
-        <Link href="/account/forgot-password">
+        <Link href="/account/reset-password">
           <a className="text-sm link">Forgot your password?</a>
         </Link>
       </p>
