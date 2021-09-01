@@ -1,5 +1,5 @@
 import DashboardSidebar from '@/components/DashboardSidebar';
-import { CalendarIcon, ChatAlt2Icon, HomeIcon } from '@heroicons/react/outline';
+import { CalendarIcon, ChatAlt2Icon, ClockIcon, HomeIcon } from '@heroicons/react/outline';
 
 export default function CoachSidebar() {
   return (
@@ -14,6 +14,11 @@ export default function CoachSidebar() {
           href: '/coach/bookings',
           text: 'Bookings',
           icon: CalendarIcon,
+        },
+        {
+          href: '/coach/coaching-hours',
+          text: 'Coaching hours',
+          icon: ClockIcon,
         },
         {
           href: '/coach/chats',
