@@ -133,7 +133,7 @@ export function BookingFormLocation(props) {
 
   const courtItems = [
     {
-      text: 'Select court',
+      text: 'Select available court',
       value: '',
     },
     {
@@ -181,8 +181,10 @@ export function BookingFormStatus({ defaultValue }) {
   ];
 
   useEffect(() => {
-    if (typeof defaultValue !== 'undefined') setBookingStatus(defaultValue);
-  }, []);
+    if (typeof defaultValue !== 'undefined') {
+      setBookingStatus(defaultValue);
+    }
+  }, [defaultValue, setBookingStatus]);
 
   return (
     <FormGroup label="Status" inline>
@@ -206,8 +208,10 @@ export function BookingFormPaymentType({ defaultValue }) {
   ];
 
   useEffect(() => {
-    if (typeof defaultValue !== 'undefined') setPaymentType(defaultValue);
-  }, []);
+    if (typeof defaultValue !== 'undefined') {
+      setPaymentType(defaultValue);
+    }
+  }, [defaultValue, setPaymentType]);
 
   return (
     <FormGroup label="Payment type" inline>
@@ -225,14 +229,16 @@ export function BookingFormPaymentStatus({ defaultValue }) {
       value: true,
     },
     {
-      text: 'Not paid',
+      text: 'Pending',
       value: false,
     },
   ];
 
   useEffect(() => {
-    if (typeof defaultValue !== 'undefined') setPaymentStatus(defaultValue);
-  }, []);
+    if (typeof defaultValue !== 'undefined') {
+      setPaymentStatus(defaultValue);
+    }
+  }, [defaultValue, setPaymentStatus]);
 
   return (
     <FormGroup label="Payment status" inline>

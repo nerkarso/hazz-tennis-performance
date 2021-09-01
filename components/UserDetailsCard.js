@@ -3,10 +3,10 @@ import { MailIcon } from '@heroicons/react/solid';
 import cx from 'classnames';
 import Link from 'next/link';
 
-export default function UserDetailsCard({ className, avatar, firstName, lastName, email, moreDetailsUrl }) {
+export default function UserDetailsCard({ className, imageUrl, firstName, lastName, email, moreDetailsUrl }) {
   return (
     <div className={cx('p-4 border rounded-lg md:gap-4 md:inline-flex dark:border-neutral-700', className)}>
-      <Avatar src={avatar} size="3xl" />
+      <Avatar src={imageUrl} initials={firstName[0]} size="3xl" />
       <div className="mt-2 md:mt-0">
         <h1 className="text-xl font-bold truncate">
           {firstName} {lastName}
