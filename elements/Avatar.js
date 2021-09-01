@@ -1,6 +1,13 @@
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-initials-sprites';
 import cx from 'classnames';
 
-export default function Avatar({ className, size, src }) {
+export default function Avatar({ className, initials, size, src }) {
+  const svg = createAvatar(style, {
+    seed: initials || '',
+    dataUri: true,
+  });
+
   return (
     <div
       className={cx(
@@ -17,7 +24,7 @@ export default function Avatar({ className, size, src }) {
         },
         className,
       )}>
-      <img src={src} className="object-cover w-full h-full text" alt="" />
+      <img src={src ? src : svg} className="object-cover w-full h-full text" alt="" />
     </div>
   );
 }

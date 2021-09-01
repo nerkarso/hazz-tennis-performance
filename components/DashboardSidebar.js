@@ -24,7 +24,7 @@ export default function DashboardSidebar({ links }) {
           </button>
           <Link href={`/${basePath}/account`}>
             <a className="overflow-hidden transition duration-150 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900">
-              <Avatar src="https://avatars.dicebear.com/api/initials/nk.svg" size="md" />
+              <Avatar initials={basePath[0]} size="md" />
             </a>
           </Link>
         </div>
