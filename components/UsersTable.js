@@ -2,8 +2,8 @@ import { Avatar, Table, TableActionButton, TableActions, TableCell, TableHead, T
 import { usePath, useUserDelete } from '@/hooks';
 import { toast } from 'react-hot-toast';
 
-export default function ClientsTable({ enableDelete, enableShow, enableEdit, rows }) {
-  const { basePath } = usePath();
+export default function UsersTable({ enableDelete, enableShow, enableEdit, rows }) {
+  const { basePath, resourcePath } = usePath();
   const { mutate } = useUserDelete();
 
   const handleDelete = (id) => {
@@ -12,7 +12,7 @@ export default function ClientsTable({ enableDelete, enableShow, enableEdit, row
         if (data?.error) {
           toast.error(data.error);
         } else {
-          toast.success('Client deleted');
+          toast.success('User deleted');
         }
       },
     });
@@ -21,7 +21,7 @@ export default function ClientsTable({ enableDelete, enableShow, enableEdit, row
   return (
     <Table>
       <TableHead className="grid-cols-5">
-        <TableCell>Client</TableCell>
+        <TableCell>Name</TableCell>
         <TableCell>Email</TableCell>
         <TableCell>Phone</TableCell>
         <TableCell>Address</TableCell>
@@ -39,12 +39,12 @@ export default function ClientsTable({ enableDelete, enableShow, enableEdit, row
           <TableCell>{address}</TableCell>
           <TableActions>
             {enableShow && (
-              <TableActionButton color="primary" href={`/${basePath}/clients/${_id}`}>
+              <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
                 Show
               </TableActionButton>
             )}
             {enableEdit && (
-              <TableActionButton color="primary" href={`/${basePath}/clients/${_id}`}>
+              <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
                 Edit
               </TableActionButton>
             )}
