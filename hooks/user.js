@@ -1,49 +1,59 @@
-import { useMutation } from 'react-query';
+import { fetcher } from '@/lib';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+
+export function useUsers(query) {
+  return useQuery('users', () => fetcher('/api/users', { query }));
+}
 
 export function useUserCreate() {
   return useMutation((data) =>
-    fetch('/api/users', {
+    fetcher('/api/users', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data),
-    }).then((res) => res.json()),
+    }),
   );
 }
 
 export function useUserUpdate(id) {
   return useMutation(({ _id, ...data }) =>
-    fetch(`/api/users/${id ? id : _id}`, {
+    fetcher(`/api/users/${id ? id : _id}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data),
-    }).then((res) => res.json()),
+    }),
+  );
+}
+
+export function useUserDelete() {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    (id) => {
+      return fetcher(`/api/users/${id}`, {
+        method: 'DELETE',
+      });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('users');
+      },
+    },
   );
 }
 
 export function useUserAuth() {
   return useMutation((data) =>
-    fetch('/api/users/auth', {
+    fetcher('/api/users/auth', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data),
-    }).then((res) => res.json()),
+    }),
   );
 }
 
 export function useUserIdentify() {
   return useMutation((data) =>
-    fetch('/api/users/identify', {
+    fetcher('/api/users/identify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data),
-    }).then((res) => res.json()),
+    }),
   );
 }

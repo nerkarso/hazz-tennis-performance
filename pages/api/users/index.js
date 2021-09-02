@@ -17,8 +17,12 @@ export default withAllowedMethods(withDatabase(handler), ['GET', 'POST']);
  * Get all users
  */
 async function getAll(req, res) {
+  const { query } = req;
+  const filter = JSON.parse(query?.filter ?? '{}');
+  const sort = JSON.parse(query?.sort ?? '{}');
+
   try {
-    const users = await User.find().sort({ first_name: 1 });
+    const users = await User.find(filter).sort(sort);
     res.json(users);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
