@@ -1,4 +1,4 @@
-import createConnection from '@/lib/mongodb';
+import { createConnection } from '@/lib';
 
 /**
  * Middleware to connect to database

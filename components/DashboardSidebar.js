@@ -1,12 +1,11 @@
 import { Avatar, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
+import { usePath } from '@/hooks';
 import { LogoutIcon } from '@heroicons/react/outline';
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function DashboardSidebar({ links }) {
-  const { asPath } = useRouter();
-  const basePath = asPath.split('/')[1];
+  const { basePath } = usePath();
 
   return (
     <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">

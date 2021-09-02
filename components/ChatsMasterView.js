@@ -1,9 +1,8 @@
 import { Avatar, List, ListItem, ListItemContent, ListItemStart, MasterView, NavLink } from '@/elements';
-import { useRouter } from 'next/router';
+import { usePath } from '@/hooks';
 
 export default function ChatsMasterView() {
-  const { asPath } = useRouter();
-  const basePath = asPath.split('/')[1];
+  const { basePath } = usePath();
 
   const chats = [
     {

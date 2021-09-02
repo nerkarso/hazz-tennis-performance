@@ -1,11 +1,10 @@
 import { Badge, Button, Table, TableCell, TableHead, TableRow } from '@/elements';
+import { usePath } from '@/hooks';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 
 export default function BookingsTable({ rows }) {
-  const { asPath } = useRouter();
-  const basePath = asPath.split('/')[1];
+  const { basePath } = usePath();
 
   const handleDelete = () => toast.success('Booking deleted');
 

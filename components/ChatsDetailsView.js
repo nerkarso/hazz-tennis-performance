@@ -1,12 +1,11 @@
 import { Avatar, Button, ChatBubble, DetailsView, Input } from '@/elements';
+import { usePath } from '@/hooks';
 import { TrashIcon } from '@heroicons/react/outline';
-import { useRouter } from 'next/router';
 
 export default function ChatsDetailsView() {
-  const router = useRouter();
+  const { basePath } = usePath();
 
   const handleDelete = () => {
-    const basePath = router.asPath.split('/')[1];
     router.replace(`/${basePath}/chats`);
   };
 
