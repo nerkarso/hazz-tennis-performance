@@ -21,6 +21,7 @@ export default function Avatar({ className, initials, size, src }) {
           'w-14 h-14': size === '2xl',
           'w-16 h-16': size === '3xl',
           'w-20 h-20': size === '4xl',
+          'w-24 h-24': size === '5xl',
         },
         className,
       )}>

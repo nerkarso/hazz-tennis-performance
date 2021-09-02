@@ -20,6 +20,7 @@ export { default as NextLink } from './NextLink';
 export { default as SegmentGroup } from './SegmentGroup';
 export { default as Select } from './Select';
 export { default as SkeletonButton } from './SkeletonButton';
+export { default as SkeletonForm } from './SkeletonForm';
 export { default as SkeletonTable } from './SkeletonTable';
 export { default as SkeletonTableCell } from './SkeletonTableCell';
 export { default as Table } from './Table';

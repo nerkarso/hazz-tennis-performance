@@ -1,6 +1,10 @@
 import { fetcher } from '@/lib';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
+export function useUser(id) {
+  return useQuery('user', () => fetcher(`/api/users/${id}`));
+}
+
 export function useUsers(query) {
   return useQuery('users', () => fetcher('/api/users', { query }));
 }
@@ -14,12 +18,21 @@ export function useUserCreate() {
   );
 }
 
-export function useUserUpdate(id) {
-  return useMutation(({ _id, ...data }) =>
-    fetcher(`/api/users/${id ? id : _id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-    }),
+export function useUserUpdate() {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    ({ id, ...data }) => {
+      return fetcher(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+      });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('user');
+      },
+    },
   );
 }
 

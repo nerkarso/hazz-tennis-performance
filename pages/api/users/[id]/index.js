@@ -36,20 +36,20 @@ async function getById(req, res) {
  */
 async function update(req, res) {
   const { id } = req.query;
-  const { first_name, last_name, email, password, image_url, role, address, phone } = req.body;
+  const { first_name, last_name, email, password, image_url, role, address, phone } = JSON.parse(req.body);
   try {
     const user = await User.findById(id);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    if (first_name) user.first_name = first_name;
-    if (last_name) user.last_name = last_name;
-    if (email) user.email = email;
-    if (password) user.password = password;
-    if (image_url) user.image_url = image_url;
-    if (role) user.role = role;
-    if (address) user.address = address;
-    if (phone) user.phone = phone;
+    if (first_name && first_name !== '') user.first_name = first_name;
+    if (last_name && last_name !== '') user.last_name = last_name;
+    if (email && email !== '') user.email = email;
+    if (password && password !== '') user.password = password;
+    if (image_url && image_url !== '') user.image_url = image_url;
+    if (role && role !== '') user.role = role;
+    if (address && address !== '') user.address = address;
+    if (phone && phone !== '') user.phone = phone;
     await user.save();
     res.json(user);
   } catch (ex) {
