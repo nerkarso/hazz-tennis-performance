@@ -33,8 +33,10 @@ async function getAll(req, res) {
  * Create user
  */
 async function create(req, res) {
+  const body = JSON.parse(req?.body ?? '{}');
+
   try {
-    const user = await User.create(req.body);
+    const user = await User.create(body);
     res.json(user);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
