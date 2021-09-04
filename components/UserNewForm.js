@@ -34,7 +34,7 @@ export default function UserNewForm({ role }) {
       <UserFormPassword />
       <UserFormPhone />
       <UserFormAddress />
-      <FormActions isLoading={isLoading} loadingText="Creating..." submitText="Create" />
+      <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Creating..." submitText="Create" />
     </UserForm>
   );
 }

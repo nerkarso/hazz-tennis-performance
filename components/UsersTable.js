@@ -1,6 +1,6 @@
 import { Avatar, Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
 import { usePath, useUserDelete } from '@/hooks';
-import { toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function UsersTable({ enableDelete, enableShow, enableEdit, rows }) {
   const { basePath, resourcePath } = usePath();
@@ -29,7 +29,7 @@ export default function UsersTable({ enableDelete, enableShow, enableEdit, rows 
       {rows.map(({ _id, address, email, first_name, image_url, last_name, phone }, i) => (
         <TableRow className="grid-cols-5" key={i}>
           <TableCell className="flex items-center gap-3">
-            <Avatar src={image_url} initials={first_name[0]} size="md" />
+            <Avatar src={image_url} initials={first_name[0]} size="lg" />
             <span className="truncate">
               {first_name} {last_name}
             </span>

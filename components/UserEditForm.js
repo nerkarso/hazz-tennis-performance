@@ -38,7 +38,7 @@ export default function UserEditForm({ user }) {
       <UserFormEmail defaultValue={email} />
       <UserFormPhone defaultValue={phone} />
       <UserFormAddress defaultValue={address} />
-      <FormActions isLoading={isLoading} loadingText="Updating..." submitText="Update" />
+      <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Updating..." submitText="Update" />
     </UserForm>
   );
 }
