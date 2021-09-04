@@ -17,8 +17,12 @@ export default withAllowedMethods(withDatabase(handler), ['GET', 'POST']);
  * Get all bookings
  */
 async function getAll(req, res) {
+  const { query } = req;
+  const filter = JSON.parse(query?.filter ?? '{}');
+  const sort = JSON.parse(query?.sort ?? '{}');
+
   try {
-    const bookings = await Booking.find().sort({ created_at: -1, booking_status: 0 });
+    const bookings = await Booking.find(filter).sort(sort);
     res.json(bookings);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

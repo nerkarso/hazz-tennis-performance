@@ -1,47 +1,100 @@
-import { Badge, Button, Table, TableCell, TableHead, TableRow } from '@/elements';
-import { usePath } from '@/hooks';
+import { Badge, Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
+import { useBookingDelete, usePath } from '@/hooks';
 import Link from 'next/link';
-import { toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
-export default function BookingsTable({ rows }) {
-  const { basePath } = usePath();
+export default function BookingsTable({ cols = [], enableDelete, enableEdit, enableShow, gridTemplateColumns, rows }) {
+  const { basePath, resourcePath } = usePath();
+  const { mutate } = useBookingDelete();
 
-  const handleDelete = () => toast.success('Booking deleted');
+  const handleDelete = (id) => {
+    mutate(id, {
+      onSuccess: (data) => {
+        if (data?.error) {
+          toast.error(data.error);
+        } else {
+          toast.success('Booking deleted');
+        }
+      },
+    });
+  };
 
   return (
     <Table>
-      <TableHead className="grid-cols-11">
-        <TableCell className="col-span-3">Date</TableCell>
-        <TableCell className="col-span-2">Client</TableCell>
-        <TableCell className="col-span-2">Coach</TableCell>
-        <TableCell>Status</TableCell>
-        <TableCell className="text-right">Total fees</TableCell>
+      <TableHead style={{ gridTemplateColumns }}>
+        {cols.map((col, i) => (
+          <TableCell key={i}>
+            {col === 'date_time' && 'Date'}
+            {col === 'client' && 'Client'}
+            {col === 'client_link' && 'Client'}
+            {col === 'coach' && 'Coach'}
+            {col === 'coach_link' && 'Coach'}
+            {col === 'booking_status' && 'Status'}
+            {col === 'total_fees' && 'Total fees'}
+            {col === 'payment_type' && 'Payment type'}
+            {col === 'payment_status' && 'Payment status'}
+            {col === 'location' && 'Location'}
+          </TableCell>
+        ))}
       </TableHead>
-      {rows.map((x, i) => (
-        <TableRow className="grid-cols-11" key={i}>
-          <TableCell className="col-span-3">Monday Aug 1{i}, 2021 12:00 AM</TableCell>
-          <TableCell className="col-span-2">
-            <Link href={`/${basePath}/clients/1`}>
-              <a className="link">Maria Sharapova</a>
-            </Link>
-          </TableCell>
-          <TableCell className="col-span-2">
-            <Link href={`/${basePath}/coaches/1`}>
-              <a className="link">Roger Federer</a>
-            </Link>
-          </TableCell>
-          <TableCell>{i % 2 === 0 ? <Badge color="green">Approved</Badge> : i % 3 === 0 ? <Badge color="yellow">Pending</Badge> : <Badge color="red">Declined</Badge>}</TableCell>
-          <TableCell className="text-right">$ {i}0.00</TableCell>
-          <TableCell className="flex items-center justify-end col-span-2 gap-2">
-            <Link href={`/${basePath}/bookings/1`} passHref>
-              <Button component="a" color="primary" variant="solid" size="sm">
-                Edit
-              </Button>
-            </Link>
-            <Button type="button" onClick={handleDelete} color="neutral" variant="solid" size="sm">
-              Delete
-            </Button>
-          </TableCell>
+      {rows.map(({ _id, booking_status, client, coach, date_time, location, payment_status, payment_type, total_fees }, i) => (
+        <TableRow style={{ gridTemplateColumns }} key={i}>
+          {cols.map((col, i) => (
+            <TableCell key={i}>
+              {col === 'date_time' && date_time}
+              {col === 'client' && `${client?.first_name} ${client?.last_name}`}
+              {col === 'client_link' && (
+                <Link href={`/${basePath}/clients/${client?._id}`}>
+                  <a className="link">
+                    {client?.first_name} {client?.last_name}
+                  </a>
+                </Link>
+              )}
+              {col === 'coach' && `${coach?.first_name} ${coach?.last_name}`}
+              {col === 'coach_link' && (
+                <Link href={`/${basePath}/coaches/${coach?._id}`}>
+                  <a className="link">
+                    {coach?.first_name} {coach?.last_name}
+                  </a>
+                </Link>
+              )}
+              {col === 'booking_status' && (
+                <>
+                  {booking_status === -1 && <Badge color="red">Declined</Badge>}
+                  {booking_status === 0 && <Badge color="yellow">Pending</Badge>}
+                  {booking_status === 1 && <Badge color="green">Approved</Badge>}
+                </>
+              )}
+              {col === 'total_fees' && `$ ${total_fees}`}
+              {col === 'payment_type' && payment_type}
+              {col === 'payment_status' && (
+                <>
+                  {payment_status === false && <Badge color="yellow">Pending</Badge>}
+                  {payment_status === true && <Badge color="green">Paid</Badge>}
+                </>
+              )}
+              {col === 'location' && location?.name}
+            </TableCell>
+          ))}
+          {enableDelete || enableEdit || enableShow ? (
+            <TableActions>
+              {enableShow && (
+                <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
+                  Show
+                </TableActionButton>
+              )}
+              {enableEdit && (
+                <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
+                  Edit
+                </TableActionButton>
+              )}
+              {enableDelete && (
+                <TableActionButton color="neutral" onClick={() => handleDelete(_id)}>
+                  Delete
+                </TableActionButton>
+              )}
+            </TableActions>
+          ) : null}
         </TableRow>
       ))}
     </Table>

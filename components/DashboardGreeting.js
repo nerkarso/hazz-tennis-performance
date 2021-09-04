@@ -3,7 +3,7 @@ import { UserCircleIcon } from '@heroicons/react/outline';
 
 export default function DashboardGreeting({ imageUrl, firstName, lastName, role }) {
   return (
-    <header className="flex items-center gap-4 mb-8 dark:border-neutral-700">
+    <header className="flex items-center gap-4 mb-4">
       <Avatar src={imageUrl} initials={firstName[0]} size="4xl" />
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold">

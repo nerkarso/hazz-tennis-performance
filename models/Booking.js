@@ -14,6 +14,10 @@ const schema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    payment_type: {
+      type: String,
+      default: 'cash',
+    },
     payment_status: {
       type: Boolean,
       default: false,
@@ -29,17 +33,14 @@ const schema = new mongoose.Schema(
     location: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Court',
-      required: true,
     },
     client: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: true,
     },
     coach: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: true,
     },
     created_at: {
       type: Date,
