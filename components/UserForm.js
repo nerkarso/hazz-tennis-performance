@@ -89,6 +89,25 @@ export function UserFormEmail(props) {
   );
 }
 
+export function UserFormPassword(props) {
+  const { errors, register } = useUserForm();
+
+  return (
+    <FormGroup htmlFor="password" label="Password" error={errors.password} inline>
+      <Input
+        type="password"
+        id="password"
+        className="flex-1"
+        error={errors.password}
+        {...register('password', {
+          required: true,
+        })}
+        {...props}
+      />
+    </FormGroup>
+  );
+}
+
 export function UserFormPhone(props) {
   const { errors, register } = useUserForm();
 

@@ -1,9 +1,12 @@
 import FormActions from '@/components/FormActions';
 import UserForm, { UserFormAddress, UserFormEmail, UserFormFirstName, UserFormImage, UserFormLastName, UserFormPhone } from '@/components/UserForm';
-import { useUserUpdate } from '@/hooks';
+import { usePath, useUserUpdate } from '@/hooks';
+import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
 export default function UserEditForm({ user }) {
+  const router = useRouter();
+  const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useUserUpdate();
 
   const handleSubmit = (formData) => {
@@ -18,6 +21,7 @@ export default function UserEditForm({ user }) {
             toast.error(data.error);
           } else {
             toast.success('User updated');
+            router.push(`/${basePath}/${resourcePath}`);
           }
         },
       },
