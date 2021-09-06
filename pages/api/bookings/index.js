@@ -22,7 +22,7 @@ async function getAll(req, res) {
   const sort = JSON.parse(query?.sort ?? '{}');
 
   try {
-    const bookings = await Booking.find(filter).sort(sort);
+    const bookings = await Booking.find(filter).sort(sort).populate('client').populate('coach').populate('location');
     res.json(bookings);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
@@ -30,11 +30,13 @@ async function getAll(req, res) {
 }
 
 /**
- * Create a new booking
+ * Create booking
  */
 async function create(req, res) {
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
+
   try {
-    const booking = await Booking.create(req.body);
+    const booking = await Booking.create(body);
     res.json(booking);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

@@ -20,6 +20,7 @@ export default withAllowedMethods(withDatabase(handler), ['GET', 'PUT', 'DELETE'
  */
 async function getById(req, res) {
   const { id } = req.query;
+
   try {
     const booking = await Booking.findById(id);
     if (!booking) {
@@ -36,21 +37,23 @@ async function getById(req, res) {
  */
 async function update(req, res) {
   const { id } = req.query;
-  const { date_time, duration, booking_status, payment_status, total_hours, total_fees, location, client, coach } = req.body;
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
+  const { booking_status, client, coach, date_time, duration, location, payment_status, total_fees, total_hours } = body;
+
   try {
     const booking = await Booking.findById(id);
     if (!booking) {
       return res.status(404).json({ error: 'Booking not found' });
     }
-    if (date_time) booking.date_time = date_time;
-    if (duration) booking.duration = duration;
-    if (booking_status) booking.booking_status = booking_status;
-    if (payment_status) booking.payment_status = payment_status;
-    if (total_hours) booking.total_hours = total_hours;
-    if (total_fees) booking.total_fees = total_fees;
-    if (location) booking.location = location;
-    if (client) booking.client = client;
-    if (coach) booking.coach = coach;
+    if (booking_status && booking_status !== '') booking.booking_status = booking_status;
+    if (client && client !== '') booking.client = client;
+    if (coach && coach !== '') booking.coach = coach;
+    if (date_time && date_time !== '') booking.date_time = date_time;
+    if (duration && duration !== '') booking.duration = duration;
+    if (location && location !== '') booking.location = location;
+    if (payment_status && payment_status !== '') booking.payment_status = payment_status;
+    if (total_fees && total_fees !== '') booking.total_fees = total_fees;
+    if (total_hours && total_hours !== '') booking.total_hours = total_hours;
     await booking.save();
     res.json(booking);
   } catch (ex) {
@@ -63,6 +66,7 @@ async function update(req, res) {
  */
 async function remove(req, res) {
   const { id } = req.query;
+
   try {
     const booking = await Booking.findById(id);
     if (!booking) {

@@ -1,10 +1,11 @@
 import { Badge, Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
 import { useBookingDelete, usePath } from '@/hooks';
+import { formatDate } from '@/lib';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 export default function BookingsTable({ cols = [], enableDelete, enableEdit, enableShow, gridTemplateColumns, rows }) {
-  const { basePath, resourcePath } = usePath();
+  const { basePath } = usePath();
   const { mutate } = useBookingDelete();
 
   const handleDelete = (id) => {
@@ -34,6 +35,7 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
             {col === 'payment_type' && 'Payment type'}
             {col === 'payment_status' && 'Payment status'}
             {col === 'location' && 'Location'}
+            {col === 'location_link' && 'Location'}
           </TableCell>
         ))}
       </TableHead>
@@ -41,7 +43,7 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
         <TableRow style={{ gridTemplateColumns }} key={i}>
           {cols.map((col, i) => (
             <TableCell key={i}>
-              {col === 'date_time' && date_time}
+              {col === 'date_time' && formatDate(date_time)}
               {col === 'client' && `${client?.first_name} ${client?.last_name}`}
               {col === 'client_link' && (
                 <Link href={`/${basePath}/clients/${client?._id}`}>
@@ -74,17 +76,22 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
                 </>
               )}
               {col === 'location' && location?.name}
+              {col === 'location_link' && (
+                <Link href={`/${basePath}/courts/${location?._id}`}>
+                  <a className="link">{location?.name}</a>
+                </Link>
+              )}
             </TableCell>
           ))}
           {enableDelete || enableEdit || enableShow ? (
             <TableActions>
               {enableShow && (
-                <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
+                <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}`}>
                   Show
                 </TableActionButton>
               )}
               {enableEdit && (
-                <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
+                <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}`}>
                   Edit
                 </TableActionButton>
               )}
