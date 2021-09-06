@@ -26,11 +26,13 @@ async function getAll(req, res) {
 }
 
 /**
- * Create a new court
+ * Create court
  */
 async function create(req, res) {
+  const body = JSON.parse(req?.body ?? '{}');
+
   try {
-    const court = await Court.create(req.body);
+    const court = await Court.create(body);
     res.json(court);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

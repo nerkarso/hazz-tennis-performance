@@ -8,7 +8,9 @@ const schema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
+    },
+    city: {
+      type: String,
     },
     created_at: {
       type: Date,

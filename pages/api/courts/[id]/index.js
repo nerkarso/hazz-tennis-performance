@@ -20,6 +20,7 @@ export default withAllowedMethods(withDatabase(handler), ['GET', 'PUT', 'DELETE'
  */
 async function getById(req, res) {
   const { id } = req.query;
+
   try {
     const court = await Court.findById(id);
     if (!court) {
@@ -36,14 +37,16 @@ async function getById(req, res) {
  */
 async function update(req, res) {
   const { id } = req.query;
-  const { name, address } = req.body;
+  const { address, city, name } = JSON.parse(req.body);
+
   try {
     const court = await Court.findById(id);
     if (!court) {
       return res.status(404).json({ error: 'Court not found' });
     }
-    if (name) court.name = name;
-    if (address) court.address = address;
+    if (address && address !== '') court.address = address;
+    if (city && city !== '') court.city = city;
+    if (name && name !== '') court.name = name;
     await court.save();
     res.json(court);
   } catch (ex) {
@@ -56,6 +59,7 @@ async function update(req, res) {
  */
 async function remove(req, res) {
   const { id } = req.query;
+
   try {
     const court = await Court.findById(id);
     if (!court) {
