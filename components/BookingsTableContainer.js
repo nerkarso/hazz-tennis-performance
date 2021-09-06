@@ -4,7 +4,7 @@ import { useBookings } from '@/hooks';
 export default function BookingsTableContainer({ children, query }) {
   const { data, error, isError, isLoading } = useBookings(query);
 
-  if (isLoading) return <SkeletonTable cols={6} animate />;
+  if (isLoading) return <SkeletonTable cols={7} animate />;
 
   if (isError) {
     return (
@@ -26,5 +26,5 @@ export default function BookingsTableContainer({ children, query }) {
     return children(data);
   }
 
-  return <SkeletonTable cols={6} />;
+  return <SkeletonTable cols={7} />;
 }

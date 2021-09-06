@@ -23,13 +23,13 @@ function PendingBookingsTable() {
       <h1 className="mb-4 text-2xl font-bold">Pending bookings</h1>
       <BookingsTableContainer
         query={{
-          filter: { booking_status: 1 },
+          filter: { booking_status: 0 },
           sort: { created_at: -1 },
         }}>
         {(rows) => (
           <BookingsTable
             cols={['date_time', 'client_link', 'coach_link', 'location_link', 'payment_status', 'total_fees']}
-            gridTemplateColumns="10rem 1fr 1fr 1fr 10rem 6rem 5rem"
+            gridTemplateColumns="12rem 1fr 1fr 1fr 10rem 6rem 5rem"
             rows={rows}
             enableEdit
           />

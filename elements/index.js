@@ -21,6 +21,7 @@ export { default as SegmentGroup } from '@/elements/SegmentGroup';
 export { default as Select } from '@/elements/Select';
 export { default as SkeletonButton } from '@/elements/SkeletonButton';
 export { default as SkeletonForm } from '@/elements/SkeletonForm';
+export { default as SkeletonFormGroup } from '@/elements/SkeletonFormGroup';
 export { default as SkeletonTable } from '@/elements/SkeletonTable';
 export { default as SkeletonTableCell } from '@/elements/SkeletonTableCell';
 export { default as Table } from '@/elements/Table';

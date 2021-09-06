@@ -22,7 +22,7 @@ async function getById(req, res) {
   const { id } = req.query;
 
   try {
-    const booking = await Booking.findById(id);
+    const booking = await Booking.findById(id).populate('client').populate('coach').populate('location');
     if (!booking) {
       return res.status(404).json({ error: 'Booking not found' });
     }

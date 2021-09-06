@@ -17,7 +17,7 @@ export default function Bookings() {
           {(rows) => (
             <BookingsTable
               cols={['date_time', 'client_link', 'coach_link', 'location_link', 'booking_status', 'payment_status']}
-              gridTemplateColumns="10rem 1fr 1fr 1fr 6rem 10rem 6rem"
+              gridTemplateColumns="12rem 1fr 1fr 1fr 6rem 10rem 6rem"
               rows={rows}
               enableEdit
               enableDelete

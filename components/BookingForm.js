@@ -1,4 +1,5 @@
-import { FormGroup, Input, SegmentGroup, Select } from '@/elements';
+import { FormGroup, Input, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
+import { useCourts, useUsers } from '@/hooks';
 import cx from 'classnames';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -12,7 +13,21 @@ export default function BookingForm({ children, className, onSubmit }) {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  const onSubmitHandler = (data) => onSubmit({ ...data, bookingStatus, paymentType, paymentStatus });
+  const getUTCDate = (date, time) => {
+    const localeDate = new Date(`${date} ${time}`);
+    const utcDate = new Date(localeDate.toUTCString()).toJSON();
+    return utcDate;
+  };
+
+  const onSubmitHandler = ({ date, time, ...data }) => {
+    onSubmit({
+      ...data,
+      date_time: getUTCDate(date, time),
+      booking_status: bookingStatus,
+      payment_type: paymentType,
+      payment_status: paymentStatus,
+    });
+  };
 
   return (
     <BookingFormContext.Provider
@@ -75,91 +90,78 @@ export function BookingFormTime(props) {
   );
 }
 
-export function BookingFormDuration(props) {
-  const { register, errors } = useBookingForm();
-
-  return (
-    <FormGroup htmlFor="duration" label="Duration" error={errors.duration} inline>
-      <Input
-        type="number"
-        id="duration"
-        className="flex-1"
-        error={errors.duration}
-        {...register('duration', {
-          required: true,
-        })}
-        {...props}
-      />
-    </FormGroup>
-  );
-}
-
 export function BookingFormCoach(props) {
   const { register, errors } = useBookingForm();
+  const { data, error, isError, isLoading } = useUsers({
+    filter: { role: 'coach' },
+  });
 
-  const coachItems = [
-    {
-      text: 'Select available coach',
-      value: '',
-    },
-    {
-      text: 'Novak Djokovic',
-      value: 1,
-    },
-    {
-      text: 'Maria Sharapova',
-      value: 2,
-    },
-  ];
+  if (isLoading) return <SkeletonFormGroup animate />;
 
-  return (
-    <FormGroup htmlFor="coach" label="Coach" error={errors.coach} inline>
-      <Select
-        id="coach"
-        className="flex-1"
-        items={coachItems}
-        error={errors.coach}
-        {...register('coach', {
-          required: true,
-        })}
-        {...props}
-      />
-    </FormGroup>
-  );
+  if (isError) return <p>{error.message}</p>;
+
+  if (data?.error) return <p>{data?.error}</p>;
+
+  if (data) {
+    const items = data.map((item) => ({
+      text: `${item.first_name} ${item.last_name}`,
+      value: item._id,
+    }));
+
+    return (
+      <FormGroup htmlFor="coach" label="Coach" error={errors.coach} inline>
+        <Select
+          id="coach"
+          className="flex-1"
+          items={items}
+          error={errors.coach}
+          {...register('coach', {
+            required: true,
+          })}
+          {...props}
+        />
+      </FormGroup>
+    );
+  }
+
+  return <SkeletonFormGroup />;
 }
 
 export function BookingFormLocation(props) {
   const { register, errors } = useBookingForm();
+  const { data, error, isError, isLoading } = useCourts({
+    sort: { name: 1 },
+  });
 
-  const courtItems = [
-    {
-      text: 'Select available court',
-      value: '',
-    },
-    {
-      text: 'Grass court',
-      value: 1,
-    },
-    {
-      text: 'Wimbledon court',
-      value: 2,
-    },
-  ];
+  if (isLoading) return <SkeletonFormGroup animate />;
 
-  return (
-    <FormGroup htmlFor="location" label="Location" error={errors.location} inline>
-      <Select
-        id="location"
-        className="flex-1"
-        items={courtItems}
-        error={errors.location}
-        {...register('location', {
-          required: true,
-        })}
-        {...props}
-      />
-    </FormGroup>
-  );
+  if (isError) return <p>{error.message}</p>;
+
+  if (data?.error) return <p>{data?.error}</p>;
+
+  if (data) {
+    const items = data.map((item) => ({
+      text: `${item.name}, ${item.city}`,
+      value: item._id,
+    }));
+
+    return (
+      <FormGroup htmlFor="location" label="Location" error={errors.location} inline>
+        <Select
+          id="location"
+          className="flex-1"
+          items={items}
+          error={errors.location}
+          {...register('location', {
+            required: true,
+          })}
+          {...props}
+        />
+      </FormGroup>
+    );
+  }
+
+  return <SkeletonFormGroup />;
 }
 
 export function BookingFormStatus({ defaultValue }) {
@@ -247,6 +249,12 @@ export function BookingFormPaymentStatus({ defaultValue }) {
   );
 }
 
-export function BookingFormActions({ children }) {
-  return <div className="grid self-end w-2/3 grid-flow-col gap-2 mt-4">{children}</div>;
+export function BookingFormTotalFees(props) {
+  const { register, errors } = useBookingForm();
+
+  return (
+    <FormGroup htmlFor="total_fees" label="Total fees" error={errors.total_fees} inline>
+      <Input type="number" id="total_fees" className="flex-1" error={errors.total_fees} {...register('total_fees')} {...props} />
+    </FormGroup>
+  );
 }
