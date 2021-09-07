@@ -164,10 +164,18 @@ export function BookingFormLocation(props) {
   return <SkeletonFormGroup />;
 }
 
-export function BookingFormStatus({ defaultValue }) {
+export function BookingFormLocationText(props) {
+  return (
+    <FormGroup label="Location" inline>
+      <Input type="text" className="flex-1" {...props} />
+    </FormGroup>
+  );
+}
+
+export function BookingFormStatus({ defaultValue, disabled }) {
   const { bookingStatus, setBookingStatus } = useBookingForm();
 
-  const statusItems = [
+  const items = [
     {
       text: 'Confirmed',
       value: 1,
@@ -190,15 +198,19 @@ export function BookingFormStatus({ defaultValue }) {
 
   return (
     <FormGroup label="Status" inline>
-      <SegmentGroup items={statusItems} value={bookingStatus} onChange={setBookingStatus} className="flex-1" />
+      {disabled ? (
+        <Input type="text" className="flex-1" defaultValue={items.find((item) => item.value === defaultValue).text} disabled />
+      ) : (
+        <SegmentGroup items={items} value={bookingStatus} onChange={setBookingStatus} className="flex-1" />
+      )}
     </FormGroup>
   );
 }
 
-export function BookingFormPaymentType({ defaultValue }) {
+export function BookingFormPaymentType({ defaultValue, disabled }) {
   const { paymentType, setPaymentType } = useBookingForm();
 
-  const paymentTypeItems = [
+  const items = [
     {
       text: 'Cash',
       value: 'cash',
@@ -217,15 +229,19 @@ export function BookingFormPaymentType({ defaultValue }) {
 
   return (
     <FormGroup label="Payment type" inline>
-      <SegmentGroup items={paymentTypeItems} value={paymentType} onChange={setPaymentType} className="flex-1" />
+      {disabled ? (
+        <Input type="text" className="flex-1" defaultValue={items.find((item) => item.value === defaultValue).text} disabled />
+      ) : (
+        <SegmentGroup items={items} value={paymentType} onChange={setPaymentType} className="flex-1" />
+      )}
     </FormGroup>
   );
 }
 
-export function BookingFormPaymentStatus({ defaultValue }) {
+export function BookingFormPaymentStatus({ defaultValue, disabled }) {
   const { paymentStatus, setPaymentStatus } = useBookingForm();
 
-  const paymentStatusItems = [
+  const items = [
     {
       text: 'Paid',
       value: true,
@@ -244,7 +260,11 @@ export function BookingFormPaymentStatus({ defaultValue }) {
 
   return (
     <FormGroup label="Payment status" inline>
-      <SegmentGroup items={paymentStatusItems} value={paymentStatus} onChange={setPaymentStatus} className="flex-1" />
+      {disabled ? (
+        <Input type="text" className="flex-1" defaultValue={items.find((item) => item.value === defaultValue).text} disabled />
+      ) : (
+        <SegmentGroup items={items} value={paymentStatus} onChange={setPaymentStatus} className="flex-1" />
+      )}
     </FormGroup>
   );
 }

@@ -14,7 +14,7 @@ import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function BookingEditForm({ booking }) {
+export default function OwnerBookingEditForm({ booking }) {
   const router = useRouter();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useBookingUpdate();

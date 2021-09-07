@@ -1,50 +1,44 @@
-import BookingForm, { BookingFormActions, BookingFormCoach, BookingFormDate, BookingFormLocation, BookingFormTime } from '@/components/BookingForm';
+import BookingContainer from '@/components/BookingContainer';
+import ClientBookingEditForm from '@/components/ClientBookingEditForm';
 import ClientSidebar from '@/components/ClientSidebar';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
-import SideSectionHeading from '@/components/SideSectionHeading';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { Button, TwoPaneView } from '@/elements';
+import { SidePaneHeading, TwoPaneView } from '@/elements';
 
 BookingEdit.title = 'Edit booking';
 
-export default function BookingEdit() {
+export default function BookingEdit({ bookingId }) {
   return (
     <DashboardLayout sidebar={<ClientSidebar />}>
       <DashboardContent header="Edit booking">
-        <TwoPaneView
-          leftPane={<BookingEditForm />}
-          rightPane={
-            <>
-              <SideSectionHeading>Total fees</SideSectionHeading>
-              <TotalFeesCard amount="100.00" className="w-full mb-6" />
-              <SideSectionHeading>Coach</SideSectionHeading>
-              <UserDetailsCard firstName="Roger" lastName="Federer" email="roger.federer@gmail.com" moreDetailsUrl="/client/coaches/1" className="w-full mb-6" />
-            </>
-          }
-        />
+        <BookingContainer bookingId={bookingId}>
+          {(data) => (
+            <TwoPaneView
+              leftPane={<ClientBookingEditForm booking={data} />}
+              rightPane={
+                <>
+                  <SidePaneHeading>Total fees</SidePaneHeading>
+                  <TotalFeesCard amount={data?.total_fees} className="w-full mb-6" />
+                  <SidePaneHeading>Coach</SidePaneHeading>
+                  <UserDetailsCard user={data?.coach} showDetailsUrl={`/client/coaches/${data?.coach?._id}`} className="w-full mb-6" />
+                </>
+              }
+            />
+          )}
+        </BookingContainer>
       </DashboardContent>
     </DashboardLayout>
   );
 }
 
-function BookingEditForm() {
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+export async function getServerSideProps(context) {
+  const { id } = context.params;
 
-  return (
-    <BookingForm onSubmit={onSubmit} className="max-w-2xl">
-      <BookingFormDate />
-      <BookingFormTime />
-      <BookingFormCoach />
-      <BookingFormLocation />
-      <BookingFormActions>
-        <Button type="submit" color="primary" variant="solid">
-          Save
-        </Button>
-      </BookingFormActions>
-    </BookingForm>
-  );
+  return {
+    props: {
+      bookingId: id,
+    },
+  };
 }

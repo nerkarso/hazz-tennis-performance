@@ -1,42 +1,44 @@
-import BookingForm, { BookingFormDate, BookingFormLocation, BookingFormPaymentStatus, BookingFormStatus, BookingFormTime } from '@/components/BookingForm';
+import BookingContainer from '@/components/BookingContainer';
+import BookingDetailsForm from '@/components/BookingDetailsForm';
 import CoachSidebar from '@/components/CoachSidebar';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
-import SideSectionHeading from '@/components/SideSectionHeading';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { TwoPaneView } from '@/elements';
+import { SidePaneHeading, TwoPaneView } from '@/elements';
 
 BookingDetails.title = 'Booking details';
 
-export default function BookingDetails() {
+export default function BookingDetails({ bookingId }) {
   return (
     <DashboardLayout sidebar={<CoachSidebar />}>
       <DashboardContent header="Booking details">
-        <TwoPaneView
-          leftPane={<BookingDetailsForm />}
-          rightPane={
-            <>
-              <SideSectionHeading>Total fees</SideSectionHeading>
-              <TotalFeesCard amount="100.00" className="w-full mb-6" />
-              <SideSectionHeading>Client</SideSectionHeading>
-              <UserDetailsCard firstName="Maria" lastName="Sharapova" email="maria.sharapova@gmail.com" moreDetailsUrl="/coach/clients/1" className="w-full mb-6" />
-            </>
-          }
-        />
+        <BookingContainer bookingId={bookingId}>
+          {(data) => (
+            <TwoPaneView
+              leftPane={<BookingDetailsForm booking={data} />}
+              rightPane={
+                <>
+                  <SidePaneHeading>Total fees</SidePaneHeading>
+                  <TotalFeesCard amount={data?.total_fees} className="w-full mb-6" />
+                  <SidePaneHeading>Client</SidePaneHeading>
+                  <UserDetailsCard user={data?.client} showDetailsUrl={`/coach/clients/${data?.client?._id}`} className="w-full mb-6" />
+                </>
+              }
+            />
+          )}
+        </BookingContainer>
       </DashboardContent>
     </DashboardLayout>
   );
 }
 
-function BookingDetailsForm() {
-  return (
-    <BookingForm className="max-w-2xl">
-      <BookingFormStatus defaultValue={1} />
-      <BookingFormDate />
-      <BookingFormTime />
-      <BookingFormLocation />
-      <BookingFormPaymentStatus defaultValue={true} />
-    </BookingForm>
-  );
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+
+  return {
+    props: {
+      bookingId: id,
+    },
+  };
 }

@@ -3,7 +3,7 @@ import { MailIcon } from '@heroicons/react/solid';
 import cx from 'classnames';
 import Link from 'next/link';
 
-export default function UserDetailsCard({ className, moreDetailsUrl, user }) {
+export default function UserDetailsCard({ className, showDetailsUrl, user }) {
   const { email, first_name, image_url, last_name } = user;
 
   return (
@@ -17,11 +17,13 @@ export default function UserDetailsCard({ className, moreDetailsUrl, user }) {
           <MailIcon className="w-5 h-5" />
           <span>{email}</span>
         </div>
-        <Link href={moreDetailsUrl} passHref>
-          <Button component="a" color="primary" variant="solid" size="sm">
-            More details
-          </Button>
-        </Link>
+        {showDetailsUrl && (
+          <Link href={showDetailsUrl} passHref>
+            <Button component="a" color="primary" variant="solid" size="sm">
+              Show details
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );

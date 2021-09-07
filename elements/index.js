@@ -19,6 +19,7 @@ export { default as NavLink } from '@/elements/NavLink';
 export { default as NextLink } from '@/elements/NextLink';
 export { default as SegmentGroup } from '@/elements/SegmentGroup';
 export { default as Select } from '@/elements/Select';
+export { default as SidePaneHeading } from '@/elements/SidePaneHeading';
 export { default as SkeletonButton } from '@/elements/SkeletonButton';
 export { default as SkeletonForm } from '@/elements/SkeletonForm';
 export { default as SkeletonFormGroup } from '@/elements/SkeletonFormGroup';
