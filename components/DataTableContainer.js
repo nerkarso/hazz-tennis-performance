@@ -1,13 +1,9 @@
 import { EmptyStateTitle, EmptyStateView, SkeletonTable } from '@/elements';
-import { useUsers } from '@/hooks';
 
-export default function UsersTableContainer({ query, table: Table, ...props }) {
-  const { data, error, isError, isLoading } = useUsers({
-    sort: { first_name: 1 },
-    ...query,
-  });
+export default function DataTableContainer({ children, cols, hook, query }) {
+  const { data, error, isError, isLoading } = hook(query);
 
-  if (isLoading) return <SkeletonTable cols={5} animate />;
+  if (isLoading) return <SkeletonTable cols={cols} animate />;
 
   if (isError) {
     return (
@@ -26,8 +22,8 @@ export default function UsersTableContainer({ query, table: Table, ...props }) {
   }
 
   if (data?.length > 0) {
-    return <Table rows={data} {...props} />;
+    return children(data);
   }
 
-  return <SkeletonTable cols={5} />;
+  return <SkeletonTable cols={cols} />;
 }

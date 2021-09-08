@@ -1,8 +1,9 @@
 import BookingsTable from '@/components/BookingsTable';
-import BookingsTableContainer from '@/components/BookingsTableContainer';
 import ClientSidebar from '@/components/ClientSidebar';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
+import DataTableContainer from '@/components/DataTableContainer';
+import { useBookings } from '@/hooks';
 
 Bookings.title = 'Bookings';
 
@@ -10,20 +11,22 @@ export default function Bookings() {
   return (
     <DashboardLayout sidebar={<ClientSidebar />}>
       <DashboardContent header="Bookings">
-        <BookingsTableContainer
+        <DataTableContainer
+          cols={7}
+          hook={useBookings}
           query={{
             sort: { created_at: -1 },
           }}>
-          {(rows) => (
+          {(data) => (
             <BookingsTable
               cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'total_fees']}
               gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 8rem"
-              rows={rows}
+              rows={data}
               enableDelete
               enableEdit
             />
           )}
-        </BookingsTableContainer>
+        </DataTableContainer>
       </DashboardContent>
     </DashboardLayout>
   );
