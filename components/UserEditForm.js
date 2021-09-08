@@ -4,7 +4,7 @@ import { usePath, useUserUpdate } from '@/hooks';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function UserEditForm({ user }) {
+export default function UserEditForm({ data }) {
   const router = useRouter();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useUserUpdate();
@@ -12,7 +12,7 @@ export default function UserEditForm({ user }) {
   const handleSubmit = (formData) => {
     mutate(
       {
-        id: user._id,
+        id: data._id,
         ...formData,
       },
       {
@@ -28,7 +28,7 @@ export default function UserEditForm({ user }) {
     );
   };
 
-  const { image_url, first_name, last_name, email, phone, address } = user;
+  const { image_url, first_name, last_name, email, phone, address } = data;
 
   return (
     <UserForm onSubmit={handleSubmit} className="max-w-2xl">

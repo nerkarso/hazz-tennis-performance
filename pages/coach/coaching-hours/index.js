@@ -1,3 +1,4 @@
+import ButtonNewResource from '@/components/ButtonNewResource';
 import CoachingHoursTable from '@/components/CoachingHoursTable';
 import CoachSidebar from '@/components/CoachSidebar';
 import DashboardContent from '@/components/DashboardContent';
@@ -10,9 +11,9 @@ CoachingHours.title = 'Coaching hours';
 export default function CoachingHours() {
   return (
     <DashboardLayout sidebar={<CoachSidebar />}>
-      <DashboardContent header="Coaching hours">
+      <DashboardContent header="Coaching hours" toolbar={<ButtonNewResource>New coaching hours</ButtonNewResource>}>
         <DataTableContainer
-          cols={4}
+          cols={3}
           hook={useCoachingHours}
           query={{
             sort: { created_at: -1 },

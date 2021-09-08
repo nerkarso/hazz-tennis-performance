@@ -1,8 +1,8 @@
 import BookingForm, { BookingFormDate, BookingFormLocationText, BookingFormPaymentStatus, BookingFormPaymentType, BookingFormStatus, BookingFormTime } from '@/components/BookingForm';
 import { format } from 'date-fns';
 
-export default function BookingDetailsForm({ booking }) {
-  const { booking_status, date_time, location, payment_status, payment_type } = booking;
+export default function BookingDetailsForm({ data }) {
+  const { booking_status, date_time, location, payment_status, payment_type } = data;
 
   return (
     <BookingForm className="max-w-2xl">

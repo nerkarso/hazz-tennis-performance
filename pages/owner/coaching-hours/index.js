@@ -17,7 +17,7 @@ export default function CoachingHours() {
           query={{
             sort: { created_at: -1 },
           }}>
-          {(data) => <CoachingHoursTable cols={['date', 'coach_link', 'duration']} gridTemplateColumns="8rem 10rem 1fr" rows={data} />}
+          {(data) => <CoachingHoursTable cols={['date', 'coach_link', 'duration']} gridTemplateColumns="8rem 12rem 1fr" rows={data} enableDelete />}
         </DataTableContainer>
       </DashboardContent>
     </DashboardLayout>

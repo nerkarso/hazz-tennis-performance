@@ -1,10 +1,9 @@
 import { EmptyStateTitle, EmptyStateView, SkeletonForm } from '@/elements';
-import { useBooking } from '@/hooks';
 
-export default function BookingContainer({ bookingId, children }) {
-  const { data, error, isError, isLoading } = useBooking(bookingId);
+export default function DataFormContainer({ children, hook, id, rows }) {
+  const { data, error, isError, isLoading } = hook(id);
 
-  if (isLoading) return <SkeletonForm className="max-w-2xl" rows={6} animate />;
+  if (isLoading) return <SkeletonForm className="max-w-2xl" rows={rows} animate />;
 
   if (isError) {
     return (
@@ -22,9 +21,7 @@ export default function BookingContainer({ bookingId, children }) {
     );
   }
 
-  if (data) {
-    return children(data);
-  }
+  if (data) return children(data);
 
-  return <SkeletonForm className="max-w-2xl" rows={6} />;
+  return <SkeletonForm className="max-w-2xl" rows={rows} />;
 }

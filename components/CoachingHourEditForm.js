@@ -1,13 +1,14 @@
-import CourtForm, { CourtFormAddress, CourtFormCity, CourtFormName } from '@/components/CourtForm';
+import CoachingHourForm, { CoachingHourFormDate, CoachingHourFormDuration } from '@/components/CoachingHourForm';
 import FormActions from '@/components/FormActions';
-import { useCourtUpdate, usePath } from '@/hooks';
+import { useCoachingHourUpdate, usePath } from '@/hooks';
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function CourtEditForm({ data }) {
+export default function CoachingHourEditForm({ data }) {
   const router = useRouter();
   const { basePath, resourcePath } = usePath();
-  const { isLoading, mutate } = useCourtUpdate();
+  const { isLoading, mutate } = useCoachingHourUpdate();
 
   const handleSubmit = (formData) => {
     mutate(
@@ -20,7 +21,7 @@ export default function CourtEditForm({ data }) {
           if (data?.error) {
             toast.error(data.error);
           } else {
-            toast.success('Court updated');
+            toast.success('Coaching hours updated');
             router.push(`/${basePath}/${resourcePath}`);
           }
         },
@@ -28,14 +29,13 @@ export default function CourtEditForm({ data }) {
     );
   };
 
-  const { address, city, name } = data;
+  const { date, duration } = data;
 
   return (
-    <CourtForm onSubmit={handleSubmit} className="max-w-2xl">
-      <CourtFormName defaultValue={name} />
-      <CourtFormAddress defaultValue={address} />
-      <CourtFormCity defaultValue={city} />
+    <CoachingHourForm onSubmit={handleSubmit} className="max-w-2xl">
+      <CoachingHourFormDate defaultValue={format(new Date(date), 'yyyy-MM-dd')} />
+      <CoachingHourFormDuration defaultValue={duration} />
       <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Updating..." submitText="Update" />
-    </CourtForm>
+    </CoachingHourForm>
   );
 }

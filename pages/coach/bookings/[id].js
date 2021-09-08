@@ -1,11 +1,12 @@
-import BookingContainer from '@/components/BookingContainer';
 import BookingDetailsForm from '@/components/BookingDetailsForm';
 import CoachSidebar from '@/components/CoachSidebar';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
+import DataFormContainer from '@/components/DataFormContainer';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
 import { SidePaneHeading, TwoPaneView } from '@/elements';
+import { useBooking } from '@/hooks';
 
 BookingDetails.title = 'Booking details';
 
@@ -13,10 +14,10 @@ export default function BookingDetails({ bookingId }) {
   return (
     <DashboardLayout sidebar={<CoachSidebar />}>
       <DashboardContent header="Booking details">
-        <BookingContainer bookingId={bookingId}>
+        <DataFormContainer hook={useBooking} id={bookingId} rows={6}>
           {(data) => (
             <TwoPaneView
-              leftPane={<BookingDetailsForm booking={data} />}
+              leftPane={<BookingDetailsForm data={data} />}
               rightPane={
                 <>
                   <SidePaneHeading>Total fees</SidePaneHeading>
@@ -27,7 +28,7 @@ export default function BookingDetails({ bookingId }) {
               }
             />
           )}
-        </BookingContainer>
+        </DataFormContainer>
       </DashboardContent>
     </DashboardLayout>
   );

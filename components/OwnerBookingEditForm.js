@@ -14,7 +14,7 @@ import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function OwnerBookingEditForm({ booking }) {
+export default function OwnerBookingEditForm({ data }) {
   const router = useRouter();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useBookingUpdate();
@@ -22,7 +22,7 @@ export default function OwnerBookingEditForm({ booking }) {
   const handleSubmit = (formData) => {
     mutate(
       {
-        id: booking._id,
+        id: data._id,
         ...formData,
       },
       {
@@ -38,7 +38,7 @@ export default function OwnerBookingEditForm({ booking }) {
     );
   };
 
-  const { booking_status, coach, date_time, location, payment_status, payment_type, total_fees } = booking;
+  const { booking_status, coach, date_time, location, payment_status, payment_type, total_fees } = data;
 
   return (
     <BookingForm onSubmit={handleSubmit} className="max-w-2xl">
