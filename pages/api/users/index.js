@@ -33,7 +33,7 @@ async function getAll(req, res) {
  * Create user
  */
 async function create(req, res) {
-  const body = JSON.parse(req?.body ?? '{}');
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
 
   try {
     const user = await User.create(body);

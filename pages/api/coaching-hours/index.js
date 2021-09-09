@@ -1,5 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
+import { User } from '@/models';
 import CoachingHour from '@/models/CoachingHour';
 
 function handler(req, res) {
@@ -22,7 +23,10 @@ async function getAll(req, res) {
   const sort = JSON.parse(query?.sort ?? '{}');
 
   try {
-    const coachingHours = await CoachingHour.find(filter).sort(sort).populate('coach');
+    const coachingHours = await CoachingHour.find(filter).sort(sort).populate({
+      path: 'coach',
+      model: User,
+    });
     res.json(coachingHours);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

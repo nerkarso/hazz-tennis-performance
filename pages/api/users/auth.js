@@ -15,7 +15,8 @@ export default withAllowedMethods(withDatabase(handler), ['POST']);
  * Authenticate user
  */
 async function authenticate(req, res) {
-  const { email, password } = req.body;
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
+  const { email, password } = body;
 
   try {
     const user = await User.findOne({ email: email });

@@ -4,7 +4,6 @@ const schema = new mongoose.Schema(
   {
     date_time: {
       type: Date,
-      required: true,
     },
     duration: {
       type: Number,

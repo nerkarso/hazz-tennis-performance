@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import Booking from '@/models/Booking';
+import { Booking, Court, User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -22,7 +22,19 @@ async function getById(req, res) {
   const { id } = req.query;
 
   try {
-    const booking = await Booking.findById(id).populate('client').populate('coach').populate('location');
+    const booking = await Booking.findById(id)
+      .populate({
+        path: 'client',
+        model: User,
+      })
+      .populate({
+        path: 'coach',
+        model: User,
+      })
+      .populate({
+        path: 'location',
+        model: Court,
+      });
     if (!booking) {
       return res.status(404).json({ error: 'Booking not found' });
     }

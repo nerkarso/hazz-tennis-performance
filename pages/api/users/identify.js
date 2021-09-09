@@ -15,7 +15,8 @@ export default withAllowedMethods(withDatabase(handler), ['POST']);
  * Get user by email
  */
 async function getByEmail(req, res) {
-  const { email } = req.body;
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
+  const { email } = body;
 
   try {
     const user = await User.findOne({ email: email });

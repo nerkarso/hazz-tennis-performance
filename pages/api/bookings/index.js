@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import Booking from '@/models/Booking';
+import { Booking, Court, User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -22,7 +22,20 @@ async function getAll(req, res) {
   const sort = JSON.parse(query?.sort ?? '{}');
 
   try {
-    const bookings = await Booking.find(filter).sort(sort).populate('client').populate('coach').populate('location');
+    const bookings = await Booking.find(filter)
+      .sort(sort)
+      .populate({
+        path: 'client',
+        model: User,
+      })
+      .populate({
+        path: 'coach',
+        model: User,
+      })
+      .populate({
+        path: 'location',
+        model: Court,
+      });
     res.json(bookings);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

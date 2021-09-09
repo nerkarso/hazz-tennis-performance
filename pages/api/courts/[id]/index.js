@@ -37,7 +37,8 @@ async function getById(req, res) {
  */
 async function update(req, res) {
   const { id } = req.query;
-  const { address, city, name } = JSON.parse(req.body);
+  const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
+  const { address, city, name } = body;
 
   try {
     const court = await Court.findById(id);
