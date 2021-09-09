@@ -9,6 +9,15 @@ export function useBookings(query) {
   return useQuery('bookings', () => fetcher('/api/bookings', { query }));
 }
 
+export function useBookingCreate() {
+  return useMutation((data) =>
+    fetcher('/api/bookings', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  );
+}
+
 export function useBookingUpdate() {
   const queryClient = useQueryClient();
 

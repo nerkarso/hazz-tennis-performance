@@ -1,4 +1,5 @@
 import BookingsTable from '@/components/BookingsTable';
+import ButtonNewResource from '@/components/ButtonNewResource';
 import ClientSidebar from '@/components/ClientSidebar';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardLayout from '@/components/DashboardLayout';
@@ -10,7 +11,7 @@ Bookings.title = 'Bookings';
 export default function Bookings() {
   return (
     <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header="Bookings">
+      <DashboardContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
         <DataTableContainer
           cols={7}
           hook={useBookings}

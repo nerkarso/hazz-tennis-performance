@@ -103,10 +103,16 @@ export function BookingFormCoach(props) {
   if (data?.error) return <p>{data?.error}</p>;
 
   if (data) {
-    const items = data.map((item) => ({
-      text: `${item.first_name} ${item.last_name}`,
-      value: item._id,
-    }));
+    const items = [
+      {
+        text: 'Select available coach',
+        value: '',
+      },
+      ...data.map((item) => ({
+        text: `${item.first_name} ${item.last_name}`,
+        value: item._id,
+      })),
+    ];
 
     return (
       <FormGroup htmlFor="coach" label="Coach" error={errors.coach} inline>
@@ -140,10 +146,16 @@ export function BookingFormLocation(props) {
   if (data?.error) return <p>{data?.error}</p>;
 
   if (data) {
-    const items = data.map((item) => ({
-      text: `${item.name}, ${item.city}`,
-      value: item._id,
-    }));
+    const items = [
+      {
+        text: 'Select available court',
+        value: '',
+      },
+      ...data.map((item) => ({
+        text: `${item.name}, ${item.city}`,
+        value: item._id,
+      })),
+    ];
 
     return (
       <FormGroup htmlFor="location" label="Location" error={errors.location} inline>

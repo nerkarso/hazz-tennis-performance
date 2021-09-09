@@ -9,7 +9,7 @@ export default function CourtNew() {
   return (
     <DashboardLayout sidebar={<OwnerSidebar />}>
       <DashboardContent header="New court">
-        <CourtNewForm role="court" />
+        <CourtNewForm />
       </DashboardContent>
     </DashboardLayout>
   );
