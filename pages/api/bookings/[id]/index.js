@@ -57,15 +57,15 @@ async function update(req, res) {
     if (!booking) {
       return res.status(404).json({ error: 'Booking not found' });
     }
-    if (booking_status && booking_status !== '') booking.booking_status = booking_status;
-    if (client && client !== '') booking.client = client;
-    if (coach && coach !== '') booking.coach = coach;
-    if (date_time && date_time !== '') booking.date_time = date_time;
-    if (duration && duration !== '') booking.duration = duration;
-    if (location && location !== '') booking.location = location;
-    if (payment_status && payment_status !== '') booking.payment_status = payment_status;
-    if (total_fees && total_fees !== '') booking.total_fees = total_fees;
-    if (total_hours && total_hours !== '') booking.total_hours = total_hours;
+    if (booking_status !== undefined && booking_status !== '') booking.booking_status = booking_status;
+    if (client !== undefined && client !== '') booking.client = client;
+    if (coach !== undefined && coach !== '') booking.coach = coach;
+    if (date_time !== undefined && date_time !== '') booking.date_time = date_time;
+    if (duration !== undefined && duration !== '') booking.duration = duration;
+    if (location !== undefined && location !== '') booking.location = location;
+    if (payment_status !== undefined && payment_status !== '') booking.payment_status = payment_status;
+    if (total_fees !== undefined && total_fees !== '') booking.total_fees = total_fees;
+    if (total_hours !== undefined && total_hours !== '') booking.total_hours = total_hours;
     await booking.save();
     res.json(booking);
   } catch (ex) {

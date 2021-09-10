@@ -45,9 +45,9 @@ async function update(req, res) {
     if (!coachingHour) {
       return res.status(404).json({ error: 'Coaching hour not found' });
     }
-    if (coach && coach !== '') coachingHour.coach = coach;
-    if (date && date !== '') coachingHour.date = date;
-    if (duration && duration !== '') coachingHour.duration = duration;
+    if (coach !== undefined && coach !== '') coachingHour.coach = coach;
+    if (date !== undefined && date !== '') coachingHour.date = date;
+    if (duration !== undefined && duration !== '') coachingHour.duration = duration;
     await coachingHour.save();
     res.json(coachingHour);
   } catch (ex) {

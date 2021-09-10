@@ -45,9 +45,9 @@ async function update(req, res) {
     if (!court) {
       return res.status(404).json({ error: 'Court not found' });
     }
-    if (address && address !== '') court.address = address;
-    if (city && city !== '') court.city = city;
-    if (name && name !== '') court.name = name;
+    if (address !== undefined && address !== '') court.address = address;
+    if (city !== undefined && city !== '') court.city = city;
+    if (name !== undefined && name !== '') court.name = name;
     await court.save();
     res.json(court);
   } catch (ex) {

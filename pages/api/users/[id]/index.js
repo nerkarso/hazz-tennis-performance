@@ -45,14 +45,14 @@ async function update(req, res) {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    if (address && address !== '') user.address = address;
-    if (email && email !== '') user.email = email;
-    if (first_name && first_name !== '') user.first_name = first_name;
-    if (image_url && image_url !== '') user.image_url = image_url;
-    if (last_name && last_name !== '') user.last_name = last_name;
-    if (password && password !== '') user.password = password;
-    if (phone && phone !== '') user.phone = phone;
-    if (role && role !== '') user.role = role;
+    if (address !== undefined && address !== '') user.address = address;
+    if (email !== undefined && email !== '') user.email = email;
+    if (first_name !== undefined && first_name !== '') user.first_name = first_name;
+    if (image_url !== undefined && image_url !== '') user.image_url = image_url;
+    if (last_name !== undefined && last_name !== '') user.last_name = last_name;
+    if (password !== undefined && password !== '') user.password = password;
+    if (phone !== undefined && phone !== '') user.phone = phone;
+    if (role !== undefined && role !== '') user.role = role;
     await user.save();
     res.json(user);
   } catch (ex) {
