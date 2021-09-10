@@ -2,10 +2,11 @@ import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-initials-sprites';
 import cx from 'classnames';
 
-export default function Avatar({ className, initials, size, src }) {
+export default function Avatar({ className, initials, size, src, ...props }) {
   const svg = createAvatar(style, {
     seed: initials || '',
     dataUri: true,
+    ...props,
   });
 
   return (

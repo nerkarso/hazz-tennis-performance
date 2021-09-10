@@ -11,7 +11,7 @@ Dashboard.title = 'Dashboard';
 export default function Dashboard() {
   return (
     <AdminLayout sidebar={<OwnerSidebar />}>
-      <AdminContent header={<DashboardGreeting imageUrl="https://www.aceshowbiz.com/images/photo/novak_djokovic.jpg" firstName="Novak" lastName="Djokovic" role="Owner" />}>
+      <AdminContent header={<DashboardGreeting />}>
         <h1 className="mb-4 text-2xl font-bold">Pending bookings</h1>
         <DataTableContainer
           cols={7}

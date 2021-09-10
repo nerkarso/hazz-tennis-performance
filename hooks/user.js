@@ -70,3 +70,7 @@ export function useUserIdentify() {
     }),
   );
 }
+
+export function useUserAccount(id) {
+  return useQuery('account', () => fetcher(`/api/users/${id}`));
+}

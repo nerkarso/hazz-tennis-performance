@@ -11,7 +11,7 @@ Dashboard.title = 'Dashboard';
 export default function Dashboard() {
   return (
     <AdminLayout sidebar={<CoachSidebar />}>
-      <AdminContent header={<DashboardGreeting firstName="Roger" lastName="Federer" role="Coach" />}>
+      <AdminContent header={<DashboardGreeting />}>
         <h1 className="mb-4 text-2xl font-bold">Schedule</h1>
         <DataTableContainer
           cols={7}

@@ -1,12 +1,19 @@
 import { Avatar, Button, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
-import { useAuth, usePath } from '@/hooks';
+import { useAuth, usePath, useUserAccount } from '@/hooks';
 import { LogoutIcon } from '@heroicons/react/outline';
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function AdminSidebar({ links }) {
   const { basePath } = usePath();
   const { signOut } = useAuth();
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    signOut();
+    router.replace('/account/signin');
+  };
 
   return (
     <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
@@ -26,7 +33,7 @@ export default function AdminSidebar({ links }) {
           </Link>
           <Link href={`/${basePath}/account`}>
             <a className="overflow-hidden transition duration-150 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900">
-              <Avatar initials={basePath[0]} size="md" />
+              <SidebarAvatar />
             </a>
           </Link>
         </div>
@@ -44,7 +51,10 @@ export default function AdminSidebar({ links }) {
         ))}
       </List>
       <List className="pt-1 pb-4 mx-3">
-        <ListItem className="w-full !px-3 py-2 rounded-md gap-4 hover:bg-neutral-100 focus:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-700" component={Button} onClick={signOut}>
+        <ListItem
+          className="w-full !px-3 py-2 rounded-md gap-4 hover:bg-neutral-100 focus:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-700"
+          component={Button}
+          onClick={handleSignOut}>
           <ListItemStart>
             <LogoutIcon className="w-6 h-6 opacity-60" />
           </ListItemStart>
@@ -55,4 +65,19 @@ export default function AdminSidebar({ links }) {
       </List>
     </aside>
   );
+}
+
+function SidebarAvatar() {
+  const { accountId } = useAuth();
+  const { data, isError, isLoading } = useUserAccount(accountId);
+
+  if (isLoading) return <Avatar backgroundColor="#6B7280" size="md" />;
+
+  if (isError) return <Avatar backgroundColor="#EF4444" size="md" />;
+
+  if (data?.error) return <Avatar backgroundColor="#EF4444" size="md" />;
+
+  if (data) return <Avatar src={data?.image_url} initials={data?.first_name[0]} size="md" />;
+
+  return <Avatar backgroundColor="#6B7280" size="md" />;
 }
