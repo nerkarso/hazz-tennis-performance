@@ -3,11 +3,13 @@ import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import CoachSidebar from '@/components/CoachSidebar';
 import DataTableContainer from '@/components/DataTableContainer';
-import { useBookings } from '@/hooks';
+import { useAuth, useBookings } from '@/hooks';
 
 Bookings.title = 'Bookings';
 
 export default function Bookings() {
+  const { accountId } = useAuth();
+
   return (
     <AdminLayout sidebar={<CoachSidebar />}>
       <AdminContent header="Bookings">
@@ -15,6 +17,7 @@ export default function Bookings() {
           cols={7}
           hook={useBookings}
           query={{
+            filter: { coach: accountId },
             sort: { created_at: -1 },
           }}>
           {(data) => (

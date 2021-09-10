@@ -4,11 +4,13 @@ import BookingsTable from '@/components/BookingsTable';
 import ButtonNewResource from '@/components/ButtonNewResource';
 import ClientSidebar from '@/components/ClientSidebar';
 import DataTableContainer from '@/components/DataTableContainer';
-import { useBookings } from '@/hooks';
+import { useAuth, useBookings } from '@/hooks';
 
 Bookings.title = 'Bookings';
 
 export default function Bookings() {
+  const { accountId } = useAuth();
+
   return (
     <AdminLayout sidebar={<ClientSidebar />}>
       <AdminContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
@@ -16,6 +18,7 @@ export default function Bookings() {
           cols={7}
           hook={useBookings}
           query={{
+            filter: { client: accountId },
             sort: { created_at: -1 },
           }}>
           {(data) => (

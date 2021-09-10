@@ -1,18 +1,19 @@
 import CoachingHourForm, { CoachingHourFormDate, CoachingHourFormDuration } from '@/components/CoachingHourForm';
 import FormActions from '@/components/FormActions';
-import { useCoachingHourCreate, usePath } from '@/hooks';
+import { useAuth, useCoachingHourCreate, usePath } from '@/hooks';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
 export default function CoachingHourNewForm() {
   const router = useRouter();
+  const { accountId } = useAuth();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useCoachingHourCreate();
 
   const handleSubmit = (formData) => {
     mutate(
       {
-        coach: '6133d7325c988c5bd2ceff10',
+        coach: accountId,
         ...formData,
       },
       {
