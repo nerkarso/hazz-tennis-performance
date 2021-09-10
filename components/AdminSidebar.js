@@ -4,7 +4,7 @@ import { LogoutIcon } from '@heroicons/react/outline';
 import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 
-export default function DashboardSidebar({ links }) {
+export default function AdminSidebar({ links }) {
   const { basePath } = usePath();
   const { signOut } = useAuth();
 

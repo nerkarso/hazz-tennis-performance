@@ -1,9 +1,9 @@
-import DashboardSidebar from '@/components/DashboardSidebar';
+import AdminSidebar from '@/components/AdminSidebar';
 import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon } from '@heroicons/react/outline';
 
 export default function ClientSidebar() {
   return (
-    <DashboardSidebar
+    <AdminSidebar
       links={[
         {
           href: '/client/dashboard',

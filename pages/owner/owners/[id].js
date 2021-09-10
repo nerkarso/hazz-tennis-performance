@@ -1,5 +1,5 @@
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import DataFormContainer from '@/components/DataFormContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import UserEditForm from '@/components/UserEditForm';
@@ -9,13 +9,13 @@ OwnerEdit.title = 'Edit owner';
 
 export default function OwnerEdit({ userId }) {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header="Edit owner">
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header="Edit owner">
         <DataFormContainer hook={useUser} id={userId} rows={6}>
           {(data) => <UserEditForm data={data} />}
         </DataFormContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }
 

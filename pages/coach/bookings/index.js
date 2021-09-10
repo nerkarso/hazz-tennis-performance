@@ -1,7 +1,7 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import CoachSidebar from '@/components/CoachSidebar';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 import DataTableContainer from '@/components/DataTableContainer';
 import { useBookings } from '@/hooks';
 
@@ -9,8 +9,8 @@ Bookings.title = 'Bookings';
 
 export default function Bookings() {
   return (
-    <DashboardLayout sidebar={<CoachSidebar />}>
-      <DashboardContent header="Bookings">
+    <AdminLayout sidebar={<CoachSidebar />}>
+      <AdminContent header="Bookings">
         <DataTableContainer
           cols={7}
           hook={useBookings}
@@ -26,7 +26,7 @@ export default function Bookings() {
             />
           )}
         </DataTableContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

@@ -1,18 +1,18 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import ClientSidebar from '@/components/ClientSidebar';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 import { EmptyStateTitle, EmptyStateView } from '@/elements';
 
 Coaches.title = 'Coaches';
 
 export default function Coaches() {
   return (
-    <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header="Coaches">
+    <AdminLayout sidebar={<ClientSidebar />}>
+      <AdminContent header="Coaches">
         <EmptyStateView>
           <EmptyStateTitle>Nothing here</EmptyStateTitle>
         </EmptyStateView>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

@@ -1,7 +1,7 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
-import DashboardContent from '@/components/DashboardContent';
 import DashboardGreeting from '@/components/DashboardGreeting';
-import DashboardLayout from '@/components/DashboardLayout';
 import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import { useBookings } from '@/hooks';
@@ -10,8 +10,8 @@ Dashboard.title = 'Dashboard';
 
 export default function Dashboard() {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header={<DashboardGreeting imageUrl="https://www.aceshowbiz.com/images/photo/novak_djokovic.jpg" firstName="Novak" lastName="Djokovic" role="Owner" />}>
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header={<DashboardGreeting imageUrl="https://www.aceshowbiz.com/images/photo/novak_djokovic.jpg" firstName="Novak" lastName="Djokovic" role="Owner" />}>
         <h1 className="mb-4 text-2xl font-bold">Pending bookings</h1>
         <DataTableContainer
           cols={7}
@@ -29,7 +29,7 @@ export default function Dashboard() {
             />
           )}
         </DataTableContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

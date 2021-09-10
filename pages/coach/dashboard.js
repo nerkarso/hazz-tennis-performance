@@ -1,8 +1,8 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import CoachSidebar from '@/components/CoachSidebar';
-import DashboardContent from '@/components/DashboardContent';
 import DashboardGreeting from '@/components/DashboardGreeting';
-import DashboardLayout from '@/components/DashboardLayout';
 import DataTableContainer from '@/components/DataTableContainer';
 import { useBookings } from '@/hooks';
 
@@ -10,8 +10,8 @@ Dashboard.title = 'Dashboard';
 
 export default function Dashboard() {
   return (
-    <DashboardLayout sidebar={<CoachSidebar />}>
-      <DashboardContent header={<DashboardGreeting firstName="Roger" lastName="Federer" role="Coach" />}>
+    <AdminLayout sidebar={<CoachSidebar />}>
+      <AdminContent header={<DashboardGreeting firstName="Roger" lastName="Federer" role="Coach" />}>
         <h1 className="mb-4 text-2xl font-bold">Schedule</h1>
         <DataTableContainer
           cols={7}
@@ -29,7 +29,7 @@ export default function Dashboard() {
             />
           )}
         </DataTableContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

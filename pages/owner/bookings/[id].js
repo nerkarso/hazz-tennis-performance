@@ -1,5 +1,5 @@
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import DataFormContainer from '@/components/DataFormContainer';
 import OwnerBookingEditForm from '@/components/OwnerBookingEditForm';
 import OwnerSidebar from '@/components/OwnerSidebar';
@@ -12,8 +12,8 @@ BookingEdit.title = 'Edit booking';
 
 export default function BookingEdit({ bookingId }) {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header="Edit booking">
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header="Edit booking">
         <DataFormContainer hook={useBooking} id={bookingId} rows={6}>
           {(data) => (
             <TwoPaneView
@@ -43,8 +43,8 @@ export default function BookingEdit({ bookingId }) {
             />
           )}
         </DataFormContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }
 

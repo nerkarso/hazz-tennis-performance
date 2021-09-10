@@ -1,5 +1,5 @@
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import { EmptyStateTitle, EmptyStateView } from '@/elements';
 
@@ -7,12 +7,12 @@ Notifications.title = 'Notifications';
 
 export default function Notifications() {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header="Notifications">
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header="Notifications">
         <EmptyStateView>
           <EmptyStateTitle>Nothing here</EmptyStateTitle>
         </EmptyStateView>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

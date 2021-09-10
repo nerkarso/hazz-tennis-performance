@@ -1,16 +1,16 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import ClientBookingNewForm from '@/components/ClientBookingNewForm';
 import ClientSidebar from '@/components/ClientSidebar';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 
 BookingNew.title = 'New booking';
 
 export default function BookingNew() {
   return (
-    <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header="New booking">
+    <AdminLayout sidebar={<ClientSidebar />}>
+      <AdminContent header="New booking">
         <ClientBookingNewForm />
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

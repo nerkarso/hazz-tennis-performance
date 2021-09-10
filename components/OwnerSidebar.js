@@ -1,9 +1,9 @@
-import DashboardSidebar from '@/components/DashboardSidebar';
+import AdminSidebar from '@/components/AdminSidebar';
 import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, ClockIcon, HomeIcon, MapIcon, UsersIcon } from '@heroicons/react/outline';
 
 export default function OwnerSidebar() {
   return (
-    <DashboardSidebar
+    <AdminSidebar
       links={[
         {
           href: '/owner/dashboard',

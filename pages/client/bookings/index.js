@@ -1,8 +1,8 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import ButtonNewResource from '@/components/ButtonNewResource';
 import ClientSidebar from '@/components/ClientSidebar';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 import DataTableContainer from '@/components/DataTableContainer';
 import { useBookings } from '@/hooks';
 
@@ -10,8 +10,8 @@ Bookings.title = 'Bookings';
 
 export default function Bookings() {
   return (
-    <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
+    <AdminLayout sidebar={<ClientSidebar />}>
+      <AdminContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
         <DataTableContainer
           cols={7}
           hook={useBookings}
@@ -28,7 +28,7 @@ export default function Bookings() {
             />
           )}
         </DataTableContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

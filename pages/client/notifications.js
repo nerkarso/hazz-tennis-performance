@@ -1,18 +1,18 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import ClientSidebar from '@/components/ClientSidebar';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 import { EmptyStateTitle, EmptyStateView } from '@/elements';
 
 Notifications.title = 'Notifications';
 
 export default function Notifications() {
   return (
-    <DashboardLayout sidebar={<ClientSidebar />}>
-      <DashboardContent header="Notifications">
+    <AdminLayout sidebar={<ClientSidebar />}>
+      <AdminContent header="Notifications">
         <EmptyStateView>
           <EmptyStateTitle>Nothing here</EmptyStateTitle>
         </EmptyStateView>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

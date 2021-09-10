@@ -1,6 +1,6 @@
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import ButtonNewResource from '@/components/ButtonNewResource';
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
 import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import UsersTable from '@/components/UsersTable';
@@ -10,8 +10,8 @@ Clients.title = 'Clients';
 
 export default function Clients() {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header="Clients" toolbar={<ButtonNewResource>New client</ButtonNewResource>}>
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header="Clients" toolbar={<ButtonNewResource>New client</ButtonNewResource>}>
         <DataTableContainer
           cols={5}
           hook={useUsers}
@@ -21,7 +21,7 @@ export default function Clients() {
           }}>
           {(data) => <UsersTable rows={data} enableDelete enableEdit />}
         </DataTableContainer>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

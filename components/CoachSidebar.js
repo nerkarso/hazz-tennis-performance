@@ -1,9 +1,9 @@
-import DashboardSidebar from '@/components/DashboardSidebar';
+import AdminSidebar from '@/components/AdminSidebar';
 import { CalendarIcon, ChatAlt2Icon, ClockIcon, HomeIcon } from '@heroicons/react/outline';
 
 export default function CoachSidebar() {
   return (
-    <DashboardSidebar
+    <AdminSidebar
       links={[
         {
           href: '/coach/dashboard',

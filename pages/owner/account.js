@@ -1,5 +1,5 @@
-import DashboardContent from '@/components/DashboardContent';
-import DashboardLayout from '@/components/DashboardLayout';
+import AdminContent from '@/components/AdminContent';
+import AdminLayout from '@/components/AdminLayout';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import { EmptyStateTitle, EmptyStateView } from '@/elements';
 
@@ -7,12 +7,12 @@ MyAccount.title = 'My account';
 
 export default function MyAccount() {
   return (
-    <DashboardLayout sidebar={<OwnerSidebar />}>
-      <DashboardContent header="My account">
+    <AdminLayout sidebar={<OwnerSidebar />}>
+      <AdminContent header="My account">
         <EmptyStateView>
           <EmptyStateTitle>Nothing here</EmptyStateTitle>
         </EmptyStateView>
-      </DashboardContent>
-    </DashboardLayout>
+      </AdminContent>
+    </AdminLayout>
   );
 }

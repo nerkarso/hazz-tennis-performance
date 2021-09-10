@@ -1,6 +1,6 @@
 import ProtectedRoute from '@/components/ProtectedRoute';
 
-export default function DashboardLayout({ sidebar, children }) {
+export default function AdminLayout({ sidebar, children }) {
   return (
     <ProtectedRoute>
       <div className="flex h-screen">
