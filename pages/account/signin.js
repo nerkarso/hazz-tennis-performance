@@ -3,6 +3,7 @@ import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
 import { useUserAuth } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -31,6 +32,15 @@ export default function SignIn() {
       },
     );
   };
+
+  useEffect(() => {
+    if (router?.query?.error === 'unauthorized') {
+      toast.error('You are not authorized, please sign in');
+    }
+    if (router?.query?.error === 'forbidden') {
+      toast.error('You are forbidden to access resource');
+    }
+  }, [router]);
 
   return (
     <AccountLayout title="Welcome back">
