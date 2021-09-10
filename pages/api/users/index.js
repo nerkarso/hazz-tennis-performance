@@ -1,3 +1,4 @@
+import { createCookie } from '@/lib';
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
 import User from '@/models/User';
@@ -37,6 +38,7 @@ async function create(req, res) {
 
   try {
     const user = await User.create(body);
+    res.setHeader('Set-Cookie', [createCookie('account_id', user._id.toString()), createCookie('account_role', user.role)]);
     res.json(user);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

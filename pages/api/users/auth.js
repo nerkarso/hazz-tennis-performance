@@ -1,3 +1,4 @@
+import { createCookie } from '@/lib';
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
 import User from '@/models/User';
@@ -30,6 +31,7 @@ async function authenticate(req, res) {
     if (!isMatch) {
       return res.status(401).json({ error: 'Wrong password' });
     }
+    res.setHeader('Set-Cookie', [createCookie('account_id', user._id.toString()), createCookie('account_role', user.role)]);
     res.json(user);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
