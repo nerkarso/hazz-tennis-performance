@@ -3,7 +3,7 @@ import { usePath } from '@/hooks';
 import cx from 'classnames';
 import Link from 'next/link';
 
-export default function FormActions({ className, isLoading, loadingText, submitText }) {
+export default function FormActions({ className, isLoading, loadingText, onCancel, submitText }) {
   const { basePath, resourcePath } = usePath();
 
   return (
@@ -15,11 +15,17 @@ export default function FormActions({ className, isLoading, loadingText, submitT
           {submitText}
         </Button>
       )}
-      <Link href={`/${basePath}/${resourcePath}`} passHref>
-        <Button component="a" color="neutral" variant="solid">
+      {onCancel ? (
+        <Button onClick={onCancel} color="neutral" variant="solid">
           Cancel
         </Button>
-      </Link>
+      ) : (
+        <Link href={`/${basePath}/${resourcePath}`} passHref>
+          <Button component="a" color="neutral" variant="solid">
+            Cancel
+          </Button>
+        </Link>
+      )}
     </div>
   );
 }

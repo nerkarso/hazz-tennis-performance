@@ -86,7 +86,7 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
           {enableDelete || enableEdit || enableShow ? (
             <TableActions>
               {enableShow && (
-                <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}`}>
+                <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}/details`}>
                   Show
                 </TableActionButton>
               )}

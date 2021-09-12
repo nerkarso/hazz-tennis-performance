@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { feedbackReplySchema } = require('./FeedbackReply');
 
 const schema = new mongoose.Schema(
   {
@@ -7,13 +6,31 @@ const schema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Booking',
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
     rating: {
       type: Number,
     },
     message: {
       type: String,
     },
-    replies: [feedbackReplySchema],
+    replies: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+        },
+        message: {
+          type: String,
+        },
+        created_at: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
     created_at: {
       type: Date,
       default: Date.now,

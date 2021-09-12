@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import Feedback from '@/models/Feedback';
+import { Feedback } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -16,6 +16,7 @@ export default withAllowedMethods(withDatabase(handler), ['DELETE']);
  */
 async function remove(req, res) {
   const { id, replyId } = req.query;
+
   try {
     const feedback = await Feedback.findById(id);
     if (!feedback) {
