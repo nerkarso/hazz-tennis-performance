@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import User from '@/models/User';
+import { User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -38,7 +38,7 @@ async function getById(req, res) {
 async function update(req, res) {
   const { id } = req.query;
   const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
-  const { address, email, first_name, image_url, last_name, password, phone, role } = body;
+  const { address, closed, email, first_name, image_url, last_name, password, phone, role } = body;
 
   try {
     const user = await User.findById(id);
@@ -46,6 +46,7 @@ async function update(req, res) {
       return res.status(404).json({ error: 'User not found' });
     }
     if (address !== undefined && address !== '') user.address = address;
+    if (closed !== undefined && closed !== '') user.closed = closed;
     if (email !== undefined && email !== '') user.email = email;
     if (first_name !== undefined && first_name !== '') user.first_name = first_name;
     if (image_url !== undefined && image_url !== '') user.image_url = image_url;

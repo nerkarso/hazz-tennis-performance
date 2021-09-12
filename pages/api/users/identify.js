@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import User from '@/models/User';
+import { User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -20,7 +20,7 @@ async function getByEmail(req, res) {
 
   try {
     const user = await User.findOne({ email: email });
-    if (!user) {
+    if (!user || user?.closed) {
       return res.status(404).json({ error: 'This account does not exist' });
     }
     res.json(user);

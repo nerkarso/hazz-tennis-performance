@@ -4,7 +4,7 @@ import { usePath, useUserUpdate } from '@/hooks';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function UserEditForm({ data }) {
+export default function UserEditForm({ data, onUpdate }) {
   const router = useRouter();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useUserUpdate();
@@ -20,8 +20,12 @@ export default function UserEditForm({ data }) {
           if (data?.error) {
             toast.error(data.error);
           } else {
-            toast.success('User updated');
-            router.push(`/${basePath}/${resourcePath}`);
+            if (onUpdate) {
+              onUpdate();
+            } else {
+              toast.success('User updated');
+              router.push(`/${basePath}/${resourcePath}`);
+            }
           }
         },
       },

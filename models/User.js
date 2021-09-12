@@ -28,6 +28,10 @@ const schema = new mongoose.Schema(
     phone: {
       type: String,
     },
+    closed: {
+      type: Boolean,
+      default: false,
+    },
     created_at: {
       type: Date,
       default: Date.now,

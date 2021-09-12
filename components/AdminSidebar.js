@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function AdminSidebar({ links }) {
+  const router = useRouter();
   const { basePath } = usePath();
   const { signOut } = useAuth();
-  const router = useRouter();
 
   const handleSignOut = () => {
     signOut();

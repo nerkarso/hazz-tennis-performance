@@ -1,7 +1,7 @@
 import { createCookie } from '@/lib';
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import User from '@/models/User';
+import { User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
