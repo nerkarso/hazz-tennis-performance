@@ -1,15 +1,15 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import CoachSidebar from '@/components/CoachSidebar';
-import UserDetailsView from '@/components/UserDetailsView';
+import CourtDetailsView from '@/components/CourtDetailsView';
 
-ClientDetails.title = 'Client details';
+CourtDetails.title = 'Court details';
 
-export default function ClientDetails({ userId }) {
+export default function CourtDetails({ courtId }) {
   return (
     <AdminLayout sidebar={<CoachSidebar />}>
-      <AdminContent header="Client details">
-        <UserDetailsView userId={userId} />
+      <AdminContent header="Court details">
+        <CourtDetailsView courtId={courtId} />
       </AdminContent>
     </AdminLayout>
   );
@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      userId: id,
+      courtId: id,
     },
   };
 }

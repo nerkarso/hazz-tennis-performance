@@ -3,13 +3,13 @@ import AdminLayout from '@/components/AdminLayout';
 import CoachSidebar from '@/components/CoachSidebar';
 import { SkeletonTable } from '@/elements';
 
-Clients.title = 'Clients';
+Courts.title = 'Courts';
 
-export default function Clients() {
+export default function Courts() {
   return (
     <AdminLayout sidebar={<CoachSidebar />}>
-      <AdminContent header="Clients">
-        <SkeletonTable cols={5} />
+      <AdminContent header="Courts">
+        <SkeletonTable cols={4} />
       </AdminContent>
     </AdminLayout>
   );

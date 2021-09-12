@@ -1,9 +1,7 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
-import DataFormContainer from '@/components/DataFormContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
-import UserEditForm from '@/components/UserEditForm';
-import { useUser } from '@/hooks';
+import UserEditView from '@/components/UserEditView';
 
 CoachEdit.title = 'Edit coach';
 
@@ -11,9 +9,7 @@ export default function CoachEdit({ userId }) {
   return (
     <AdminLayout sidebar={<OwnerSidebar />}>
       <AdminContent header="Edit coach">
-        <DataFormContainer hook={useUser} id={userId} rows={6}>
-          {(data) => <UserEditForm data={data} />}
-        </DataFormContainer>
+        <UserEditView userId={userId} />
       </AdminContent>
     </AdminLayout>
   );
