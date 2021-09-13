@@ -27,6 +27,7 @@ export { default as SkeletonButton } from '@/elements/SkeletonButton';
 export { default as SkeletonFeedbackMessages } from '@/elements/SkeletonFeedbackMessages';
 export { default as SkeletonForm } from '@/elements/SkeletonForm';
 export { default as SkeletonFormGroup } from '@/elements/SkeletonFormGroup';
+export { default as SkeletonList } from '@/elements/SkeletonList';
 export { default as SkeletonTable } from '@/elements/SkeletonTable';
 export { default as SkeletonTableCell } from '@/elements/SkeletonTableCell';
 export { default as StarRating } from '@/elements/StarRating';

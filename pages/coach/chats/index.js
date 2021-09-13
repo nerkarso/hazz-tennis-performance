@@ -1,22 +1,15 @@
 import AdminLayout from '@/components/AdminLayout';
-import ChatsMasterView from '@/components/ChatsMasterView';
+import ChatEmptyStateView from '@/components/ChatEmptyStateView';
+import ChatMasterView from '@/components/CoachChatMasterView';
 import CoachSidebar from '@/components/CoachSidebar';
-import { EmptyStateTitle, EmptyStateView, MasterDetailsView } from '@/elements';
+import { MasterDetailsView } from '@/elements';
 
 Chats.title = 'Chats';
 
 export default function Chats() {
   return (
     <AdminLayout sidebar={<CoachSidebar />}>
-      <MasterDetailsView masterView={<ChatsMasterView />} detailsView={<ChatsEmptyStateView />} />
+      <MasterDetailsView masterView={<ChatMasterView />} detailsView={<ChatEmptyStateView />} />
     </AdminLayout>
-  );
-}
-
-function ChatsEmptyStateView() {
-  return (
-    <EmptyStateView fullScreen>
-      <EmptyStateTitle>Select a chat</EmptyStateTitle>
-    </EmptyStateView>
   );
 }
