@@ -17,6 +17,8 @@ export { default as ListItemEnd } from '@/elements/ListItemEnd';
 export { default as ListItemStart } from '@/elements/ListItemStart';
 export { default as MasterDetailsView } from '@/elements/MasterDetailsView';
 export { default as MasterView } from '@/elements/MasterView';
+export { default as Modal } from '@/elements/Modal';
+export { default as ModalHeader } from '@/elements/ModalHeader';
 export { default as NavLink } from '@/elements/NavLink';
 export { default as NextLink } from '@/elements/NextLink';
 export { default as SegmentGroup } from '@/elements/SegmentGroup';
