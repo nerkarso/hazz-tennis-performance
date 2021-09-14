@@ -1,6 +1,6 @@
 import AccountLayout from '@/components/AccountLayout';
 import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
-import { useUserIdentify, useUserUpdate } from '@/hooks';
+import { useActivityCreate, useUserIdentify, useUserUpdate } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -14,6 +14,7 @@ export default function ResetPassword() {
   const [isIdentified, setIsIdentified] = useState(false);
   const userIdentify = useUserIdentify();
   const userUpdate = useUserUpdate();
+  const activity = useActivityCreate();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
@@ -21,7 +22,7 @@ export default function ResetPassword() {
     if (isIdentified) {
       userUpdate.mutate(
         {
-          _id: userIdentify.data?._id,
+          id: userIdentify.data?._id,
           password: password,
         },
         {
@@ -30,6 +31,13 @@ export default function ResetPassword() {
               toast.error(data.error);
             } else {
               router.replace('/account/signin');
+              // Log activity
+              activity.mutate({
+                category: 'ACCOUNT',
+                action: 'RESET_PASSWORD',
+                status: 0,
+                user: userIdentify.data?._id,
+              });
             }
           },
         },

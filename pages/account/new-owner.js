@@ -1,6 +1,6 @@
 import AccountLayout from '@/components/AccountLayout';
 import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
-import { useUserCreate } from '@/hooks';
+import { useActivityCreate, useUserCreate } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -10,6 +10,7 @@ CreateOwnerAccount.title = 'Create owner account';
 
 export default function CreateOwnerAccount() {
   const router = useRouter();
+  const activity = useActivityCreate();
   const { isLoading, mutate } = useUserCreate();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
@@ -29,6 +30,13 @@ export default function CreateOwnerAccount() {
             toast.error(data.error);
           } else {
             router.replace('/owner/dashboard');
+            // Log activity
+            activity.mutate({
+              category: 'ACCOUNT',
+              action: 'SIGN_UP',
+              status: 0,
+              user_alt: email,
+            });
           }
         },
       },

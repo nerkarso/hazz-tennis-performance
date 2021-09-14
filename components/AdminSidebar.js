@@ -1,17 +1,25 @@
 import { Avatar, Button, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
-import { useAuth, usePath, useUserAccount } from '@/hooks';
+import { useActivityCreate, useAuth, usePath, useUserAccount } from '@/hooks';
 import { BellIcon, LogoutIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function AdminSidebar({ links }) {
   const router = useRouter();
+  const activity = useActivityCreate();
   const { basePath } = usePath();
-  const { signOut } = useAuth();
+  const { accountId, signOut } = useAuth();
 
   const handleSignOut = () => {
     signOut();
     router.replace('/account/signin');
+    // Log activity
+    activity.mutate({
+      category: 'ACCOUNT',
+      action: 'SIGN_OUT',
+      status: 0,
+      user: accountId,
+    });
   };
 
   return (

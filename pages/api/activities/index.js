@@ -1,6 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import { Activity } from '@/models';
+import { Activity, User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {
@@ -24,7 +24,10 @@ async function getAll(req, res) {
   const sort = JSON.parse(query?.sort ?? '{}');
 
   try {
-    const activities = await Activity.find(filter).sort(sort);
+    const activities = await Activity.find(filter).sort(sort).populate({
+      path: 'user',
+      model: User,
+    });
     res.json(activities);
   } catch (ex) {
     res.status(500).json({ error: ex.message });

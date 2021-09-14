@@ -13,6 +13,10 @@ const schema = new mongoose.Schema(
       default: 0,
     },
     user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    user_alt: {
       type: String,
     },
     created_at: {

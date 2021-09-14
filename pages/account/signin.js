@@ -1,6 +1,6 @@
 import AccountLayout from '@/components/AccountLayout';
 import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
-import { useUserAuth } from '@/hooks';
+import { useActivityCreate, useUserAuth } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -11,6 +11,7 @@ SignIn.title = 'Sign in';
 
 export default function SignIn() {
   const router = useRouter();
+  const activity = useActivityCreate();
   const { isLoading, mutate } = useUserAuth();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
@@ -25,8 +26,32 @@ export default function SignIn() {
         onSuccess: (data) => {
           if (data?.error) {
             toast.error(data.error);
+            // Log activity
+            if (data.status === 401) {
+              activity.mutate({
+                category: 'ACCOUNT',
+                action: 'SIGN_IN',
+                status: -1,
+                user_alt: email,
+              });
+            }
+            if (data.status === 404) {
+              activity.mutate({
+                category: 'ACCOUNT',
+                action: 'ACCOUNT_NOT_FOUND',
+                status: -1,
+                user_alt: email,
+              });
+            }
           } else {
             router.replace(`/${data?.role}/dashboard`);
+            // Log activity
+            activity.mutate({
+              category: 'ACCOUNT',
+              action: 'SIGN_IN',
+              status: 1,
+              user_alt: email,
+            });
           }
         },
       },

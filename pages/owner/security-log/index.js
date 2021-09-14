@@ -14,6 +14,7 @@ export default function SecurityLog() {
     <AdminLayout sidebar={<OwnerSidebar />}>
       <AdminContent header="Security log" toolbar={<Toolbar />}>
         <DataTableContainer
+          cols={2}
           hook={useActivities}
           query={{
             sort: { created_at: -1 },

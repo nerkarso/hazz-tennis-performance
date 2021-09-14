@@ -22,14 +22,20 @@ async function authenticate(req, res) {
   try {
     const user = await User.findOne({ email: email });
     if (!user || user?.closed) {
-      return res.status(404).json({ error: 'This account does not exist' });
+      return res.status(404).json({
+        status: 404,
+        error: 'This account does not exist',
+      });
     }
     const isMatch = await User.findOne({
       email: email,
       password: password,
     });
     if (!isMatch) {
-      return res.status(401).json({ error: 'Wrong password' });
+      return res.status(401).json({
+        status: 401,
+        error: 'Wrong password',
+      });
     }
     res.setHeader('Set-Cookie', [createCookie('account_id', user._id.toString()), createCookie('account_role', user.role)]);
     res.json(user);
