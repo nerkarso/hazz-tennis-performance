@@ -1,4 +1,4 @@
-import { Avatar, ChatBubble, DetailsView, EmptyStateTitle, EmptyStateView, Input } from '@/elements';
+import { Avatar, ChatBubble, DetailsView, EmptyStateTitle, EmptyStateView, ErrorStateView, Input } from '@/elements';
 import { DetailsViewFooter, DetailsViewHeader, DetailsViewMain } from '@/elements/DetailsView';
 import { useAuth, useChat, useChatMessageCreate } from '@/hooks';
 import cx from 'classnames';
@@ -21,21 +21,9 @@ function ChatDetailsContainer({ chatId }) {
 
   if (isLoading) return <SkeletonChatDetails animate />;
 
-  if (isError) {
-    return (
-      <EmptyStateView fullScreen>
-        <EmptyStateTitle>{error.message}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (isError) return <ErrorStateView title={error.message} fullScreen />;
 
-  if (data?.error) {
-    return (
-      <EmptyStateView fullScreen>
-        <EmptyStateTitle>{data?.error}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (data?.error) return <ErrorStateView title={data?.error} fullScreen />;
 
   if (data) {
     const { from, messages, to } = data;

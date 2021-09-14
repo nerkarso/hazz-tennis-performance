@@ -1,25 +1,13 @@
-import { EmptyStateTitle, EmptyStateView, SkeletonForm } from '@/elements';
+import { ErrorStateView, SkeletonForm } from '@/elements';
 
 export default function DataFormContainer({ children, hook, id, rows }) {
   const { data, error, isError, isLoading } = hook(id);
 
   if (isLoading) return <SkeletonForm className="max-w-2xl" rows={rows} animate />;
 
-  if (isError) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{error.message}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (isError) return <ErrorStateView title={error.message} />;
 
-  if (data?.error) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{data?.error}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (data?.error) return <ErrorStateView title={data?.error} />;
 
   if (data) return children(data);
 

@@ -1,4 +1,4 @@
-import { Avatar, EmptyStateTitle, EmptyStateView } from '@/elements';
+import { Avatar, ErrorStateView } from '@/elements';
 import { useAuth, useUserAccount } from '@/hooks';
 import { UserCircleIcon } from '@heroicons/react/outline';
 import cx from 'classnames';
@@ -9,21 +9,9 @@ export default function DashboardGreeting() {
 
   if (isLoading) return <Skeleton animate />;
 
-  if (isError) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{error.message}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (isError) return <ErrorStateView title={error.message} inline />;
 
-  if (data?.error) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{data?.error}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (data?.error) return <ErrorStateView title={data?.error} inline />;
 
   if (data) {
     const { image_url, first_name, last_name, role } = data;

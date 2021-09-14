@@ -1,29 +1,15 @@
-import { EmptyStateTitle, EmptyStateView, SkeletonList } from '@/elements';
+import { ErrorStateView, SkeletonList } from '@/elements';
 
 export default function DataListContainer({ children, count, hook, query }) {
   const { data, error, isError, isLoading } = hook(query);
 
   if (isLoading) return <SkeletonList count={count} animate />;
 
-  if (isError) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{error.message}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (isError) return <ErrorStateView title={error.message} />;
 
-  if (data?.error) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{data?.error}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (data?.error) return <ErrorStateView title={data?.error} />;
 
-  if (data?.length > 0) {
-    return children(data);
-  }
+  if (data?.length > 0) return children(data);
 
   return <SkeletonList count={count} />;
 }

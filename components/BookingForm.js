@@ -1,4 +1,4 @@
-import { FormGroup, Input, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
+import { ErrorFormGroup, FormGroup, Input, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
 import { useCourts, useUsers } from '@/hooks';
 import cx from 'classnames';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -98,9 +98,9 @@ export function BookingFormCoach(props) {
 
   if (isLoading) return <SkeletonFormGroup animate />;
 
-  if (isError) return <p>{error.message}</p>;
+  if (isError) return <ErrorFormGroup>{error.message}</ErrorFormGroup>;
 
-  if (data?.error) return <p>{data?.error}</p>;
+  if (data?.error) return <ErrorFormGroup>{data?.error}</ErrorFormGroup>;
 
   if (data) {
     const items = [
@@ -141,9 +141,9 @@ export function BookingFormLocation(props) {
 
   if (isLoading) return <SkeletonFormGroup animate />;
 
-  if (isError) return <p>{error.message}</p>;
+  if (isError) return <ErrorFormGroup>{error.message}</ErrorFormGroup>;
 
-  if (data?.error) return <p>{data?.error}</p>;
+  if (data?.error) return <ErrorFormGroup>{data?.error}</ErrorFormGroup>;
 
   if (data) {
     const items = [

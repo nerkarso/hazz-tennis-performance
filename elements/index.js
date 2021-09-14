@@ -6,6 +6,8 @@ export { default as ChatBubble } from '@/elements/ChatBubble';
 export { default as DetailsView } from '@/elements/DetailsView';
 export { default as EmptyStateTitle } from '@/elements/EmptyStateTitle';
 export { default as EmptyStateView } from '@/elements/EmptyStateView';
+export { default as ErrorFormGroup } from '@/elements/ErrorFormGroup';
+export { default as ErrorStateView } from '@/elements/ErrorStateView';
 export { default as FormGroup } from '@/elements/FormGroup';
 export { default as FormLabel } from '@/elements/FormLabel';
 export { default as Input } from '@/elements/Input';

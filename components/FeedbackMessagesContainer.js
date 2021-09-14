@@ -1,4 +1,4 @@
-import { EmptyStateTitle, EmptyStateView, SkeletonFeedbackMessages } from '@/elements';
+import { ErrorStateView, SkeletonFeedbackMessages } from '@/elements';
 import { useFeedbacks } from '@/hooks';
 
 export default function FeedbackMessagesContainer({ children, emptyView, query }) {
@@ -6,21 +6,9 @@ export default function FeedbackMessagesContainer({ children, emptyView, query }
 
   if (isLoading) return <SkeletonFeedbackMessages animate />;
 
-  if (isError) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{error.message}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (isError) return <ErrorStateView title={error.message} />;
 
-  if (data?.error) {
-    return (
-      <EmptyStateView>
-        <EmptyStateTitle>{data?.error}</EmptyStateTitle>
-      </EmptyStateView>
-    );
-  }
+  if (data?.error) return <ErrorStateView title={data?.error} />;
 
   if (data?.length > 0) return children(data[0]);
 
