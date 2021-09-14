@@ -1,4 +1,4 @@
-import { FeedbackMessage } from '@/elements';
+import FeedbackMessage from '@/components/FeedbackMessage';
 import cx from 'classnames';
 
 export default function FeedbackMessages({ feedbackId, className, items }) {

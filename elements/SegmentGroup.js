@@ -1,5 +1,5 @@
 import { RadioGroup } from '@headlessui/react';
-import { CheckCircleIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon } from '@heroicons/react/outline';
 import cx from 'classnames';
 
 export default function SegmentGroup({ className, onChange, value, items }) {

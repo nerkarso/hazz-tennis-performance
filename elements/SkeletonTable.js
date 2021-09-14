@@ -6,10 +6,7 @@ export default function SkeletonTable({ animate, cols = 1, rows = 6 }) {
   const rowsArray = Array.from(Array(rows));
 
   return (
-    <Table
-      className={cx({
-        'animate-pulse': animate,
-      })}>
+    <Table className={cx({ 'animate-pulse': animate })}>
       {rowsArray.map((_, r) => (
         <TableRow style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }} key={r}>
           {colsArray.map((_, c) => (

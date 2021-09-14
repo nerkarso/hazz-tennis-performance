@@ -2,12 +2,13 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import BookingDetailsForm from '@/components/BookingDetailsForm';
 import DataFormContainer from '@/components/DataFormContainer';
+import FeedbackMessages from '@/components/FeedbackMessages';
 import FeedbackMessagesContainer from '@/components/FeedbackMessagesContainer';
 import OwnerFeedbackNewForm from '@/components/OwnerFeedbackNewForm';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { Button, EmptyStateTitle, EmptyStateView, FeedbackMessages, SidePaneHeading, TwoPaneView } from '@/elements';
+import { Button, EmptyStateTitle, EmptyStateView, SidePaneHeading, TwoPaneView } from '@/elements';
 import { useBooking } from '@/hooks';
 import { useState } from 'react';
 
@@ -83,7 +84,7 @@ function FeedbackReplyView({ feedbackId }) {
       {isFormShown ? (
         <OwnerFeedbackNewForm feedbackId={feedbackId} onCancel={() => setIsFormShown(false)} />
       ) : (
-        <Button onClick={() => setIsFormShown(true)} color="neutral" variant="solid">
+        <Button type="button" onClick={() => setIsFormShown(true)} color="neutral" variant="solid">
           Add reply
         </Button>
       )}

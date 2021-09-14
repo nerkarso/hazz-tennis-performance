@@ -1,6 +1,6 @@
 export default function AccountLayout({ children, title }) {
   return (
-    <div className="flex items-center min-h-screen p-6 bg-neutral-100 dark:bg-neutral-900 dark:text-white">
+    <div className="flex items-center min-h-screen p-6 bg-neutral-100 dark:bg-neutral-900">
       <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-neutral-800">
         <div className="flex flex-col overflow-y-auto md:flex-row">
           <div className="h-32 md:h-auto md:w-1/2">

@@ -4,7 +4,7 @@ export default function EmptyStateView({ children, className, fullHeight, fullSc
   return (
     <div
       className={cx(
-        'grid place-items-center dark:bg-neutral-900 dark:text-white',
+        'grid place-items-center',
         {
           'flex-1 h-screen': fullScreen,
           'flex-1 h-full': fullHeight,

@@ -1,7 +1,6 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import { User } from '@/models';
-import CoachingHour from '@/models/CoachingHour';
+import { CoachingHour, User } from '@/models';
 
 function handler(req, res) {
   switch (req.method) {

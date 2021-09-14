@@ -13,7 +13,7 @@ export default function TableActionButton({ children, href, ...props }) {
   }
 
   return (
-    <Button variant="solid" size="sm" {...props}>
+    <Button type="button" variant="solid" size="sm" {...props}>
       {children}
     </Button>
   );

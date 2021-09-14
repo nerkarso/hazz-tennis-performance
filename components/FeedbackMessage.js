@@ -59,7 +59,7 @@ export default function FeedbackMessage({ data, feedbackId, isIndented }) {
               {feedback.isLoading || reply.isLoading ? (
                 <span className="flex-grow-0 text-sm font-medium text-neutral-400 dark:text-neutral-500">Deleting...</span>
               ) : (
-                <Button onClick={handleDelete} className="px-0 font-medium" color="neutral" size="sm">
+                <Button type="button" onClick={handleDelete} className="px-0 font-medium" color="neutral" size="sm">
                   Delete
                 </Button>
               )}

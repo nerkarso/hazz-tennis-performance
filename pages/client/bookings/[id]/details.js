@@ -4,10 +4,11 @@ import BookingDetailsForm from '@/components/BookingDetailsForm';
 import ClientFeedbackNewForm from '@/components/ClientFeedbackNewForm';
 import ClientSidebar from '@/components/ClientSidebar';
 import DataFormContainer from '@/components/DataFormContainer';
+import FeedbackMessages from '@/components/FeedbackMessages';
 import FeedbackMessagesContainer from '@/components/FeedbackMessagesContainer';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { Button, EmptyStateTitle, EmptyStateView, FeedbackMessages, SidePaneHeading, TwoPaneView } from '@/elements';
+import { Button, EmptyStateTitle, EmptyStateView, SidePaneHeading, TwoPaneView } from '@/elements';
 import { useBooking } from '@/hooks';
 import { useState } from 'react';
 
@@ -69,7 +70,7 @@ function FeedbackEmptyView({ bookingId }) {
   if (isFormShown) return <ClientFeedbackNewForm bookingId={bookingId} onCancel={() => setIsFormShown(false)} />;
 
   return (
-    <Button onClick={() => setIsFormShown(true)} color="neutral" variant="solid">
+    <Button type="button" onClick={() => setIsFormShown(true)} color="neutral" variant="solid">
       Write a feedback
     </Button>
   );

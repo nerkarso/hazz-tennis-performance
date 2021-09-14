@@ -1,9 +1,9 @@
-import { NextLink } from '@/elements';
+import { ActiveLink } from '@/elements';
 import cx from 'classnames';
 
 export default function NavLink({ className, children, exact, href, ...props }) {
   return (
-    <NextLink
+    <ActiveLink
       href={href}
       exact={exact}
       activeClassName="bg-primary-100 !text-primary-700 hover:!bg-primary-200 focus:!bg-primary-200 dark:bg-primary-900 dark:hover:!bg-primary-800 dark:focus:!bg-primary-700 dark:!text-primary-100">
@@ -15,6 +15,6 @@ export default function NavLink({ className, children, exact, href, ...props }) 
         {...props}>
         {children}
       </a>
-    </NextLink>
+    </ActiveLink>
   );
 }

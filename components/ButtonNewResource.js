@@ -1,6 +1,6 @@
 import { Button } from '@/elements';
 import { usePath } from '@/hooks';
-import { PlusIcon } from '@heroicons/react/solid';
+import { PlusIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 
 export default function ButtonNewResource({ children }) {

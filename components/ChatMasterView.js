@@ -60,7 +60,7 @@ function ChatListItem({ data, user }) {
           toast.error(data.error);
         } else {
           toast.success('Chat deleted');
-          router.push(`/${basePath}/chats`);
+          router.replace(`/${basePath}/chats`);
         }
       },
     });

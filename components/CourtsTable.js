@@ -1,6 +1,6 @@
 import { Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
 import { useCourtDelete, usePath } from '@/hooks';
-import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { LocationMarkerIcon } from '@heroicons/react/outline';
 import toast from 'react-hot-toast';
 
 export default function CourtsTable({ rows }) {

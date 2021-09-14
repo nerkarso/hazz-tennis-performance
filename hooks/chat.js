@@ -44,20 +44,11 @@ export function useChatDelete() {
   );
 }
 
-export function useChatMessageCreate() {
-  const queryClient = useQueryClient();
-
-  return useMutation(
-    ({ chatId, ...data }) => {
-      return fetcher(`/api/chats/${chatId}/messages`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries('chat');
-      },
-    },
-  );
+export function useChatMessageCreate(chatId) {
+  return useMutation((data) => {
+    return fetcher(`/api/chats/${chatId}/messages`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  });
 }

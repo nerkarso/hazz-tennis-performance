@@ -1,7 +1,6 @@
 import { Avatar, Button, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
 import { useAuth, usePath, useUserAccount } from '@/hooks';
-import { LogoutIcon } from '@heroicons/react/outline';
-import { BellIcon } from '@heroicons/react/solid';
+import { BellIcon, LogoutIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -16,7 +15,7 @@ export default function AdminSidebar({ links }) {
   };
 
   return (
-    <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
+    <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700">
       <header className="flex items-center justify-between h-20 px-6">
         <Link href="/">
           <a className="flex items-center gap-3 transition duration-150 focus:outline-none focus:opacity-60">
@@ -25,11 +24,11 @@ export default function AdminSidebar({ links }) {
           </a>
         </Link>
         <div className="flex items-center gap-4">
-          <Link href={`/${basePath}/notifications`}>
-            <a className="relative align-middle transition duration-150 text-primary-600 focus:outline-none hover:text-primary-500 focus:text-primary-700">
+          <Link href={`/${basePath}/notifications`} passHref>
+            <Button className="relative" color="neutral" variant="solid" rounded>
               <BellIcon className="w-6 h-6" />
-              <span className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-neutral-900" />
-            </a>
+              <span className="absolute top-0 right-0 inline-block w-2.5 h-2.5 bg-red-600 rounded-full dark:bg-red-500" />
+            </Button>
           </Link>
           <Link href={`/${basePath}/account`}>
             <a className="overflow-hidden transition duration-150 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900">
@@ -53,6 +52,7 @@ export default function AdminSidebar({ links }) {
       <List className="pt-1 pb-4 mx-3">
         <ListItem
           className="w-full !px-3 py-2 rounded-md gap-4 hover:bg-neutral-100 focus:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-700"
+          type="button"
           component={Button}
           onClick={handleSignOut}>
           <ListItemStart>
@@ -69,15 +69,11 @@ export default function AdminSidebar({ links }) {
 
 function SidebarAvatar() {
   const { accountId } = useAuth();
-  const { data, isError, isLoading } = useUserAccount(accountId);
+  const { data, isLoading } = useUserAccount(accountId);
 
-  if (isLoading) return <Avatar backgroundColor="#6B7280" size="md" />;
+  if (isLoading) return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 animate-pulse"></div>;
 
-  if (isError) return <Avatar backgroundColor="#EF4444" size="md" />;
+  if (data?._id) return <Avatar src={data?.image_url} initials={data?.first_name[0]} size="lg" />;
 
-  if (data?.error) return <Avatar backgroundColor="#EF4444" size="md" />;
-
-  if (data) return <Avatar src={data?.image_url} initials={data?.first_name[0]} size="md" />;
-
-  return <Avatar backgroundColor="#6B7280" size="md" />;
+  return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800"></div>;
 }

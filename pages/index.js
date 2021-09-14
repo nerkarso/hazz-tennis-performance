@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Landing() {
   return (
     <>
-      <header className="relative overflow-hidden dark:bg-neutral-900 dark:text-white">
+      <header className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl">
           <div className="relative z-10 pb-8 bg-white dark:bg-neutral-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <div className="px-4 pt-10 mx-auto max-w-7xl sm:pt-12 sm:px-6 md:pt-16 lg:pt-20 lg:px-8 xl:pt-28">
@@ -45,7 +45,7 @@ export default function Landing() {
           />
         </div>
       </header>
-      <section className="py-16 overflow-hidden bg-neutral-50 dark:bg-neutral-800 dark:text-white md:py-20 lg:py-24">
+      <section className="py-16 overflow-hidden bg-neutral-50 dark:bg-neutral-800 md:py-20 lg:py-24">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4" width={404} height={784} fill="none" viewBox="0 0 404 784">
             <defs>
@@ -145,7 +145,7 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <section className="dark:text-white dark:bg-neutral-900">
+      <section>
         <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:py-16 lg:px-8 lg:py-20">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             <p className="mb-2">Ready to learn?</p>
@@ -165,7 +165,7 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <footer className="dark:bg-neutral-900">
+      <footer>
         <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
           <div className="pt-8 border-t border-neutral-200 dark:border-neutral-700">
             <p className="text-neutral-400 dark:text-neutral-500 xl:text-center">&copy; 2021 {process.env.NEXT_PUBLIC_SITE_TITLE}. All rights reserved.</p>

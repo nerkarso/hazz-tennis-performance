@@ -80,14 +80,13 @@ function ChatDetailsContainer({ chatId }) {
 }
 
 function SendMessageForm({ chatId, from }) {
-  const { isLoading, mutate } = useChatMessageCreate();
+  const { isLoading, mutate } = useChatMessageCreate(chatId);
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
   const onSubmit = ({ message }) => {
     mutate(
       {
-        chatId: chatId,
         from: from,
         message: message,
       },

@@ -1,5 +1,5 @@
 import { Avatar, Button } from '@/elements';
-import { MailIcon } from '@heroicons/react/solid';
+import { MailIcon } from '@heroicons/react/outline';
 import cx from 'classnames';
 import Link from 'next/link';
 

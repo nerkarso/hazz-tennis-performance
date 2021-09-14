@@ -3,10 +3,11 @@ import AdminLayout from '@/components/AdminLayout';
 import BookingDetailsForm from '@/components/BookingDetailsForm';
 import CoachSidebar from '@/components/CoachSidebar';
 import DataFormContainer from '@/components/DataFormContainer';
+import FeedbackMessages from '@/components/FeedbackMessages';
 import FeedbackMessagesContainer from '@/components/FeedbackMessagesContainer';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { FeedbackMessages, SidePaneHeading, TwoPaneView } from '@/elements';
+import { SidePaneHeading, TwoPaneView } from '@/elements';
 import { useBooking } from '@/hooks';
 
 BookingDetails.title = 'Booking details';
