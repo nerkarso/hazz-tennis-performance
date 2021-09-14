@@ -1,3 +1,4 @@
+export * from '@/hooks/activity';
 export * from '@/hooks/auth';
 export * from '@/hooks/booking';
 export * from '@/hooks/chat';

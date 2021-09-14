@@ -8,9 +8,12 @@ const schema = new mongoose.Schema(
     action: {
       type: String,
     },
+    status: {
+      type: Number,
+      default: 0,
+    },
     user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      type: String,
     },
     created_at: {
       type: Date,
