@@ -1,6 +1,6 @@
 import AdminLayout from '@/components/AdminLayout';
 import ChatEmptyStateView from '@/components/ChatEmptyStateView';
-import ChatMasterView from '@/components/CoachChatMasterView';
+import ChatMasterView from '@/components/ChatMasterView';
 import CoachSidebar from '@/components/CoachSidebar';
 import { MasterDetailsView } from '@/elements';
 

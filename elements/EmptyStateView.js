@@ -1,12 +1,13 @@
 import cx from 'classnames';
 
-export default function EmptyStateView({ children, className, fullScreen }) {
+export default function EmptyStateView({ children, className, fullHeight, fullScreen }) {
   return (
     <div
       className={cx(
         'grid place-items-center dark:bg-neutral-900 dark:text-white',
         {
           'flex-1 h-screen': fullScreen,
+          'flex-1 h-full': fullHeight,
         },
         className,
       )}>

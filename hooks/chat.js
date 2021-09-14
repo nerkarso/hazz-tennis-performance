@@ -2,7 +2,7 @@ import { fetcher } from '@/lib';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export function useChat(id) {
-  return useQuery('chat', () => fetcher(`/api/chats/${id}`));
+  return useQuery(['chat', id], () => fetcher(`/api/chats/${id}`));
 }
 
 export function useChats(query) {

@@ -46,7 +46,7 @@ async function create(req, res) {
   const { from, to } = body;
 
   try {
-    let chat = await Chat.find({
+    let chat = await Chat.findOne({
       $or: [
         { from: from, to: to },
         { from: to, to: from },

@@ -1,21 +1,30 @@
 import ChatNewModal from '@/components/ChatNewModal';
 import DataListContainer from '@/components/DataListContainer';
 import { Avatar, Button, List, ListItem, ListItemContent, ListItemEnd, ListItemStart, MasterView, NavLink } from '@/elements';
-import { useChatDelete, useChats, usePath } from '@/hooks';
+import { useAuth, useChatDelete, useChats, usePath } from '@/hooks';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function ChatMasterView() {
+  const { accountId } = useAuth();
+
   return (
     <MasterView title="Chats" toolbar={<MasterViewToolbar />}>
       <div className="pb-4 mx-6">
-        <DataListContainer count={4} hook={useChats} query={{}}>
+        <DataListContainer
+          count={4}
+          hook={useChats}
+          query={{
+            filter: { $or: [{ from: accountId }, { to: accountId }] },
+            sort: { created_at: -1 },
+          }}>
           {(data) => (
             <List>
-              {data.map((chat, i) => (
-                <ChatListItem data={chat} key={i} />
+              {data.map(({ from, to, ...data }, i) => (
+                <ChatListItem data={data} user={accountId === from?._id ? to : from} key={i} />
               ))}
             </List>
           )}
@@ -38,8 +47,9 @@ function MasterViewToolbar() {
   );
 }
 
-function ChatListItem({ data }) {
-  const { _id, to, created_at } = data;
+function ChatListItem({ data, user }) {
+  const { _id, created_at } = data;
+  const router = useRouter();
   const { basePath } = usePath();
   const { mutate } = useChatDelete();
 
@@ -50,6 +60,7 @@ function ChatListItem({ data }) {
           toast.error(data.error);
         } else {
           toast.success('Chat deleted');
+          router.push(`/${basePath}/chats`);
         }
       },
     });
@@ -58,14 +69,14 @@ function ChatListItem({ data }) {
   return (
     <ListItem className="px-2 py-3 -mx-2 rounded-xl" component={NavLink} href={`/${basePath}/chats/${_id}`} exact>
       <ListItemStart>
-        <Avatar src={to?.image_url} initials={to?.first_name[0]} size="2xl" />
+        <Avatar src={user?.image_url} initials={user?.first_name[0]} size="2xl" />
       </ListItemStart>
       <ListItemContent>
         <h4 className="mb-1 text-lg font-medium">
-          {to?.first_name} {to?.last_name}
+          {user?.first_name} {user?.last_name}
         </h4>
         <p className="flex items-center gap-2 capitalize truncate opacity-60">
-          <span>{to?.role}</span>
+          <span>{user?.role}</span>
           <span>&bull;</span>
           <time>{format(new Date(created_at), 'dd MMM y')}</time>
         </p>
