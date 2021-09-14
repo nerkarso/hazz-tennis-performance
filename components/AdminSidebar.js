@@ -71,9 +71,9 @@ function SidebarAvatar() {
   const { accountId } = useAuth();
   const { data, isLoading } = useUserAccount(accountId);
 
-  if (isLoading) return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 animate-pulse"></div>;
+  if (isLoading) return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 animate-pulse"></div>;
 
   if (data?._id) return <Avatar src={data?.image_url} initials={data?.first_name[0]} size="lg" />;
 
-  return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800"></div>;
+  return <div className="flex-shrink-0 w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800"></div>;
 }

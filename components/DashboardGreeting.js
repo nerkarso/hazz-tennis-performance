@@ -38,12 +38,12 @@ export default function DashboardGreeting() {
 function Skeleton({ animate }) {
   return (
     <header className={cx('flex items-center gap-4 mb-4', { 'animate-pulse': animate })}>
-      <div className="flex-shrink-0 w-20 h-20 rounded-full dark:bg-neutral-800 bg-neutral-200"></div>
+      <div className="flex-shrink-0 w-20 h-20 rounded-full dark:bg-neutral-800 bg-neutral-100"></div>
       <div className="flex flex-col gap-2">
-        <h1 className="h-8 rounded-md dark:bg-neutral-800 bg-neutral-200 w-60"></h1>
+        <h1 className="h-8 rounded-md dark:bg-neutral-800 bg-neutral-100 w-60"></h1>
         <div className="flex items-center gap-1">
-          <span className="w-5 h-5 rounded-full dark:bg-neutral-800 bg-neutral-200"></span>
-          <span className="w-20 h-5 rounded-md dark:bg-neutral-800 bg-neutral-200"></span>
+          <span className="w-5 h-5 rounded-full dark:bg-neutral-800 bg-neutral-100"></span>
+          <span className="w-20 h-5 rounded-md dark:bg-neutral-800 bg-neutral-100"></span>
         </div>
       </div>
     </header>

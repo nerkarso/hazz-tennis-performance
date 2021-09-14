@@ -5,7 +5,7 @@ export default function ChatBubble({ children, inverse, secondary }) {
       {secondary && <span className="block mt-2 text-sm text-right opacity-50">{secondary}</span>}
     </div>
   ) : (
-    <div className="max-w-sm px-4 py-2 rounded-bl-none place-self-start rounded-2xl bg-neutral-200 dark:bg-neutral-800">
+    <div className="max-w-sm px-4 py-2 rounded-bl-none place-self-start rounded-2xl bg-neutral-100 dark:bg-neutral-800">
       <p>{children}</p>
       {secondary && <span className="block mt-2 text-sm text-right opacity-50">{secondary}</span>}
     </div>
