@@ -1,9 +1,11 @@
 import { Avatar, ChatBubble, DetailsView, EmptyStateTitle, EmptyStateView, Input } from '@/elements';
 import { DetailsViewFooter, DetailsViewHeader, DetailsViewMain } from '@/elements/DetailsView';
-import { useAuth, useChat } from '@/hooks';
+import { useAuth, useChat, useChatMessageCreate } from '@/hooks';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 export default function ChatDetailsView() {
   const { query } = useRouter();
@@ -40,7 +42,7 @@ function ChatDetailsContainer({ chatId }) {
     const user = accountId === from?._id ? to : from;
 
     return (
-      <DetailsView className="flex flex-col">
+      <DetailsView className="flex flex-col h-screen">
         <DetailsViewHeader>
           <Avatar src={user?.image_url} initials={user?.first_name[0]} size="lg" />
           <div className="ml-4">
@@ -51,12 +53,14 @@ function ChatDetailsContainer({ chatId }) {
           </div>
         </DetailsViewHeader>
         {messages.length > 0 ? (
-          <DetailsViewMain className="flex flex-col justify-end gap-2 px-6 pb-4">
-            {messages.map(({ created_at, from, message }, i) => (
-              <ChatBubble secondary={format(new Date(created_at), 'HH:mm')} inverse={accountId === from} key={i}>
-                {message}
-              </ChatBubble>
-            ))}
+          <DetailsViewMain className="px-6 py-4">
+            <div className="inline-flex flex-col justify-end w-full h-full gap-4">
+              {messages.map(({ created_at, from, message }, i) => (
+                <ChatBubble secondary={format(new Date(created_at), 'HH:mm')} inverse={accountId === from} key={i}>
+                  {message}
+                </ChatBubble>
+              ))}
+            </div>
           </DetailsViewMain>
         ) : (
           <DetailsViewMain>
@@ -66,13 +70,54 @@ function ChatDetailsContainer({ chatId }) {
           </DetailsViewMain>
         )}
         <DetailsViewFooter>
-          <Input type="text" className="w-full" placeholder="Write something and press enter" />
+          <SendMessageForm chatId={chatId} from={accountId} />
         </DetailsViewFooter>
       </DetailsView>
     );
   }
 
   return <SkeletonChatDetails />;
+}
+
+function SendMessageForm({ chatId, from }) {
+  const { isLoading, mutate } = useChatMessageCreate();
+  const { register, handleSubmit, formState, reset } = useForm();
+  const { errors } = formState;
+
+  const onSubmit = ({ message }) => {
+    mutate(
+      {
+        chatId: chatId,
+        from: from,
+        message: message,
+      },
+      {
+        onSuccess: (data) => {
+          if (data?.error) {
+            toast.error(data.error);
+          } else {
+            reset();
+          }
+        },
+      },
+    );
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+      <Input
+        type="text"
+        className="w-full"
+        placeholder="Write something and press enter"
+        autoComplete="off"
+        disabled={isLoading}
+        error={errors.message}
+        {...register('message', {
+          required: true,
+        })}
+      />
+    </form>
+  );
 }
 
 function SkeletonChatDetails({ animate }) {
