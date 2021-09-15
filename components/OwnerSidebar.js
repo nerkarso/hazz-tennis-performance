@@ -1,5 +1,5 @@
 import AdminSidebar from '@/components/AdminSidebar';
-import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, ClockIcon, HomeIcon, LockClosedIcon, MapIcon, UsersIcon } from '@heroicons/react/outline';
+import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, ClockIcon, CurrencyDollarIcon, HomeIcon, LockClosedIcon, MapIcon, UsersIcon } from '@heroicons/react/outline';
 
 export default function OwnerSidebar() {
   return (
@@ -14,6 +14,11 @@ export default function OwnerSidebar() {
           href: '/owner/bookings',
           text: 'Bookings',
           icon: CalendarIcon,
+        },
+        {
+          href: '/owner/payments',
+          text: 'Payments',
+          icon: CurrencyDollarIcon,
         },
         {
           href: '/owner/coaching-hours',

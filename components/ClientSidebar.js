@@ -1,5 +1,5 @@
 import AdminSidebar from '@/components/AdminSidebar';
-import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, HomeIcon } from '@heroicons/react/outline';
+import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CurrencyDollarIcon, HomeIcon } from '@heroicons/react/outline';
 
 export default function ClientSidebar() {
   return (
@@ -14,6 +14,11 @@ export default function ClientSidebar() {
           href: '/client/bookings',
           text: 'Bookings',
           icon: CalendarIcon,
+        },
+        {
+          href: '/client/payments',
+          text: 'Payments',
+          icon: CurrencyDollarIcon,
         },
         {
           href: '/client/chats',

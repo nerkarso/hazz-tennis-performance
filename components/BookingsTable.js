@@ -68,7 +68,7 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
                 </>
               )}
               {col === 'total_fees' && `$ ${total_fees}`}
-              {col === 'payment_type' && payment_type}
+              {col === 'payment_type' && <span className="capitalize">{payment_type}</span>}
               {col === 'payment_status' && (
                 <>
                   {payment_status === false && <Badge color="yellow">Pending</Badge>}
