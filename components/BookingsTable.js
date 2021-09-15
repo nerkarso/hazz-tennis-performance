@@ -4,7 +4,7 @@ import { formatDate } from '@/lib';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
-export default function BookingsTable({ cols = [], enableDelete, enableEdit, enableShow, gridTemplateColumns, rows }) {
+export default function BookingsTable({ cols = [], enableDelete, enableEdit, enableEditOrShow, enableShow, gridTemplateColumns, rows }) {
   const { basePath } = usePath();
   const { mutate } = useBookingDelete();
 
@@ -83,8 +83,21 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
               )}
             </TableCell>
           ))}
-          {enableDelete || enableEdit || enableShow ? (
+          {enableDelete || enableEdit || enableEditOrShow || enableShow ? (
             <TableActions>
+              {enableEditOrShow && (
+                <>
+                  {booking_status === 0 ? (
+                    <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}`}>
+                      Edit
+                    </TableActionButton>
+                  ) : (
+                    <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}/details`}>
+                      Show
+                    </TableActionButton>
+                  )}
+                </>
+              )}
               {enableShow && (
                 <TableActionButton color="primary" href={`/${basePath}/bookings/${_id}/details`}>
                   Show

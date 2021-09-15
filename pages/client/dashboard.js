@@ -27,8 +27,7 @@ export default function Dashboard() {
               cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'total_fees']}
               gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 8rem"
               rows={data}
-              enableEdit
-              enableShow
+              enableEditOrShow
             />
           )}
         </DataTableContainer>

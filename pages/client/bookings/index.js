@@ -27,7 +27,7 @@ export default function Bookings() {
               gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 8rem"
               rows={data}
               enableDelete
-              enableEdit
+              enableEditOrShow
             />
           )}
         </DataTableContainer>
