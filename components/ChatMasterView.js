@@ -78,7 +78,7 @@ function ChatListItem({ data, user }) {
         <p className="flex items-center gap-2 capitalize truncate opacity-60">
           <span>{user?.role}</span>
           <span>&bull;</span>
-          <time>{format(new Date(created_at), 'dd MMM y')}</time>
+          <time>{format(new Date(created_at), 'MMM dd, y')}</time>
         </p>
       </ListItemContent>
       <ListItemEnd>

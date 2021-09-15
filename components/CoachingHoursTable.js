@@ -44,8 +44,8 @@ export default function CoachingHoursTable({ cols, enableDelete, enableShow, ena
                   </a>
                 </Link>
               )}
-              {col === 'date' && format(new Date(date), 'd MMM y')}
-              {col === 'duration' && duration}
+              {col === 'date' && format(new Date(date), 'MMM dd, y')}
+              {col === 'duration' && `${duration} hours`}
             </TableCell>
           ))}
           {enableDelete || enableEdit || enableShow ? (

@@ -27,7 +27,16 @@ export function CoachingHourFormDate(props) {
 
   return (
     <FormGroup htmlFor="date" label="Date" error={errors.date} inline>
-      <Input type="date" id="date" className="flex-1" error={errors.date} {...register('date')} {...props} />
+      <Input
+        type="date"
+        id="date"
+        className="flex-1"
+        error={errors.date}
+        {...register('date', {
+          required: true,
+        })}
+        {...props}
+      />
     </FormGroup>
   );
 }
@@ -37,7 +46,17 @@ export function CoachingHourFormDuration(props) {
 
   return (
     <FormGroup htmlFor="duration" label="Duration" error={errors.duration} inline>
-      <Input type="number" id="duration" className="flex-1" error={errors.duration} {...register('duration')} {...props} />
+      <Input
+        type="number"
+        id="duration"
+        className="flex-1"
+        error={errors.duration}
+        {...register('duration', {
+          min: 1,
+          required: true,
+        })}
+        {...props}
+      />
     </FormGroup>
   );
 }

@@ -1,5 +1,6 @@
 import { Avatar, Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
 import { usePath, useUserDelete } from '@/hooks';
+import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 
 export default function UsersTable({ enableDelete, enableShow, enableEdit, rows }) {
@@ -18,25 +19,30 @@ export default function UsersTable({ enableDelete, enableShow, enableEdit, rows 
     });
   };
 
+  const gridTemplateColumns = '1.5fr 1fr 1fr 12rem 9rem';
+
   return (
     <Table>
-      <TableHead className="grid-cols-5">
-        <TableCell>Name</TableCell>
-        <TableCell>Email</TableCell>
+      <TableHead style={{ gridTemplateColumns }}>
+        <TableCell>User</TableCell>
         <TableCell>Phone</TableCell>
         <TableCell>Address</TableCell>
+        <TableCell className="text-right">Created at</TableCell>
       </TableHead>
-      {rows.map(({ _id, address, email, first_name, image_url, last_name, phone }, i) => (
-        <TableRow className="grid-cols-5" key={i}>
+      {rows.map(({ _id, address, created_at, email, first_name, image_url, last_name, phone }, i) => (
+        <TableRow style={{ gridTemplateColumns }} key={i}>
           <TableCell className="flex items-center gap-3">
             <Avatar src={image_url} initials={first_name[0]} size="lg" />
-            <span className="truncate">
-              {first_name} {last_name}
-            </span>
+            <div className="overflow-hidden">
+              <p className="font-medium truncate">
+                {first_name} {last_name}
+              </p>
+              <p className="text-sm truncate text-neutral-600 dark:text-neutral-400">{email}</p>
+            </div>
           </TableCell>
-          <TableCell>{email}</TableCell>
           <TableCell>{phone}</TableCell>
           <TableCell>{address}</TableCell>
+          <TableCell className="text-right">{format(new Date(created_at), 'MMM dd, y HH:mm aa')}</TableCell>
           <TableActions>
             {enableShow && (
               <TableActionButton color="primary" href={`/${basePath}/${resourcePath}/${_id}`}>
