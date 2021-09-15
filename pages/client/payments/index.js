@@ -14,7 +14,7 @@ export default function Payments() {
     <AdminLayout sidebar={<ClientSidebar />}>
       <AdminContent header="Payments">
         <DataTableContainer
-          cols={7}
+          cols={8}
           hook={useBookings}
           query={{
             filter: { client: accountId },
@@ -22,8 +22,8 @@ export default function Payments() {
           }}>
           {(data) => (
             <BookingsTable
-              cols={['date_time', 'coach_link', 'booking_status', 'total_fees', 'payment_type', 'payment_status']}
-              gridTemplateColumns="12rem 1fr 8rem 8rem 8rem 8rem 6rem"
+              cols={['date_time', 'coach_link', 'booking_status', 'duration', 'total_fees', 'payment_type', 'payment_status']}
+              gridTemplateColumns="12rem 1fr 6rem 6rem 6rem 8rem 8rem 6rem"
               rows={data}
               enableShow
             />

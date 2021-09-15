@@ -24,8 +24,8 @@ export default function Dashboard() {
           }}>
           {(data) => (
             <BookingsTable
-              cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'total_fees']}
-              gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 8rem"
+              cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'duration']}
+              gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 5rem"
               rows={data}
               enableEditOrShow
             />

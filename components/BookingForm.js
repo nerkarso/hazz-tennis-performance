@@ -1,5 +1,6 @@
 import { ErrorFormGroup, FormGroup, Input, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
-import { useCourts, useUsers } from '@/hooks';
+import { useCourts, useCurrentBooking, useUsers } from '@/hooks';
+import { COACHING_FEE } from '@/lib';
 import cx from 'classnames';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -10,7 +11,8 @@ export default function BookingForm({ children, className, onSubmit }) {
   const [bookingStatus, setBookingStatus] = useState();
   const [paymentType, setPaymentType] = useState();
   const [paymentStatus, setPaymentStatus] = useState();
-  const { register, handleSubmit, formState } = useForm();
+  const { currentBooking } = useCurrentBooking();
+  const { formState, handleSubmit, watch, register } = useForm();
   const { errors } = formState;
 
   const getUTCDate = (date, time) => {
@@ -26,6 +28,7 @@ export default function BookingForm({ children, className, onSubmit }) {
       booking_status: bookingStatus,
       payment_type: paymentType,
       payment_status: paymentStatus,
+      total_fees: currentBooking?.total_fees,
     });
   };
 
@@ -40,6 +43,7 @@ export default function BookingForm({ children, className, onSubmit }) {
         setPaymentStatus,
         register,
         errors,
+        watch,
       }}>
       <form onSubmit={handleSubmit(onSubmitHandler)} className={cx('flex flex-col flex-1 gap-4', className)}>
         {children}
@@ -82,6 +86,40 @@ export function BookingFormTime(props) {
         className="flex-1"
         error={errors.time}
         {...register('time', {
+          required: true,
+        })}
+        {...props}
+      />
+    </FormGroup>
+  );
+}
+
+export function BookingFormDuration(props) {
+  const { register, errors, watch } = useBookingForm();
+  const { setCurrentBooking } = useCurrentBooking();
+
+  useEffect(() => {
+    const watcher = watch((formData, { name }) => {
+      if (name === 'duration') {
+        setCurrentBooking({
+          total_fees: +formData?.duration * COACHING_FEE,
+        });
+      }
+    });
+    return () => {
+      watcher.unsubscribe();
+    };
+  }, [setCurrentBooking, watch]);
+
+  return (
+    <FormGroup htmlFor="duration" label="Duration" error={errors.duration} inline>
+      <Input
+        type="number"
+        id="duration"
+        className="flex-1"
+        error={errors.duration}
+        {...register('duration', {
+          min: 1,
           required: true,
         })}
         {...props}

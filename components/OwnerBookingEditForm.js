@@ -1,12 +1,12 @@
 import BookingForm, {
   BookingFormCoach,
   BookingFormDate,
+  BookingFormDuration,
   BookingFormLocation,
   BookingFormPaymentStatus,
   BookingFormPaymentType,
   BookingFormStatus,
   BookingFormTime,
-  BookingFormTotalFees,
 } from '@/components/BookingForm';
 import FormActions from '@/components/FormActions';
 import { useBookingUpdate, usePath } from '@/hooks';
@@ -38,16 +38,16 @@ export default function OwnerBookingEditForm({ data }) {
     );
   };
 
-  const { booking_status, coach, date_time, location, payment_status, payment_type, total_fees } = data;
+  const { booking_status, coach, date_time, duration, location, payment_status, payment_type } = data;
 
   return (
     <BookingForm onSubmit={handleSubmit} className="max-w-2xl">
       <BookingFormStatus defaultValue={booking_status} />
       <BookingFormDate defaultValue={format(new Date(date_time), 'yyyy-MM-dd')} />
       <BookingFormTime defaultValue={format(new Date(date_time), 'HH:mm')} />
+      <BookingFormDuration defaultValue={duration} />
       <BookingFormCoach defaultValue={coach?._id} />
       <BookingFormLocation defaultValue={location?._id} />
-      <BookingFormTotalFees defaultValue={total_fees} />
       <BookingFormPaymentType defaultValue={payment_type} />
       <BookingFormPaymentStatus defaultValue={payment_status} />
       <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Updating..." submitText="Update" />

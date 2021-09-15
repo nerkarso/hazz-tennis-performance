@@ -26,6 +26,7 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
         {cols.map((col, i) => (
           <TableCell key={i}>
             {col === 'date_time' && 'Date'}
+            {col === 'duration' && 'Duration'}
             {col === 'client' && 'Client'}
             {col === 'client_link' && 'Client'}
             {col === 'coach' && 'Coach'}
@@ -39,11 +40,12 @@ export default function BookingsTable({ cols = [], enableDelete, enableEdit, ena
           </TableCell>
         ))}
       </TableHead>
-      {rows.map(({ _id, booking_status, client, coach, date_time, location, payment_status, payment_type, total_fees }, i) => (
+      {rows.map(({ _id, booking_status, client, coach, date_time, duration, location, payment_status, payment_type, total_fees }, i) => (
         <TableRow style={{ gridTemplateColumns }} key={i}>
           {cols.map((col, i) => (
             <TableCell key={i}>
               {col === 'date_time' && formatDate(date_time)}
+              {col === 'duration' && `${duration} hours`}
               {col === 'client' && `${client?.first_name} ${client?.last_name}`}
               {col === 'client_link' && (
                 <Link href={`/${basePath}/clients/${client?._id}`}>

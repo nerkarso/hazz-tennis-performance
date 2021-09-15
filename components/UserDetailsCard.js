@@ -35,7 +35,7 @@ export default function UserDetailsCard({ className, showDetailsUrl, user }) {
       <div className="flex-shrink-0 w-16 h-16 rounded-full dark:bg-neutral-800 bg-neutral-100"></div>
       <div className="flex flex-col flex-1 gap-2">
         <h1 className="w-1/2 h-6 rounded-md dark:bg-neutral-800 bg-neutral-100"></h1>
-        <p className="w-2/3 h-4 rounded-md dark:bg-neutral-800 bg-neutral-100"></p>
+        <p className="w-3/4 h-4 rounded-md dark:bg-neutral-800 bg-neutral-100"></p>
         <div className="w-24 h-8 rounded-md dark:bg-neutral-800 bg-neutral-100"></div>
       </div>
     </div>

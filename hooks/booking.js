@@ -1,5 +1,11 @@
+import { CurrentBookingContext } from '@/contexts';
 import { fetcher } from '@/lib';
+import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+
+export function useCurrentBooking() {
+  return useContext(CurrentBookingContext);
+}
 
 export function useBooking(id) {
   return useQuery('booking', () => fetcher(`/api/bookings/${id}`));

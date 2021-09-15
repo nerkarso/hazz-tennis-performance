@@ -1,4 +1,4 @@
-import BookingForm, { BookingFormDate, BookingFormLocation, BookingFormPaymentType, BookingFormTime } from '@/components/BookingForm';
+import BookingForm, { BookingFormDate, BookingFormDuration, BookingFormLocation, BookingFormPaymentType, BookingFormTime } from '@/components/BookingForm';
 import FormActions from '@/components/FormActions';
 import { useAuth, useBookingCreate, usePath } from '@/hooks';
 import { useRouter } from 'next/router';
@@ -33,6 +33,7 @@ export default function ClientBookingNewForm() {
     <BookingForm onSubmit={handleSubmit} className="max-w-2xl">
       <BookingFormDate />
       <BookingFormTime />
+      <BookingFormDuration defaultValue={0} />
       <BookingFormLocation />
       <BookingFormPaymentType defaultValue="cash" />
       <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Creating..." submitText="Create" />

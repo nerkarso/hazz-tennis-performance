@@ -1,4 +1,4 @@
-import BookingForm, { BookingFormDate, BookingFormLocation, BookingFormPaymentStatus, BookingFormPaymentType, BookingFormStatus, BookingFormTime } from '@/components/BookingForm';
+import BookingForm, { BookingFormDate, BookingFormDuration, BookingFormLocation, BookingFormPaymentStatus, BookingFormPaymentType, BookingFormStatus, BookingFormTime } from '@/components/BookingForm';
 import FormActions from '@/components/FormActions';
 import { useBookingUpdate, usePath } from '@/hooks';
 import { format } from 'date-fns';
@@ -29,13 +29,14 @@ export default function ClientBookingEditForm({ data }) {
     );
   };
 
-  const { booking_status, date_time, location, payment_status, payment_type } = data;
+  const { booking_status, date_time, duration, location, payment_status, payment_type } = data;
 
   return (
     <BookingForm onSubmit={handleSubmit} className="max-w-2xl">
       <BookingFormStatus defaultValue={booking_status} disabled />
       <BookingFormDate defaultValue={format(new Date(date_time), 'yyyy-MM-dd')} />
       <BookingFormTime defaultValue={format(new Date(date_time), 'HH:mm')} />
+      <BookingFormDuration defaultValue={duration} />
       <BookingFormLocation defaultValue={location._id} />
       <BookingFormPaymentType defaultValue={payment_type} />
       <BookingFormPaymentStatus defaultValue={payment_status} disabled />

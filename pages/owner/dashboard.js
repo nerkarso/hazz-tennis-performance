@@ -14,7 +14,7 @@ export default function Dashboard() {
       <AdminContent header={<DashboardGreeting />}>
         <h1 className="mb-4 text-2xl font-bold">Pending bookings</h1>
         <DataTableContainer
-          cols={7}
+          cols={8}
           hook={useBookings}
           query={{
             filter: { booking_status: 0 },
@@ -22,8 +22,8 @@ export default function Dashboard() {
           }}>
           {(data) => (
             <BookingsTable
-              cols={['date_time', 'client_link', 'coach_link', 'location_link', 'payment_status', 'total_fees']}
-              gridTemplateColumns="12rem 1fr 1fr 1fr 10rem 6rem 5rem"
+              cols={['date_time', 'client_link', 'coach_link', 'location_link', 'payment_status', 'duration', 'total_fees']}
+              gridTemplateColumns="12rem 1fr 1fr 1fr 10rem 6rem 6rem 5rem"
               rows={data}
               enableEdit
             />

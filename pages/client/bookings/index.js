@@ -15,7 +15,7 @@ export default function Bookings() {
     <AdminLayout sidebar={<ClientSidebar />}>
       <AdminContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
         <DataTableContainer
-          cols={7}
+          cols={8}
           hook={useBookings}
           query={{
             filter: { client: accountId },
@@ -23,8 +23,8 @@ export default function Bookings() {
           }}>
           {(data) => (
             <BookingsTable
-              cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'total_fees']}
-              gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 8rem"
+              cols={['date_time', 'coach_link', 'location_link', 'booking_status', 'payment_status', 'duration', 'total_fees']}
+              gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 6rem 8rem"
               rows={data}
               enableDelete
               enableEditOrShow
