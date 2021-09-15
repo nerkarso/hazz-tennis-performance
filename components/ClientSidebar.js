@@ -1,4 +1,5 @@
 import AdminSidebar from '@/components/AdminSidebar';
+import ButtonNewResource from '@/components/ButtonNewResource';
 import { AnnotationIcon, CalendarIcon, ChatAlt2Icon, CurrencyDollarIcon, HomeIcon } from '@heroicons/react/outline';
 
 export default function ClientSidebar() {
@@ -30,7 +31,12 @@ export default function ClientSidebar() {
           text: 'Feedbacks',
           icon: AnnotationIcon,
         },
-      ]}
-    />
+      ]}>
+      <div className="mx-4 mb-4">
+        <ButtonNewResource className="pl-3 pr-4" resource="bookings">
+          New booking
+        </ButtonNewResource>
+      </div>
+    </AdminSidebar>
   );
 }

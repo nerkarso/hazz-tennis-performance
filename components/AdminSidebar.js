@@ -4,7 +4,7 @@ import { BellIcon, LogoutIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function AdminSidebar({ links }) {
+export default function AdminSidebar({ children, links }) {
   const router = useRouter();
   const activity = useActivityCreate();
   const { basePath } = usePath();
@@ -45,6 +45,7 @@ export default function AdminSidebar({ links }) {
           </Link>
         </div>
       </header>
+      {children}
       <List className="flex-1 px-3 overflow-y-auto">
         {links.map(({ href, text, icon: Icon }, i) => (
           <ListItem className="px-3 py-2 rounded-md" component={NavLink} href={href} key={i}>
