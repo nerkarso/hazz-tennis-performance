@@ -14,12 +14,13 @@ export default function SecurityLog() {
     <AdminLayout sidebar={<OwnerSidebar />}>
       <AdminContent header="Security log" toolbar={<Toolbar />}>
         <DataTableContainer
-          cols={1}
+          cols={3}
+          gridTemplateColumns="2rem 1fr 14rem"
           hook={useActivities}
           query={{
             sort: { created_at: -1 },
           }}>
-          {(data) => <ActivitiesTable rows={data} />}
+          {(data) => <ActivitiesTable gridTemplateColumns="2rem 1fr 14rem" rows={data} />}
         </DataTableContainer>
       </AdminContent>
     </AdminLayout>

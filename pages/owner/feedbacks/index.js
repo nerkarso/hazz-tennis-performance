@@ -12,7 +12,8 @@ export default function Feedbacks() {
     <AdminLayout sidebar={<OwnerSidebar />}>
       <AdminContent header="Feedbacks">
         <DataTableContainer
-          cols={7}
+          cols={6}
+          gridTemplateColumns="12rem 1fr 8rem 2fr 6rem 8rem"
           hook={useFeedbacks}
           query={{
             sort: { created_at: -1 },

@@ -17,6 +17,7 @@ export default function Dashboard() {
         <h1 className="mb-4 text-2xl font-bold">Schedule</h1>
         <DataTableContainer
           cols={7}
+          gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 5rem"
           hook={useBookings}
           query={{
             filter: { booking_status: 1, client: accountId },

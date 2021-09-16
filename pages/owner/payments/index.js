@@ -13,6 +13,7 @@ export default function Payments() {
       <AdminContent header="Payments">
         <DataTableContainer
           cols={7}
+          gridTemplateColumns="12rem 1fr 8rem 8rem 8rem 10rem 8rem"
           hook={useBookings}
           query={{
             sort: { created_at: -1 },
@@ -20,7 +21,7 @@ export default function Payments() {
           {(data) => (
             <BookingsTable
               cols={['date_time', 'client_link', 'booking_status', 'total_fees', 'payment_type', 'payment_status']}
-              gridTemplateColumns="12rem 1fr 8rem 8rem 8rem 8rem 8rem"
+              gridTemplateColumns="12rem 1fr 8rem 8rem 8rem 10rem 8rem"
               rows={data}
               enableEdit
               enableShow

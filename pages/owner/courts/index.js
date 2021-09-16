@@ -14,11 +14,12 @@ export default function Courts() {
       <AdminContent header="Courts" toolbar={<ButtonNewResource>New court</ButtonNewResource>}>
         <DataTableContainer
           cols={4}
+          gridTemplateColumns="1.1fr 2fr 10rem 10rem"
           hook={useCourts}
           query={{
             sort: { name: 1 },
           }}>
-          {(data) => <CourtsTable rows={data} />}
+          {(data) => <CourtsTable gridTemplateColumns="1.1fr 2fr 10rem 10rem" rows={data} />}
         </DataTableContainer>
       </AdminContent>
     </AdminLayout>

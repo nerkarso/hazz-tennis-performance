@@ -15,6 +15,7 @@ export default function Bookings() {
       <AdminContent header="Bookings">
         <DataTableContainer
           cols={8}
+          gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 6rem 5rem"
           hook={useBookings}
           query={{
             filter: { coach: accountId },

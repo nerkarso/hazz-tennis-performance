@@ -13,6 +13,7 @@ export default function Bookings() {
       <AdminContent header="Bookings">
         <DataTableContainer
           cols={7}
+          gridTemplateColumns="12rem 1fr 1fr 1fr 6rem 8rem 6rem"
           hook={useBookings}
           query={{
             sort: { created_at: -1 },

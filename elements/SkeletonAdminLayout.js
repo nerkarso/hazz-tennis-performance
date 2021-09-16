@@ -17,8 +17,8 @@ export default function SkeletonAdminLayout() {
         </div>
       </aside>
       <main className="flex flex-col flex-grow h-full p-8">
-        <div className="w-56 h-8 mb-4 rounded-md bg-neutral-100 dark:bg-neutral-800 animate-pulse"></div>
-        <SkeletonTable cols={4} rows={6} animate />
+        <div className="w-56 h-10 mb-6 rounded-md bg-neutral-100 dark:bg-neutral-800 animate-pulse"></div>
+        <SkeletonTable cols={1} rows={6} animate />
       </main>
     </div>
   );

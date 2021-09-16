@@ -16,6 +16,7 @@ export default function CoachingHours() {
       <AdminContent header="Coaching hours" toolbar={<ButtonNewResource>New coaching hours</ButtonNewResource>}>
         <DataTableContainer
           cols={3}
+          gridTemplateColumns="8rem 1fr 6rem"
           hook={useCoachingHours}
           query={{
             filter: { coach: accountId },

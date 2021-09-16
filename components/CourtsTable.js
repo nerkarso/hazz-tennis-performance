@@ -1,9 +1,9 @@
-import { Table, TableActionButton, TableActions, TableCell, TableHead, TableRow } from '@/elements';
+import { Table, TableActionButton, TableActions, TableCell, TableCellIcon, TableHead, TableRow } from '@/elements';
 import { useCourtDelete, usePath } from '@/hooks';
 import { LocationMarkerIcon } from '@heroicons/react/outline';
 import toast from 'react-hot-toast';
 
-export default function CourtsTable({ rows }) {
+export default function CourtsTable({ gridTemplateColumns, rows }) {
   const { basePath, resourcePath } = usePath();
   const { mutate } = useCourtDelete();
 
@@ -18,8 +18,6 @@ export default function CourtsTable({ rows }) {
       },
     });
   };
-
-  const gridTemplateColumns = '1.1fr 2fr 10rem 10rem';
 
   return (
     <Table>

@@ -3,7 +3,7 @@ import { usePath, useUserDelete } from '@/hooks';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 
-export default function UsersTable({ enableDelete, enableShow, enableEdit, rows }) {
+export default function UsersTable({ enableDelete, enableShow, enableEdit, gridTemplateColumns, rows }) {
   const { basePath, resourcePath } = usePath();
   const { mutate } = useUserDelete();
 
@@ -18,8 +18,6 @@ export default function UsersTable({ enableDelete, enableShow, enableEdit, rows 
       },
     });
   };
-
-  const gridTemplateColumns = '1.5fr 1fr 1fr 12rem 9rem';
 
   return (
     <Table>

@@ -2,9 +2,7 @@ import { Table, TableCell, TableRow } from '@/elements';
 import cx from 'classnames';
 import { format } from 'date-fns';
 
-export default function ActivitiesTable({ rows }) {
-  const gridTemplateColumns = '2rem 1fr 14rem';
-
+export default function ActivitiesTable({ gridTemplateColumns, rows }) {
   const getActionText = (action, status) => {
     if (action === 'ACCOUNT_NOT_FOUND') {
       return 'has attempted to sign in but account does not exist.';

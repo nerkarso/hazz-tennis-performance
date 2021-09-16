@@ -3,9 +3,7 @@ import { BellIcon } from '@heroicons/react/outline';
 import cx from 'classnames';
 import { format } from 'date-fns';
 
-export default function NotificationsTable({ rows }) {
-  const gridTemplateColumns = '3rem 1fr 14rem';
-
+export default function NotificationsTable({ gridTemplateColumns, rows }) {
   return (
     <Table>
       {rows.map(({ body, created_at, read, title }, i) => (

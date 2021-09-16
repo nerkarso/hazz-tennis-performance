@@ -1,14 +1,14 @@
 import { SkeletonTableCell, Table, TableCell, TableRow } from '@/elements';
 import cx from 'classnames';
 
-export default function SkeletonTable({ animate, cols = 1, rows = 6 }) {
+export default function SkeletonTable({ animate, cols = 1, gridTemplateColumns, rows = 6 }) {
   const colsArray = Array.from(Array(cols));
   const rowsArray = Array.from(Array(rows));
 
   return (
     <Table className={cx({ 'animate-pulse': animate })}>
       {rowsArray.map((_, r) => (
-        <TableRow style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }} key={r}>
+        <TableRow style={{ gridTemplateColumns: gridTemplateColumns ? gridTemplateColumns : `repeat(${cols}, minmax(0, 1fr))` }} key={r}>
           {colsArray.map((_, c) => (
             <TableCell key={c}>
               <SkeletonTableCell />

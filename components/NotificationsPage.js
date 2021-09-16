@@ -18,13 +18,14 @@ export default function NotificationsPage() {
         </>
       }>
       <DataTableContainer
-        cols={1}
+        cols={3}
+        gridTemplateColumns="3rem 1fr 14rem"
         hook={useNotifications}
         query={{
           filter: { user: accountId },
           sort: { created_at: -1 },
         }}>
-        {(data) => <NotificationsTable rows={data} />}
+        {(data) => <NotificationsTable gridTemplateColumns="3rem 1fr 14rem" rows={data} />}
       </DataTableContainer>
     </AdminContent>
   );

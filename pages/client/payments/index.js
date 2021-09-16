@@ -15,6 +15,7 @@ export default function Payments() {
       <AdminContent header="Payments">
         <DataTableContainer
           cols={8}
+          gridTemplateColumns="12rem 1fr 6rem 6rem 6rem 8rem 8rem 6rem"
           hook={useBookings}
           query={{
             filter: { client: accountId },

@@ -14,7 +14,8 @@ export default function Feedbacks() {
     <AdminLayout sidebar={<ClientSidebar />}>
       <AdminContent header="Feedbacks">
         <DataTableContainer
-          cols={7}
+          cols={6}
+          gridTemplateColumns="12rem 8rem 1fr 6rem 12rem 8rem"
           hook={useFeedbacks}
           query={{
             filter: { user: accountId },

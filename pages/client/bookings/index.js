@@ -16,6 +16,7 @@ export default function Bookings() {
       <AdminContent header="Bookings" toolbar={<ButtonNewResource>New booking</ButtonNewResource>}>
         <DataTableContainer
           cols={8}
+          gridTemplateColumns="12rem 1fr 1fr 6rem 9rem 6rem 6rem 8rem"
           hook={useBookings}
           query={{
             filter: { client: accountId },
