@@ -5,6 +5,10 @@ export function useNotifications(query) {
   return useQuery('notifications', () => fetcher('/api/notifications', { query }));
 }
 
+export function useNotificationsCount(id) {
+  return useQuery('notificationsCount', () => fetcher(`/api/notifications/${id}/count`));
+}
+
 export function useNotificationsUpdate(query) {
   const queryClient = useQueryClient();
 
@@ -19,6 +23,7 @@ export function useNotificationsUpdate(query) {
     {
       onSuccess: () => {
         queryClient.invalidateQueries('notifications');
+        queryClient.invalidateQueries('notificationsCount');
       },
     },
   );
@@ -37,6 +42,7 @@ export function useNotificationsDelete(query) {
     {
       onSuccess: () => {
         queryClient.invalidateQueries('notifications');
+        queryClient.invalidateQueries('notificationsCount');
       },
     },
   );

@@ -1,3 +1,4 @@
+import NotificationsCountBadge from '@/components/NotificationsCountBadge';
 import { Avatar, Button, List, ListItem, ListItemContent, ListItemStart, NavLink } from '@/elements';
 import { useActivityCreate, useAuth, usePath, useUserAccount } from '@/hooks';
 import { BellIcon, LogoutIcon } from '@heroicons/react/outline';
@@ -35,7 +36,7 @@ export default function AdminSidebar({ children, links }) {
           <Link href={`/${basePath}/notifications`} passHref>
             <Button className="relative" color="neutral" variant="solid" rounded>
               <BellIcon className="w-6 h-6" />
-              <span className="absolute top-0 right-0 inline-block w-2.5 h-2.5 bg-red-600 rounded-full dark:bg-red-500" />
+              <NotificationsCountBadge />
             </Button>
           </Link>
           <Link href={`/${basePath}/account`}>
