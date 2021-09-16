@@ -1,6 +1,5 @@
-import DataFormContainer from '@/components/DataFormContainer';
 import UserEditForm from '@/components/UserEditForm';
-import { Avatar, Button, SidePaneHeading, SkeletonButton, TwoPaneView } from '@/elements';
+import { Avatar, Button, DataFormContainer, SidePaneHeading, SkeletonButton, TwoPaneView } from '@/elements';
 import { useAuth, useUser, useUserUpdate } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

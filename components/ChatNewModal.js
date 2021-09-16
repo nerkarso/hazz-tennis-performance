@@ -1,5 +1,4 @@
-import DataListContainer from '@/components/DataListContainer';
-import { Avatar, List, ListItem, ListItemContent, ListItemStart, Modal, ModalHeader } from '@/elements';
+import { Avatar, DataListContainer, List, ListItem, ListItemContent, ListItemStart, Modal, ModalHeader } from '@/elements';
 import { useAuth, useChatCreate, usePath, useUsers } from '@/hooks';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';

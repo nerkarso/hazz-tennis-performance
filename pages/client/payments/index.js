@@ -2,7 +2,7 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import ClientSidebar from '@/components/ClientSidebar';
-import DataTableContainer from '@/components/DataTableContainer';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useBookings } from '@/hooks';
 
 Payments.title = 'Payments';

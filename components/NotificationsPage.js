@@ -1,7 +1,6 @@
 import AdminContent from '@/components/AdminContent';
-import DataTableContainer from '@/components/DataTableContainer';
 import NotificationsTable from '@/components/NotificationsTable';
-import { Button, SkeletonButton } from '@/elements';
+import { Button, DataTableContainer, SkeletonButton } from '@/elements';
 import { useAuth, useNotifications, useNotificationsDelete, useNotificationsUpdate } from '@/hooks';
 import { CheckIcon, TrashIcon } from '@heroicons/react/outline';
 

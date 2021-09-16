@@ -2,7 +2,7 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import CoachSidebar from '@/components/CoachSidebar';
-import DataTableContainer from '@/components/DataTableContainer';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useBookings } from '@/hooks';
 
 Bookings.title = 'Bookings';

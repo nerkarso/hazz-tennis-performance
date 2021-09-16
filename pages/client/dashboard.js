@@ -3,7 +3,7 @@ import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import ClientSidebar from '@/components/ClientSidebar';
 import DashboardGreeting from '@/components/DashboardGreeting';
-import DataTableContainer from '@/components/DataTableContainer';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useBookings } from '@/hooks';
 
 Dashboard.title = 'Dashboard';

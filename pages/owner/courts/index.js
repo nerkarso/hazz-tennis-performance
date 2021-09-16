@@ -2,8 +2,8 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import ButtonNewResource from '@/components/ButtonNewResource';
 import CourtsTable from '@/components/CourtsTable';
-import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
+import { DataTableContainer } from '@/elements';
 import { useCourts } from '@/hooks';
 
 Courts.title = 'Courts';

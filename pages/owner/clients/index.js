@@ -1,9 +1,9 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import ButtonNewResource from '@/components/ButtonNewResource';
-import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
 import UsersTable from '@/components/UsersTable';
+import { DataTableContainer } from '@/elements';
 import { useUsers } from '@/hooks';
 
 Clients.title = 'Clients';

@@ -2,10 +2,9 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import ClientBookingEditForm from '@/components/ClientBookingEditForm';
 import ClientSidebar from '@/components/ClientSidebar';
-import DataFormContainer from '@/components/DataFormContainer';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { SidePaneHeading, TwoPaneView } from '@/elements';
+import { DataFormContainer, SidePaneHeading, TwoPaneView } from '@/elements';
 import { useBooking } from '@/hooks';
 
 BookingEdit.title = 'Edit booking';

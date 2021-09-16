@@ -2,7 +2,7 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import CoachingHourEditForm from '@/components/CoachingHourEditForm';
 import CoachSidebar from '@/components/CoachSidebar';
-import DataFormContainer from '@/components/DataFormContainer';
+import { DataFormContainer } from '@/elements';
 import { useCoachingHour } from '@/hooks';
 
 CoachingHourEdit.title = 'Edit coaching hours';

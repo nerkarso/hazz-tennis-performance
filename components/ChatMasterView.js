@@ -1,6 +1,5 @@
 import ChatNewModal from '@/components/ChatNewModal';
-import DataListContainer from '@/components/DataListContainer';
-import { Avatar, Button, List, ListItem, ListItemContent, ListItemEnd, ListItemStart, MasterView, NavLink } from '@/elements';
+import { Avatar, Button, DataListContainer, List, ListItem, ListItemContent, ListItemEnd, ListItemStart, MasterView, NavLink } from '@/elements';
 import { useAuth, useChatDelete, useChats, usePath } from '@/hooks';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 import { format } from 'date-fns';

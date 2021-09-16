@@ -3,7 +3,7 @@ import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import ButtonNewResource from '@/components/ButtonNewResource';
 import ClientSidebar from '@/components/ClientSidebar';
-import DataTableContainer from '@/components/DataTableContainer';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useBookings } from '@/hooks';
 
 Bookings.title = 'Bookings';

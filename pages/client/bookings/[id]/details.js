@@ -3,12 +3,11 @@ import AdminLayout from '@/components/AdminLayout';
 import BookingDetailsForm from '@/components/BookingDetailsForm';
 import ClientFeedbackNewForm from '@/components/ClientFeedbackNewForm';
 import ClientSidebar from '@/components/ClientSidebar';
-import DataFormContainer from '@/components/DataFormContainer';
 import FeedbackMessages from '@/components/FeedbackMessages';
 import FeedbackMessagesContainer from '@/components/FeedbackMessagesContainer';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
-import { Button, SidePaneHeading, TwoPaneView } from '@/elements';
+import { Button, DataFormContainer, SidePaneHeading, TwoPaneView } from '@/elements';
 import { useBooking } from '@/hooks';
 import { useState } from 'react';
 

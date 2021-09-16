@@ -1,6 +1,5 @@
-import DataFormContainer from '@/components/DataFormContainer';
 import UserEditForm from '@/components/UserEditForm';
-import { Avatar, TwoPaneView } from '@/elements';
+import { Avatar, DataFormContainer, TwoPaneView } from '@/elements';
 import { useUser } from '@/hooks';
 
 export default function UserEditView({ userId }) {

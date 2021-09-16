@@ -1,8 +1,8 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import ClientSidebar from '@/components/ClientSidebar';
-import DataTableContainer from '@/components/DataTableContainer';
 import FeedbacksTable from '@/components/FeedbacksTable';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useFeedbacks } from '@/hooks';
 
 Feedbacks.title = 'Feedbacks';

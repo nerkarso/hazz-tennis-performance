@@ -3,7 +3,7 @@ import AdminLayout from '@/components/AdminLayout';
 import ButtonNewResource from '@/components/ButtonNewResource';
 import CoachingHoursTable from '@/components/CoachingHoursTable';
 import CoachSidebar from '@/components/CoachSidebar';
-import DataTableContainer from '@/components/DataTableContainer';
+import { DataTableContainer } from '@/elements';
 import { useAuth, useCoachingHours } from '@/hooks';
 
 CoachingHours.title = 'Coaching hours';

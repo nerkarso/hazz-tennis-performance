@@ -2,8 +2,8 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import BookingsTable from '@/components/BookingsTable';
 import DashboardGreeting from '@/components/DashboardGreeting';
-import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
+import { DataTableContainer } from '@/elements';
 import { useBookings } from '@/hooks';
 
 Dashboard.title = 'Dashboard';

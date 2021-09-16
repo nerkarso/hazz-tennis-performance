@@ -1,8 +1,8 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import CoachingHoursTable from '@/components/CoachingHoursTable';
-import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
+import { DataTableContainer } from '@/elements';
 import { useCoachingHours } from '@/hooks';
 
 CoachingHours.title = 'Coaching hours';

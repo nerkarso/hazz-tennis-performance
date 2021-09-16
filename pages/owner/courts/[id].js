@@ -1,8 +1,8 @@
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import CourtEditForm from '@/components/CourtEditForm';
-import DataFormContainer from '@/components/DataFormContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
+import { DataFormContainer } from '@/elements';
 import { useCourt } from '@/hooks';
 
 CourtEdit.title = 'Edit court';

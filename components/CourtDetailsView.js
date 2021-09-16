@@ -1,5 +1,5 @@
 import CourtDetailsForm from '@/components/CourtDetailsForm';
-import DataFormContainer from '@/components/DataFormContainer';
+import { DataFormContainer } from '@/elements';
 import { useCourt } from '@/hooks';
 
 export default function CourtDetailsView({ courtId }) {

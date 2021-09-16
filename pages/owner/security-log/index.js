@@ -1,9 +1,8 @@
 import ActivitiesTable from '@/components/ActivitiesTable';
 import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
-import DataTableContainer from '@/components/DataTableContainer';
 import OwnerSidebar from '@/components/OwnerSidebar';
-import { Button, SkeletonButton } from '@/elements';
+import { Button, DataTableContainer, SkeletonButton } from '@/elements';
 import { useActivities, useActivitiesDelete } from '@/hooks';
 import { TrashIcon } from '@heroicons/react/outline';
 
