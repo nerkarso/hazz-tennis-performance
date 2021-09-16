@@ -2,16 +2,19 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema(
   {
-    message: {
+    title: {
       type: String,
+    },
+    body: {
+      type: String,
+    },
+    read: {
+      type: Boolean,
+      default: false,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-    },
-    seen: {
-      type: Boolean,
-      default: false,
     },
     created_at: {
       type: Date,

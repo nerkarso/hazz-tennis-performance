@@ -31,9 +31,7 @@ export default function CourtsTable({ rows }) {
       {rows.map(({ _id, address, city, name }, i) => (
         <TableRow style={{ gridTemplateColumns }} key={i}>
           <TableCell className="flex items-center gap-3">
-            <div className="grid flex-shrink-0 w-10 h-10 bg-purple-600 rounded-full place-items-center">
-              <LocationMarkerIcon className="w-6 h-6 text-white" />
-            </div>
+            <TableCellIcon icon={LocationMarkerIcon} />
             <span>{name}</span>
           </TableCell>
           <TableCell>{address}</TableCell>

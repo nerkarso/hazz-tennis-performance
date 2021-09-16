@@ -37,6 +37,7 @@ export { default as Table } from '@/elements/Table';
 export { default as TableActionButton } from '@/elements/TableActionButton';
 export { default as TableActions } from '@/elements/TableActions';
 export { default as TableCell } from '@/elements/TableCell';
+export { default as TableCellIcon } from '@/elements/TableCellIcon';
 export { default as TableHead } from '@/elements/TableHead';
 export { default as TableRow } from '@/elements/TableRow';
 export { default as TwoPaneView } from '@/elements/TwoPaneView';

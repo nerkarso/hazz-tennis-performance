@@ -5,5 +5,6 @@ module.exports = {
   CoachingHour: require('./CoachingHour'),
   Court: require('./Court'),
   Feedback: require('./Feedback'),
+  Notification: require('./Notification'),
   User: require('./User'),
 };

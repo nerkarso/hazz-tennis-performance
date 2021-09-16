@@ -10,7 +10,7 @@ export function useActivitiesDelete() {
 
   return useMutation(
     () => {
-      return fetcher(`/api/activities`, {
+      return fetcher('/api/activities', {
         method: 'DELETE',
       });
     },

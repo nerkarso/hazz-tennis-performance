@@ -33,9 +33,7 @@ export default function ClientSidebar() {
         },
       ]}>
       <div className="mx-4 mb-4">
-        <ButtonNewResource className="pl-3 pr-4" resource="bookings">
-          New booking
-        </ButtonNewResource>
+        <ButtonNewResource resource="bookings">New booking</ButtonNewResource>
       </div>
     </AdminSidebar>
   );
