@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema(
   {
-    category: {
-      type: String,
-    },
     action: {
       type: String,
     },
@@ -15,9 +12,6 @@ const schema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-    },
-    user_alt: {
-      type: String,
     },
     created_at: {
       type: Date,

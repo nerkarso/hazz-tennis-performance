@@ -27,30 +27,19 @@ export default function SignIn() {
           if (data?.error) {
             toast.error(data.error);
             // Log activity
-            if (data.status === 401) {
+            if (data?.status === 401) {
               activity.mutate({
-                category: 'ACCOUNT',
                 action: 'SIGN_IN',
                 status: -1,
-                user_alt: email,
-              });
-            }
-            if (data.status === 404) {
-              activity.mutate({
-                category: 'ACCOUNT',
-                action: 'ACCOUNT_NOT_FOUND',
-                status: -1,
-                user_alt: email,
+                user: data?._id,
               });
             }
           } else {
             router.replace(`/${data?.role}/dashboard`);
             // Log activity
             activity.mutate({
-              category: 'ACCOUNT',
               action: 'SIGN_IN',
-              status: 1,
-              user_alt: email,
+              user: data?._id,
             });
           }
         },

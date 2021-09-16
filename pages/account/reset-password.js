@@ -33,10 +33,9 @@ export default function ResetPassword() {
               router.replace('/account/signin');
               // Log activity
               activity.mutate({
-                category: 'ACCOUNT',
                 action: 'RESET_PASSWORD',
-                status: 0,
                 user: userIdentify.data?._id,
+                user_alt: email,
               });
             }
           },

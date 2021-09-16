@@ -33,6 +33,7 @@ async function authenticate(req, res) {
     });
     if (!isMatch) {
       return res.status(401).json({
+        _id: user?._id,
         status: 401,
         error: 'Wrong password',
       });

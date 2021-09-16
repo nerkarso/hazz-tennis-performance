@@ -16,9 +16,7 @@ export default function AdminSidebar({ children, links }) {
     router.replace('/account/signin');
     // Log activity
     activity.mutate({
-      category: 'ACCOUNT',
       action: 'SIGN_OUT',
-      status: 0,
       user: accountId,
     });
   };

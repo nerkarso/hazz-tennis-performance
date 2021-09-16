@@ -31,10 +31,8 @@ export default function SignUp() {
             router.replace('/client/dashboard');
             // Log activity
             activity.mutate({
-              category: 'ACCOUNT',
-              action: 'SIGN_UP',
-              status: 0,
-              user_alt: email,
+              action: 'SIGN_IN',
+              user: data?._id,
             });
           }
         },
