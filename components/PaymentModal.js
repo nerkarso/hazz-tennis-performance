@@ -1,5 +1,5 @@
 import { Button, FormGroup, Input, Modal, ModalHeader, Note } from '@/elements';
-import Cards from 'react-credit-cards';
+import CreditCard from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import { useForm } from 'react-hook-form';
 
@@ -26,7 +26,7 @@ export default function PaymentModal({ isOpen, onClose, onSubmit }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalHeader title="Pay with card" onClose={onClose} />
       <div className="px-4 pt-2 pb-4 overflow-y-auto max-h-[75vh]">
-        <Cards cvc={wachter?.cvc} expiry={wachter?.expiry} name={wachter?.name} number={wachter?.number} />
+        <CreditCard cvc={wachter?.cvc} expiry={wachter?.expiry} name={wachter?.name} number={wachter?.number} />
         <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col flex-1 gap-4 mt-6">
           <div>
             <FormGroup htmlFor="card-info" label="Card information" error={errors.number || errors.expiry || errors.cvc}>

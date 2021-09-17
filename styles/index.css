@@ -13,3 +13,7 @@
     @apply font-medium text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus:underline;
   }
 }
+
+.credit-card-preview .rccs {
+  margin: 0;
+}

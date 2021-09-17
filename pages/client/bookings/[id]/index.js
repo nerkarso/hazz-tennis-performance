@@ -2,6 +2,7 @@ import AdminContent from '@/components/AdminContent';
 import AdminLayout from '@/components/AdminLayout';
 import ClientBookingEditForm from '@/components/ClientBookingEditForm';
 import ClientSidebar from '@/components/ClientSidebar';
+import PaymentDetailsCard from '@/components/PaymentDetailsCard';
 import TotalFeesCard from '@/components/TotalFeesCard';
 import UserDetailsCard from '@/components/UserDetailsCard';
 import { DataFormContainer, SidePaneHeading, TwoPaneView } from '@/elements';
@@ -23,6 +24,8 @@ export default function BookingEdit({ bookingId }) {
                   <TotalFeesCard amount={data?.total_fees} className="w-full mb-6" />
                   <SidePaneHeading>Coach</SidePaneHeading>
                   <UserDetailsCard user={data?.coach} showDetailsUrl={`/client/coaches/${data?.coach?._id}`} className="w-full mb-6" />
+                  <SidePaneHeading>Payment details</SidePaneHeading>
+                  <PaymentDetailsCard data={data?.payment_details} />
                 </>
               }
             />
