@@ -1,9 +1,12 @@
 import cx from 'classnames';
+import { forwardRef } from 'react';
 
-export default function TableRow({ children, className, ...props }) {
+function TableRow({ children, className, component: Component = 'div', ...props }, ref) {
   return (
-    <div className={cx('grid grid-flow-col gap-2 items-center border-b dark:border-neutral-700', className)} {...props}>
+    <Component ref={ref} className={cx('grid grid-flow-col gap-2 items-center border-b dark:border-neutral-700', className)} {...props}>
       {children}
-    </div>
+    </Component>
   );
 }
+
+export default forwardRef(TableRow);

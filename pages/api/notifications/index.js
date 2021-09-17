@@ -54,13 +54,14 @@ async function updateAll(req, res) {
   const { query } = req;
   const filter = JSON.parse(query?.filter ?? '{}');
   const _body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
-  const { body, title, read } = _body;
+  const { body, read, title, url } = _body;
 
   try {
     let notification = {};
     if (body !== undefined && body !== '') notification.body = body;
-    if (title !== undefined && title !== '') notification.title = title;
     if (read !== undefined && read !== '') notification.read = read;
+    if (title !== undefined && title !== '') notification.title = title;
+    if (url !== undefined && url !== '') notification.url = url;
     const result = await Notification.updateMany(filter, notification);
     res.json({ message: `Notifications updated: ${result.nModified}` });
   } catch (ex) {

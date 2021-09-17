@@ -292,7 +292,7 @@ export function BookingFormPaymentType({ defaultValue, disabled, enableNote }) {
       </FormGroup>
       {enableNote && paymentType && (
         <Note className="w-2/3 place-self-end" color="yellow">
-          {paymentType === 'cash' && 'You can pay in cash before starting the lession.'}
+          {paymentType === 'cash' && 'You can pay in cash before starting the lesson.'}
           {paymentType.includes('card') && 'Next, you will be prompted for payment.'}
         </Note>
       )}

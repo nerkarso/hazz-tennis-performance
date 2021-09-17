@@ -1,6 +1,7 @@
 import withAllowedMethods from '@/middlewares/withAllowedMethods';
 import withDatabase from '@/middlewares/withDatabase';
-import { Booking, Court, User } from '@/models';
+import { Booking, Court, Notification, User } from '@/models';
+import { format } from 'date-fns';
 
 function handler(req, res) {
   switch (req.method) {
@@ -50,8 +51,29 @@ async function create(req, res) {
 
   try {
     const booking = await Booking.create(body);
+    await createNotificationForOwners(booking);
     res.json(booking);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
   }
+}
+
+/**
+ * Create notification to owners
+ */
+async function createNotificationForOwners(booking) {
+  const owners = await User.find({ role: 'owner' });
+  const client = await User.findById(booking?.client);
+  const location = await Court.findById(booking?.location);
+
+  return Promise.allSettled(
+    owners.map((owner) =>
+      Notification.create({
+        title: `New booking by ${client?.first_name} ${client?.last_name}`,
+        body: `Lesson on ${format(new Date(booking?.date_time), 'MMM dd, y HH:mm:ss aa')} at ${location?.name}${location?.city ? `, ${location?.city}` : ''}.`,
+        user: owner?._id,
+        url: `/owner/bookings/${booking._id}`,
+      }),
+    ),
+  );
 }
