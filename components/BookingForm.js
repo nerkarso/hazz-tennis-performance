@@ -1,4 +1,4 @@
-import { ErrorFormGroup, FormGroup, Input, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
+import { ErrorFormGroup, FormGroup, Input, Note, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
 import { useCourts, useCurrentBooking, useUsers } from '@/hooks';
 import { COACHING_FEE } from '@/lib';
 import cx from 'classnames';
@@ -257,13 +257,17 @@ export function BookingFormStatus({ defaultValue, disabled }) {
   );
 }
 
-export function BookingFormPaymentType({ defaultValue, disabled }) {
+export function BookingFormPaymentType({ defaultValue, disabled, enableNote }) {
   const { paymentType, setPaymentType } = useBookingForm();
 
   const items = [
     {
       text: 'Cash',
       value: 'cash',
+    },
+    {
+      text: 'Credit card',
+      value: 'credit-card',
     },
     {
       text: 'Debit card',
@@ -278,13 +282,21 @@ export function BookingFormPaymentType({ defaultValue, disabled }) {
   }, [defaultValue, setPaymentType]);
 
   return (
-    <FormGroup label="Payment type" inline>
-      {disabled ? (
-        <Input type="text" className="flex-1" defaultValue={items.find((item) => item.value === defaultValue).text} disabled />
-      ) : (
-        <SegmentGroup items={items} value={paymentType} onChange={setPaymentType} className="flex-1" />
+    <>
+      <FormGroup label="Payment type" inline>
+        {disabled ? (
+          <Input type="text" className="flex-1" defaultValue={items.find((item) => item.value === defaultValue).text} disabled />
+        ) : (
+          <SegmentGroup items={items} value={paymentType} onChange={setPaymentType} className="flex-1" />
+        )}
+      </FormGroup>
+      {enableNote && paymentType && (
+        <Note className="w-2/3 place-self-end" color="yellow">
+          {paymentType === 'cash' && 'You can pay in cash before starting the lession.'}
+          {paymentType.includes('card') && 'Next, you will be prompted for payment.'}
+        </Note>
       )}
-    </FormGroup>
+    </>
   );
 }
 

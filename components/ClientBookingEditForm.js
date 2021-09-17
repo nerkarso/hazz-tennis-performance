@@ -38,7 +38,7 @@ export default function ClientBookingEditForm({ data }) {
       <BookingFormTime defaultValue={format(new Date(date_time), 'HH:mm')} />
       <BookingFormDuration defaultValue={duration} />
       <BookingFormLocation defaultValue={location._id} />
-      <BookingFormPaymentType defaultValue={payment_type} />
+      <BookingFormPaymentType defaultValue={payment_type} disabled />
       <BookingFormPaymentStatus defaultValue={payment_status} disabled />
       <FormActions className="grid-cols-2" isLoading={isLoading} loadingText="Updating..." submitText="Update" />
     </BookingForm>

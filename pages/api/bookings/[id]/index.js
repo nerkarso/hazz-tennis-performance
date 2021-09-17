@@ -50,7 +50,7 @@ async function getById(req, res) {
 async function update(req, res) {
   const { id } = req.query;
   const body = typeof req.body === 'object' ? req.body : JSON.parse(req.body);
-  const { booking_status, client, coach, date_time, duration, location, payment_status, total_fees, total_hours } = body;
+  const { booking_status, client, coach, date_time, duration, location, payment_details, payment_status, payment_type, total_fees, total_hours } = body;
 
   try {
     const booking = await Booking.findById(id);
@@ -63,7 +63,9 @@ async function update(req, res) {
     if (date_time !== undefined && date_time !== '') booking.date_time = date_time;
     if (duration !== undefined && duration !== '') booking.duration = duration;
     if (location !== undefined && location !== '') booking.location = location;
+    if (payment_details !== undefined && payment_details !== '') booking.payment_details = payment_details;
     if (payment_status !== undefined && payment_status !== '') booking.payment_status = payment_status;
+    if (payment_type !== undefined && payment_type !== '') booking.payment_type = payment_type;
     if (total_fees !== undefined && total_fees !== '') booking.total_fees = total_fees;
     if (total_hours !== undefined && total_hours !== '') booking.total_hours = total_hours;
     await booking.save();

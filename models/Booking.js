@@ -21,6 +21,9 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    payment_details: {
+      type: mongoose.Schema.Types.Mixed,
+    },
     total_hours: {
       type: Number,
       default: 0,

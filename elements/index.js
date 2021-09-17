@@ -24,6 +24,7 @@ export { default as MasterView } from '@/elements/MasterView';
 export { default as Modal } from '@/elements/Modal';
 export { default as ModalHeader } from '@/elements/ModalHeader';
 export { default as NavLink } from '@/elements/NavLink';
+export { default as Note } from '@/elements/Note';
 export { default as SegmentGroup } from '@/elements/SegmentGroup';
 export { default as Select } from '@/elements/Select';
 export { default as SidePaneHeading } from '@/elements/SidePaneHeading';
