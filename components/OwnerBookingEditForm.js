@@ -31,6 +31,12 @@ export default function OwnerBookingEditForm({ data }) {
             toast.error(data.error);
           } else {
             toast.success('Booking updated');
+            if (formData?.notify_client) {
+              toast.success('Notification sent to client');
+            }
+            if (formData?.notify_coach) {
+              toast.success('Notification sent to coach');
+            }
             router.push(`/${basePath}/${resourcePath}`);
           }
         },

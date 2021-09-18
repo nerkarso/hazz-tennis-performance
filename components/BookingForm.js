@@ -29,6 +29,8 @@ export default function BookingForm({ children, className, onSubmit }) {
       payment_type: paymentType,
       payment_status: paymentStatus,
       total_fees: currentBooking?.total_fees,
+      notify_client: currentBooking?.notify_client,
+      notify_coach: currentBooking?.notify_coach,
     });
   };
 
@@ -96,12 +98,12 @@ export function BookingFormTime(props) {
 
 export function BookingFormDuration(props) {
   const { register, errors, watch } = useBookingForm();
-  const { setCurrentBooking } = useCurrentBooking();
+  const { updateCurrentBooking } = useCurrentBooking();
 
   useEffect(() => {
     const watcher = watch((formData, { name }) => {
       if (name === 'duration') {
-        setCurrentBooking({
+        updateCurrentBooking({
           total_fees: +formData?.duration * COACHING_FEE,
         });
       }
@@ -109,7 +111,8 @@ export function BookingFormDuration(props) {
     return () => {
       watcher.unsubscribe();
     };
-  }, [setCurrentBooking, watch]);
+    // eslint-disable-next-line
+  }, [watch]);
 
   return (
     <FormGroup htmlFor="duration" label="Duration" error={errors.duration} inline>

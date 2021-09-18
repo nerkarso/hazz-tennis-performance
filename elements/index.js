@@ -3,6 +3,7 @@ export { default as Avatar } from '@/elements/Avatar';
 export { default as Badge } from '@/elements/Badge';
 export { default as Button } from '@/elements/Button';
 export { default as ChatBubble } from '@/elements/ChatBubble';
+export { default as Checkbox } from '@/elements/Checkbox';
 export { default as DataFormContainer } from '@/elements/DataFormContainer';
 export { default as DataListContainer } from '@/elements/DataListContainer';
 export { default as DataTableContainer } from '@/elements/DataTableContainer';

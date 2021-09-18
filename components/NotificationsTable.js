@@ -17,7 +17,7 @@ export default function NotificationsTable({ gridTemplateColumns, rows }) {
               {title && <h4 className="font-medium">{title}</h4>}
               {body && <p>{body}</p>}
             </TableCell>
-            <TableCell className={cx('text-right', read ? 'text-neutral-400 dark:text-neutral-600' : 'text-neutral-600 dark:text-neutral-400')}>
+            <TableCell className={cx('text-sm text-right', read ? 'text-neutral-400 dark:text-neutral-600' : 'text-neutral-600 dark:text-neutral-400')}>
               {format(new Date(created_at), 'MMM dd, y HH:mm:ss aa')}
             </TableCell>
           </TableRow>

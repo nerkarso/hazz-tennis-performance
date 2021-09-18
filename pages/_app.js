@@ -33,8 +33,8 @@ export default function MyApp({ Component, pageProps }) {
           </Head>
           <Component {...pageProps} />
           <Toaster
-            containerStyle={{ bottom: 30 }}
-            position="bottom-center"
+            containerStyle={{ bottom: 30, left: 30 }}
+            position="bottom-left"
             toastOptions={{
               className: 'border !py-3 !px-4 !shadow-md dark:!text-white dark:!bg-neutral-800 dark:!border-neutral-700',
               duration: 3000,

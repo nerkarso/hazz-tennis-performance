@@ -4,20 +4,21 @@ import cx from 'classnames';
 import { useEffect } from 'react';
 
 export default function TotalFeesCard({ className, amount }) {
-  const { currentBooking, setCurrentBooking } = useCurrentBooking();
+  const { currentBooking, updateCurrentBooking } = useCurrentBooking();
 
   useEffect(() => {
     if (amount) {
-      setCurrentBooking({
+      updateCurrentBooking({
         total_fees: amount,
       });
     }
     return () => {
-      setCurrentBooking({
+      updateCurrentBooking({
         total_fees: 0,
       });
     };
-  }, [amount, setCurrentBooking]);
+    // eslint-disable-next-line
+  }, [amount]);
 
   return (
     <div className={cx('p-4 border rounded-lg dark:border-neutral-700', className)}>

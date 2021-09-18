@@ -35,7 +35,7 @@ export default function ActivitiesTable({ gridTemplateColumns, rows }) {
             <span className="mr-1 font-semibold">{user ? `${user.first_name} ${user.last_name}` : 'Unknown account'}</span>
             {getActionText(action, status)}
           </TableCell>
-          <TableCell className="text-right text-neutral-600 dark:text-neutral-400">{format(new Date(created_at), 'MMM dd, y HH:mm:ss aa')}</TableCell>
+          <TableCell className="text-sm text-right text-neutral-600 dark:text-neutral-400">{format(new Date(created_at), 'MMM dd, y HH:mm:ss aa')}</TableCell>
         </TableRow>
       ))}
     </Table>

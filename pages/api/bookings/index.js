@@ -51,7 +51,7 @@ async function create(req, res) {
 
   try {
     const booking = await Booking.create(body);
-    await createNotificationForOwners(booking);
+    await createOwnersNotification(booking);
     res.json(booking);
   } catch (ex) {
     res.status(500).json({ error: ex.message });
@@ -59,9 +59,9 @@ async function create(req, res) {
 }
 
 /**
- * Create notification to owners
+ * Create notification for owners
  */
-async function createNotificationForOwners(booking) {
+async function createOwnersNotification(booking) {
   const owners = await User.find({ role: 'owner' });
   const client = await User.findById(booking?.client);
   const location = await Court.findById(booking?.location);
