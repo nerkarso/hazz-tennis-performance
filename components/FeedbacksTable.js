@@ -48,7 +48,7 @@ export default function FeedbacksTable({ cols = [], enableDelete, enableShow, gr
                 </Link>
               )}
               {col === 'created_at' && formatDate(created_at)}
-              {col === 'date_time' && formatDate(booking?.date_time)}
+              {col === 'date_time' && booking?.date_time && formatDate(booking?.date_time)}
               {col === 'message' && message}
               {col === 'rating' && (
                 <div className="flex items-center">
@@ -60,7 +60,7 @@ export default function FeedbacksTable({ cols = [], enableDelete, enableShow, gr
           ))}
           {enableDelete || enableShow ? (
             <TableActions>
-              {enableShow && (
+              {enableShow && booking && (
                 <TableActionButton color="primary" href={`/${basePath}/bookings/${booking?._id}/details`}>
                   Show
                 </TableActionButton>
