@@ -1,6 +1,7 @@
 import { AuthProvider, CurrentBookingProvider } from '@/contexts';
 import '@/styles/index.css';
 import Head from 'next/head';
+import Script from 'next/script';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -40,6 +41,7 @@ export default function MyApp({ Component, pageProps }) {
               duration: 3000,
             }}
           />
+          <Script src={`${process.env.NEXT_PUBLIC_SOCKET_URL}/socket.io/socket.io.min.js`} strategy="beforeInteractive" />
         </CurrentBookingProvider>
       </AuthProvider>
     </QueryClientProvider>

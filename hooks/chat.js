@@ -1,4 +1,6 @@
+import { CurrentChatContext } from '@/contexts';
 import { fetcher } from '@/lib';
+import { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export function useChat(id) {
@@ -51,4 +53,8 @@ export function useChatMessageCreate(chatId) {
       body: JSON.stringify(data),
     });
   });
+}
+
+export function useCurrentChat() {
+  return useContext(CurrentChatContext);
 }

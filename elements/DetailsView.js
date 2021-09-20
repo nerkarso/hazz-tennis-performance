@@ -9,7 +9,11 @@ export function DetailsViewHeader({ children, className }) {
 }
 
 export function DetailsViewMain({ children, className }) {
-  return <main className={cx('flex-1 overflow-y-auto', className)}>{children}</main>;
+  return (
+    <main id="detailsViewMain" className={cx('flex-1 overflow-y-auto', className)}>
+      {children}
+    </main>
+  );
 }
 
 export function DetailsViewFooter({ children, className }) {

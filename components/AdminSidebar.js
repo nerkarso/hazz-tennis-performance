@@ -22,7 +22,7 @@ export default function AdminSidebar({ children, links }) {
   };
 
   return (
-    <aside className="flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700">
+    <aside className="hidden md:flex flex-col flex-shrink-0 border-r w-72 dark:bg-neutral-900 dark:border-neutral-700">
       <header className="flex items-center justify-between h-20 px-6">
         <Link href="/">
           <a className="flex items-center gap-3 transition duration-150 focus:outline-none focus:opacity-60">
