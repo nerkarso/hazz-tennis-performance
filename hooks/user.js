@@ -1,4 +1,5 @@
 import { fetcher } from '@/lib';
+import { addHours } from 'date-fns';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export function useUser(id) {
@@ -73,4 +74,30 @@ export function useUserIdentify() {
 
 export function useUserAccount(id) {
   return useQuery('account', () => fetcher(`/api/users/${id}`));
+}
+
+export function useCoachesAvailable({ date_time, duration }) {
+  const startTime = date_time;
+  const endTime = addHours(new Date(date_time), duration).toISOString();
+  const query = {
+    filter: {
+      $and: [
+        {
+          booking_status: 1,
+        },
+        {
+          date_time: {
+            $gt: startTime,
+          },
+        },
+        {
+          date_time: {
+            $lt: endTime,
+          },
+        },
+      ],
+    },
+  };
+
+  return useQuery('coaches', () => fetcher('/api/users/coaches', { query }));
 }

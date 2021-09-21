@@ -1,5 +1,5 @@
 import { ErrorFormGroup, FormGroup, Input, Note, SegmentGroup, Select, SkeletonFormGroup } from '@/elements';
-import { useCourts, useCurrentBooking, useUsers } from '@/hooks';
+import { useCoachesAvailable, useCourts, useCurrentBooking } from '@/hooks';
 import { COACHING_FEE } from '@/lib';
 import cx from 'classnames';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -131,11 +131,9 @@ export function BookingFormDuration(props) {
   );
 }
 
-export function BookingFormCoach(props) {
+export function BookingFormCoach({ booking, ...props }) {
   const { register, errors } = useBookingForm();
-  const { data, error, isError, isLoading } = useUsers({
-    filter: { role: 'coach' },
-  });
+  const { data, error, isError, isLoading } = useCoachesAvailable(booking);
 
   if (isLoading) return <SkeletonFormGroup animate />;
 
@@ -147,7 +145,7 @@ export function BookingFormCoach(props) {
     const items = [
       {
         text: 'Select available coach',
-        value: '',
+        value: null,
       },
       ...data.map((item) => ({
         text: `${item.first_name} ${item.last_name}`,
@@ -157,16 +155,7 @@ export function BookingFormCoach(props) {
 
     return (
       <FormGroup htmlFor="coach" label="Coach" error={errors.coach} inline>
-        <Select
-          id="coach"
-          className="flex-1"
-          items={items}
-          error={errors.coach}
-          {...register('coach', {
-            required: true,
-          })}
-          {...props}
-        />
+        <Select id="coach" className="flex-1" items={items} error={errors.coach} {...register('coach')} {...props} />
       </FormGroup>
     );
   }

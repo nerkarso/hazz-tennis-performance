@@ -20,10 +20,12 @@ export default withAllowedMethods(withDatabase(handler), ['GET', 'POST']);
 async function getAll(req, res) {
   const { query } = req;
   const filter = JSON.parse(query?.filter ?? '{}');
+  const select = query?.select;
   const sort = JSON.parse(query?.sort ?? '{}');
 
   try {
     const bookings = await Booking.find(filter)
+      .select(select)
       .sort(sort)
       .populate({
         path: 'client',

@@ -55,7 +55,7 @@ export default function OwnerBookingEditForm({ data }) {
       <BookingFormDate defaultValue={format(new Date(date_time), 'yyyy-MM-dd')} />
       <BookingFormTime defaultValue={format(new Date(date_time), 'HH:mm')} />
       <BookingFormDuration defaultValue={duration} />
-      <BookingFormCoach defaultValue={coach?._id} />
+      <BookingFormCoach booking={data} defaultValue={coach?._id} />
       <BookingFormLocation defaultValue={location?._id} />
       <BookingFormPaymentType defaultValue={payment_type} />
       <BookingFormPaymentStatus defaultValue={payment_status} />
