@@ -2,6 +2,7 @@ import { CurrentChatProvider } from '@/contexts';
 import { Avatar, ChatBubble, DetailsView, EmptyStateTitle, EmptyStateView, ErrorStateView, Input } from '@/elements';
 import { DetailsViewFooter, DetailsViewHeader, DetailsViewMain } from '@/elements/DetailsView';
 import { useAuth, useChat, useChatMessageCreate, useCurrentChat } from '@/hooks';
+import { scrollTo } from '@/lib';
 import cx from 'classnames';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -50,7 +51,7 @@ function ChatDetailsContainer({ chatId }) {
         </DetailsViewHeader>
         <ChatMessagesView messages={messages} room={_id} />
         <DetailsViewFooter>
-          <SendMessageForm chatId={chatId} from={accountId} />
+          <SendMessageBox chatId={chatId} from={accountId} />
         </DetailsViewFooter>
       </DetailsView>
     );
@@ -69,10 +70,7 @@ function ChatMessagesView({ messages, room }) {
 
     if (messages.length > 0) {
       // Scroll to bottom
-      setTimeout(() => {
-        const elem = document.getElementById('detailsViewMain');
-        if (elem) elem.scrollTo(0, elem.scrollHeight);
-      });
+      setTimeout(() => scrollTo('#detailsViewMain'));
     }
     // eslint-disable-next-line
   }, [messages, room]);
@@ -100,18 +98,22 @@ function ChatMessagesView({ messages, room }) {
   );
 }
 
-function SendMessageForm({ chatId, from }) {
-  const { newChatMessage } = useCurrentChat();
-  const { isLoading, mutate } = useChatMessageCreate(chatId);
+function SendMessageBox({ chatId, from }) {
+  const { chatRoom, newChatMessage } = useCurrentChat();
+  const { mutate } = useChatMessageCreate(chatId);
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
+  const focusMessageBox = () => document.querySelector('#messsageBox').focus();
+
   const onSubmit = ({ message }) => {
+    // Emit new message
     newChatMessage({
       from: from,
       message: message,
     });
 
+    // Save message in database
     mutate(
       {
         from: from,
@@ -121,22 +123,34 @@ function SendMessageForm({ chatId, from }) {
         onSuccess: (data) => {
           if (data?.error) {
             toast.error(data.error);
-          } else {
-            reset();
           }
         },
       },
     );
+
+    // Reset message box
+    reset();
+
+    // Focus on message box
+    focusMessageBox();
+
+    // Scroll to bottom
+    setTimeout(() => scrollTo('#detailsViewMain'));
   };
+
+  useEffect(() => {
+    // Focus on message box
+    focusMessageBox();
+  }, [chatRoom]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <Input
         type="text"
+        id="messsageBox"
         className="w-full"
         placeholder="Write something and press enter"
         autoComplete="off"
-        disabled={isLoading}
         error={errors.message}
         {...register('message', {
           required: true,
