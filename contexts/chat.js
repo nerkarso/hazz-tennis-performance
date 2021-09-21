@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 
 export const CurrentChatContext = createContext(null);
 
@@ -18,12 +17,6 @@ export function CurrentChatProvider({ children }) {
   };
 
   useEffect(() => {
-    try {
-      window.socket = window.io(process.env.NEXT_PUBLIC_SOCKET_URL);
-    } catch (ex) {
-      toast.error('Socket connection failed');
-    }
-
     window?.socket?.on('chat:newMessage', (message) => {
       setChatMessages((state) => [...state, message]);
     });
@@ -32,7 +25,6 @@ export function CurrentChatProvider({ children }) {
       setChatMessages([]);
       setChatRoom(undefined);
       setPreviousChatRoom(undefined);
-      window?.socket?.disconnect();
     };
   }, []);
 

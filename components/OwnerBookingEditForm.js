@@ -37,6 +37,9 @@ export default function OwnerBookingEditForm({ data }) {
             if (formData?.notify_coach) {
               toast.success('Notification sent to coach');
             }
+            if (formData?.notify_client || formData?.notify_coach) {
+              window?.socket?.emit('notification:refresh');
+            }
             router.push(`/${basePath}/${resourcePath}`);
           }
         },

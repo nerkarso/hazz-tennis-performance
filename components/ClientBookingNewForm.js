@@ -27,6 +27,7 @@ export default function ClientBookingNewForm() {
           } else {
             toast.success('Booking created');
             router.push(`/${basePath}/${resourcePath}`);
+            window?.socket?.emit('notification:refresh');
           }
         },
       },
