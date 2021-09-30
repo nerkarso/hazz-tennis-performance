@@ -22,9 +22,9 @@ async function getAll(req, res) {
   try {
     const bookings = await Booking.find(filter).select('coach');
     if (bookings.length > 0) {
-      coachesFilter._id = {
-        $ne: bookings.map(({ coach }) => coach.toString()),
-      };
+      coachesFilter.$and = bookings.map(({ coach }) => ({
+        _id: { $ne: coach },
+      }));
     }
     const coaches = await User.find(coachesFilter).sort({ first_name: 1 });
     res.json(coaches);
