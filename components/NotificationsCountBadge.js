@@ -1,14 +1,15 @@
-import { useAuth, useNotificationsCount } from '@/hooks';
+import { useAuth, useNotificationsCount, useSocket } from '@/hooks';
 import { useEffect } from 'react';
 import { useQueryClient } from 'react-query';
 
 export default function NotificationsCountBadge() {
   const queryClient = useQueryClient();
   const { accountId } = useAuth();
+  const { socket } = useSocket();
   const { data } = useNotificationsCount(accountId);
 
   useEffect(() => {
-    window?.socket?.on('notification:new', () => {
+    socket?.on('notification:new', () => {
       queryClient.invalidateQueries('notifications');
       queryClient.invalidateQueries('notificationsCount');
     });

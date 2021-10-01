@@ -9,13 +9,14 @@ import BookingForm, {
   BookingFormTime,
 } from '@/components/BookingForm';
 import FormActions from '@/components/FormActions';
-import { useBookingUpdate, usePath } from '@/hooks';
+import { useBookingUpdate, usePath, useSocket } from '@/hooks';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
 export default function OwnerBookingEditForm({ data }) {
   const router = useRouter();
+  const { socket } = useSocket();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useBookingUpdate();
 
@@ -38,7 +39,7 @@ export default function OwnerBookingEditForm({ data }) {
               toast.success('Notification sent to coach');
             }
             if (formData?.notify_client || formData?.notify_coach) {
-              window?.socket?.emit('notification:refresh');
+              socket?.emit('notification:refresh');
             }
             router.push(`/${basePath}/${resourcePath}`);
           }

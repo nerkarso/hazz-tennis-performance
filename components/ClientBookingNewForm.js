@@ -1,7 +1,7 @@
 import BookingForm, { BookingFormDate, BookingFormDuration, BookingFormLocation, BookingFormPaymentType, BookingFormTime } from '@/components/BookingForm';
 import FormActions from '@/components/FormActions';
 import PaymentModal from '@/components/PaymentModal';
-import { useAuth, useBookingCreate, usePath } from '@/hooks';
+import { useAuth, useBookingCreate, usePath, useSocket } from '@/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 export default function ClientBookingNewForm() {
   const router = useRouter();
   const { accountId } = useAuth();
+  const { socket } = useSocket();
   const { basePath, resourcePath } = usePath();
   const { isLoading, mutate } = useBookingCreate();
   const [booking, setBooking] = useState();
@@ -27,7 +28,7 @@ export default function ClientBookingNewForm() {
           } else {
             toast.success('Booking created');
             router.push(`/${basePath}/${resourcePath}`);
-            window?.socket?.emit('notification:refresh');
+            socket?.emit('notification:refresh');
           }
         },
       },

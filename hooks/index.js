@@ -7,4 +7,5 @@ export * from '@/hooks/court';
 export * from '@/hooks/feedback';
 export * from '@/hooks/notification';
 export * from '@/hooks/router';
+export * from '@/hooks/socket';
 export * from '@/hooks/user';

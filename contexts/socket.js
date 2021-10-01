@@ -1,20 +1,23 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export const SocketContext = createContext(null);
 
 export function SocketProvider({ children }) {
+  const [socket, setSocket] = useState();
+
   useEffect(() => {
     try {
-      window.socket = window?.io(process.env.NEXT_PUBLIC_SOCKET_URL);
+      const ws = window.io(process.env.NEXT_PUBLIC_SOCKET_URL);
+      setSocket(ws);
     } catch (ex) {
       toast.error('Socket connection failed');
     }
 
     return () => {
-      window?.socket?.disconnect();
+      socket?.disconnect();
     };
   }, []);
 
-  return <SocketContext.Provider value={{}}>{children}</SocketContext.Provider>;
+  return <SocketContext.Provider value={{ socket }}>{children}</SocketContext.Provider>;
 }
