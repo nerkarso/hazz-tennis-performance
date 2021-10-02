@@ -63,6 +63,15 @@ export function useUserAuth() {
   );
 }
 
+export function useUserSignUp() {
+  return useMutation((data) =>
+    fetcher('/api/users/signup', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  );
+}
+
 export function useUserIdentify() {
   return useMutation((data) =>
     fetcher('/api/users/identify', {

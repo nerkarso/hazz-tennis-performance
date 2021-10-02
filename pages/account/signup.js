@@ -1,6 +1,6 @@
 import AccountLayout from '@/components/AccountLayout';
 import { Button, FormGroup, Input, SkeletonButton } from '@/elements';
-import { useActivityCreate, useUserCreate } from '@/hooks';
+import { useActivityCreate, useUserSignUp } from '@/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -11,7 +11,7 @@ SignUp.title = 'Sign up';
 export default function SignUp() {
   const router = useRouter();
   const activity = useActivityCreate();
-  const { isLoading, mutate } = useUserCreate();
+  const { isLoading, mutate } = useUserSignUp();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
