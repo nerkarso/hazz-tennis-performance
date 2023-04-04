@@ -41,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
               duration: 3000,
             }}
           />
-          <Script src={`${process.env.NEXT_PUBLIC_SOCKET_URL}/socket.io/socket.io.min.js`} strategy="beforeInteractive" />
+          <Script src={process.env.NEXT_PUBLIC_SOCKET_SCRIPT_URL} strategy="beforeInteractive" />
         </CurrentBookingProvider>
       </AuthProvider>
     </QueryClientProvider>
